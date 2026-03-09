@@ -1,0 +1,135 @@
+[
+  {
+    "dataset": "EBC1",
+    "modality": "SEM",
+    "task": "semantic segmentation",
+    "split_counts": {
+      "train": {
+        "images": 18,
+        "masks": 18
+      },
+      "val": {
+        "images": 3,
+        "masks": 3
+      },
+      "test": {
+        "images": 3,
+        "masks": 3
+      }
+    }
+  },
+  {
+    "dataset": "EBC2",
+    "modality": "SEM",
+    "task": "semantic segmentation",
+    "split_counts": {
+      "train": {
+        "images": 4,
+        "masks": 4
+      },
+      "val": {
+        "images": 3,
+        "masks": 3
+      },
+      "test": {
+        "images": 3,
+        "masks": 3
+      }
+    }
+  },
+  {
+    "dataset": "EBC3",
+    "modality": "SEM",
+    "task": "semantic segmentation",
+    "split_counts": {
+      "train": {
+        "images": 15,
+        "masks": 15
+      },
+      "val": {
+        "images": 3,
+        "masks": 3
+      },
+      "test": {
+        "images": 6,
+        "masks": 6
+      }
+    }
+  },
+  {
+    "dataset": "Super1",
+    "modality": "SEM",
+    "task": "semantic segmentation",
+    "split_counts": {
+      "train": {
+        "images": 10,
+        "masks": 10
+      },
+      "val": {
+        "images": 4,
+        "masks": 4
+      },
+      "test": {
+        "images": 4,
+        "masks": 4
+      }
+    }
+  },
+  {
+    "dataset": "Super2",
+    "modality": "SEM",
+    "task": "semantic segmentation",
+    "split_counts": {
+      "train": {
+        "images": 4,
+        "masks": 4
+      },
+      "val": {
+        "images": 4,
+        "masks": 4
+      },
+      "test": {
+        "images": 4,
+        "masks": 4
+      }
+    }
+  },
+  {
+    "dataset": "Super3",
+    "modality": "SEM",
+    "task": "semantic segmentation",
+    "split_counts": {
+      "train": {
+        "images": 1,
+        "masks": 1
+      },
+      "val": {
+        "images": 4,
+        "masks": 4
+      },
+      "test": {
+        "images": 4,
+        "masks": 4
+      }
+    }
+  },
+  {
+    "dataset": "Super4",
+    "modality": "SEM",
+    "task": "semantic segmentation",
+    "split_counts": {
+      "train": {
+        "images": 4,
+        "masks": 4
+      },
+      "val": {
+        "images": 4,
+        "masks": 4
+      },
+      "test": {
+        "images": 5,
+        "masks": 5
+      }
+    }
+  }
+]

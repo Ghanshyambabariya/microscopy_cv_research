@@ -8,11 +8,12 @@ This page is a quick portfolio-style view of the project.
 - Synthetic image generation for augmentation and stress testing
 - Hybrid multitask learning for structure-property prediction
 - Public microscopy dataset ingestion showcase
-- Real benchmark target registry for SEM, TEM, and EBSD work
+- Real benchmark portfolio planning for SEM, TEM, and EBSD work
+- Integrated NASA SEM segmentation showcase with real benchmark samples
 
 ## Benchmark Snapshot
 
-The starter dataset now contains 1,440 tracked microscopy-style images across 180 specimen groups.
+The starter dataset contains 1,440 tracked microscopy-style images across 180 specimen groups, and the repo now also includes a real SEM benchmark showcase from NASA MicroNet data.
 
 | Track | Metric | Value |
 |---|---|---|
@@ -27,6 +28,7 @@ The starter dataset now contains 1,440 tracked microscopy-style images across 18
 | Hybrid regression | RMSE | 0.0395 |
 | Hybrid regression | R2 | 0.9804 |
 | Synthetic generation | Images created | 120 |
+| Real SEM benchmark | Datasets integrated | 7 |
 
 ## Visual Summary
 
@@ -36,20 +38,26 @@ The starter dataset now contains 1,440 tracked microscopy-style images across 18
 
 ![Sample gallery](reports/figures/sample_gallery.png)
 
-## Real Benchmark Direction
+![NASA SEM benchmark](reports/figures/real_sem_benchmark.png)
 
-This portfolio is now split into two levels:
+## What Is Real Now
 
-1. Current verified framework results
-- the tracked metrics on the 1,440-image starter dataset
+The portfolio now contains one real microscopy benchmark integration:
+- NASA MicroNet SEM segmentation benchmark data
+- real benchmark image and mask pairs
+- real split-count summary across seven datasets
+- generated portfolio figure with inputs, masks, and overlays
 
-2. Real microscopy benchmark targets
-- SEM segmentation and defect tasks
-- TEM or EMPIAR-derived transfer tasks
-- EBSD phase or orientation tasks
+See [reports/real_sem_benchmark_showcase.md](reports/real_sem_benchmark_showcase.md) for the benchmark report.
 
-See [reports/real_benchmark_portfolio.md](reports/real_benchmark_portfolio.md) for the full benchmark map.
+## What Is Still Missing
+
+- TEM benchmark testing with real task outputs
+- EBSD benchmark testing with real pattern data and metrics
+- cross-encoder comparisons on those modalities
+
+See [reports/real_benchmark_portfolio.md](reports/real_benchmark_portfolio.md) for the full benchmark target map.
 
 ## Notes
 
-These are still starter-data results, but they now come from a much larger and more separable 1,440-image benchmark rather than the earlier tiny toy set. The repo is behaving like a solid framework demonstration, but it is not yet a completed real-microscopy benchmark portfolio.
+This repo is no longer only a synthetic framework showcase. It now contains a real SEM benchmark layer, but TEM and EBSD are still target integrations rather than completed evaluated tasks.

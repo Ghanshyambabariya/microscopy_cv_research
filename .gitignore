@@ -26,3 +26,6 @@ reports/figures/showcase/
 reports/public_showcase.md
 reports/public_showcase_manifest.json
 
+# Ignore cloned external benchmark repositories
+data/external/nasa_microscopy_models/
+data/external/ebsd_indexing/
