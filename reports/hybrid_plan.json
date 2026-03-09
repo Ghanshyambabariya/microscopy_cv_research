@@ -1,0 +1,17 @@
+{
+  "experiment_name": "microscopy_hybrid_multitask",
+  "encoder": {
+    "name": "dinov2_vitb14",
+    "source": "generic-self-supervised",
+    "family": "general-foundation",
+    "notes": "Strong generic visual backbone worth benchmarking against domain models."
+  },
+  "classification_target": "target_class",
+  "regression_target": "property_value",
+  "synthetic_mix_ratio": 0.3,
+  "loss_weights": {
+    "classification": 1.0,
+    "regression": 1.0,
+    "consistency": 0.2
+  }
+}

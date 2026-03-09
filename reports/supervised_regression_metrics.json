@@ -1,0 +1,57 @@
+{
+  "experiment_name": "microscopy_regressor_baseline",
+  "task_type": "regression",
+  "encoder": {
+    "name": "convnextv2_base",
+    "source": "timm",
+    "family": "general-supervised",
+    "notes": "Strong image benchmark backbone."
+  },
+  "runtime_backbone_source": "timm",
+  "splits": {
+    "train": 36,
+    "val": 18,
+    "test": 18
+  },
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 3.610677626397875,
+      "val_loss": 0.3138357409172588,
+      "mae": 0.47461334615945816,
+      "rmse": 0.5602104620854633,
+      "r2": -2.545296809444686
+    },
+    {
+      "epoch": 2,
+      "train_loss": 0.5567404164208306,
+      "val_loss": 0.16434951157619557,
+      "mae": 0.27535292589002186,
+      "rmse": 0.4054004393135168,
+      "r2": -0.8566010833323017
+    },
+    {
+      "epoch": 3,
+      "train_loss": 0.12974452641275194,
+      "val_loss": 0.2003154026137458,
+      "mae": 0.39033908396959305,
+      "rmse": 0.4475660898839018,
+      "r2": -1.2628956031921041
+    },
+    {
+      "epoch": 4,
+      "train_loss": 0.1383197291029824,
+      "val_loss": 0.08905786938137478,
+      "mae": 0.286597292456362,
+      "rmse": 0.2984256639621016,
+      "r2": -0.006056814647819708
+    }
+  ],
+  "test_loss": 0.0956027942399184,
+  "test_metrics": {
+    "mae": 0.2607353842920727,
+    "rmse": 0.30919701743393685,
+    "r2": -1.9231582646978769
+  },
+  "label_mapping": null
+}

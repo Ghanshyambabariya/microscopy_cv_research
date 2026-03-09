@@ -1,0 +1,15 @@
+{
+  "experiment_name": "microscopy_classifier_baseline",
+  "task_type": "classification",
+  "encoder": {
+    "name": "micronet",
+    "source": "https://github.com/nasa/pretrained-microscopy-models",
+    "family": "microscopy-specialized",
+    "notes": "Useful when microscopy texture statistics differ strongly from ImageNet-like images."
+  },
+  "group_column": "specimen_id",
+  "target_column": "target_class",
+  "dataset_csv": "data\\processed\\labels.csv",
+  "dataset_present": false,
+  "next_action": "Add labels.csv and image paths to enable train/test planning."
+}

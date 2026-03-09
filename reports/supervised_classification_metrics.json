@@ -1,0 +1,56 @@
+{
+  "experiment_name": "microscopy_classifier_baseline",
+  "task_type": "classification",
+  "encoder": {
+    "name": "convnextv2_base",
+    "source": "timm",
+    "family": "general-supervised",
+    "notes": "Strong image benchmark backbone."
+  },
+  "runtime_backbone_source": "timm",
+  "splits": {
+    "train": 36,
+    "val": 18,
+    "test": 18
+  },
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 1.411105579800076,
+      "val_loss": 2.2814206547207303,
+      "accuracy": 0.0,
+      "macro_f1": 0.0
+    },
+    {
+      "epoch": 2,
+      "train_loss": 1.2655586798985798,
+      "val_loss": 1.3664320045047336,
+      "accuracy": 0.0,
+      "macro_f1": 0.0
+    },
+    {
+      "epoch": 3,
+      "train_loss": 1.0666791200637817,
+      "val_loss": 1.5740777121649847,
+      "accuracy": 0.0,
+      "macro_f1": 0.0
+    },
+    {
+      "epoch": 4,
+      "train_loss": 1.0251375767919753,
+      "val_loss": 1.477841443485684,
+      "accuracy": 0.0,
+      "macro_f1": 0.0
+    }
+  ],
+  "test_loss": 1.4882809652222528,
+  "test_metrics": {
+    "accuracy": 0.3333333333333333,
+    "macro_f1": 0.25
+  },
+  "label_mapping": {
+    "0": "crack",
+    "1": "grain",
+    "2": "pore"
+  }
+}

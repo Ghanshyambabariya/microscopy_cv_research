@@ -1,0 +1,11 @@
+{
+  "experiment_name": "microscopy_synthetic_generation",
+  "generator_family": "diffusion",
+  "conditioning_mode": "class_and_metadata",
+  "evaluation_protocol": [
+    "Frechet-like feature distance",
+    "class balance improvement",
+    "downstream supervised gain",
+    "failure-case audit"
+  ]
+}

@@ -1,0 +1,21 @@
+# Ignore operating system, editor, and cache files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
+venv/
+
+# Ignore large artifacts by default
+models/checkpoints/
+reports/figures/generated/
+
+# Keep directory placeholders
+!data/raw/.gitkeep
+!data/interim/.gitkeep
+!data/processed/.gitkeep
+!models/.gitkeep
+!reports/figures/.gitkeep

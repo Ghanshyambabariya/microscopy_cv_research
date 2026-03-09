@@ -1,0 +1,25 @@
+{
+  "experiment_name": "microscopy_synthetic_generation",
+  "generator_family": "programmatic_microstructure_generator",
+  "conditioning_mode": "class_and_property",
+  "encoder_reference": {
+    "name": "micronet",
+    "source": "https://github.com/nasa/pretrained-microscopy-models",
+    "family": "microscopy-specialized",
+    "notes": "Microscopy-specialized family to benchmark when local weights are available."
+  },
+  "num_generated_images": 54,
+  "class_distribution": {
+    "crack": 18,
+    "grain": 18,
+    "pore": 18
+  },
+  "table_path": "data\\interim\\synthetic_labels.csv",
+  "image_dir": "data\\interim\\synthetic_images",
+  "evaluation_protocol": [
+    "feature-distance comparison to real images",
+    "class-balance improvement",
+    "downstream supervised gain",
+    "expert visual audit"
+  ]
+}

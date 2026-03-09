@@ -1,0 +1,14 @@
+{
+  "experiment_name": "microscopy_synthetic_generation",
+  "generator_family": "programmatic_microstructure_generator",
+  "conditioning_mode": "class_and_property",
+  "dataset_csv": "data/processed/labels.csv",
+  "image_root": "data/raw/images",
+  "target_column": "target_class",
+  "metadata_columns": ["magnification", "batch_id"],
+  "image_size": 128,
+  "samples_per_class": 18,
+  "output_dir": "data/interim/synthetic_images",
+  "report_path": "reports/synthetic_generation_report.json",
+  "seed": 42
+}

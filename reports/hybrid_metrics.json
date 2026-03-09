@@ -1,0 +1,97 @@
+{
+  "experiment_name": "microscopy_hybrid_multitask",
+  "encoder": {
+    "name": "resnet18",
+    "source": "torchvision",
+    "family": "general-supervised",
+    "notes": "Lightweight runnable baseline."
+  },
+  "runtime_backbone_source": "torchvision",
+  "synthetic_report": {
+    "experiment_name": "microscopy_synthetic_generation",
+    "generator_family": "programmatic_microstructure_generator",
+    "conditioning_mode": "class_and_property",
+    "encoder_reference": {
+      "name": "micronet",
+      "source": "https://github.com/nasa/pretrained-microscopy-models",
+      "family": "microscopy-specialized",
+      "notes": "Microscopy-specialized family to benchmark when local weights are available."
+    },
+    "num_generated_images": 54,
+    "class_distribution": {
+      "crack": 18,
+      "grain": 18,
+      "pore": 18
+    },
+    "table_path": "data\\interim\\synthetic_labels.csv",
+    "image_dir": "data\\interim\\synthetic_images",
+    "evaluation_protocol": [
+      "feature-distance comparison to real images",
+      "class-balance improvement",
+      "downstream supervised gain",
+      "expert visual audit"
+    ]
+  },
+  "splits": {
+    "train": 36,
+    "val": 18,
+    "test": 18
+  },
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 1.2748483419418335,
+      "val_loss": 0.8979748487472534,
+      "accuracy": 0.6666666666666666,
+      "macro_f1": 0.4,
+      "mae": 0.3781444968448745,
+      "rmse": 0.4230415421471848,
+      "r2": -1.021697634056502
+    },
+    {
+      "epoch": 2,
+      "train_loss": 0.7895259062449137,
+      "val_loss": 0.8669407169024149,
+      "accuracy": 0.6666666666666666,
+      "macro_f1": 0.4,
+      "mae": 0.3393023485938708,
+      "rmse": 0.3485162927647781,
+      "r2": -0.3721334160511378
+    },
+    {
+      "epoch": 3,
+      "train_loss": 0.5750032067298889,
+      "val_loss": 0.9066358407338461,
+      "accuracy": 0.6666666666666666,
+      "macro_f1": 0.4,
+      "mae": 0.25415271934535766,
+      "rmse": 0.3086444594603435,
+      "r2": -0.07613595042541599
+    },
+    {
+      "epoch": 4,
+      "train_loss": 0.454770028591156,
+      "val_loss": 1.1120689858992894,
+      "accuracy": 0.6666666666666666,
+      "macro_f1": 0.4,
+      "mae": 0.2548358216881752,
+      "rmse": 0.3936275051072096,
+      "r2": -0.7503344664162352
+    }
+  ],
+  "test_loss": 3.685480753580729,
+  "classification_metrics": {
+    "accuracy": 0.0,
+    "macro_f1": 0.0
+  },
+  "regression_metrics": {
+    "mae": 0.531182489461369,
+    "rmse": 0.5622059623741351,
+    "r2": -8.66434959759566
+  },
+  "label_mapping": {
+    "0": "crack",
+    "1": "grain",
+    "2": "pore"
+  }
+}

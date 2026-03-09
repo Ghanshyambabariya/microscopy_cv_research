@@ -1,0 +1,20 @@
+{
+  "experiment_name": "microscopy_regressor_baseline",
+  "task_type": "regression",
+  "dataset_csv": "data/processed/labels.csv",
+  "image_root": "data/raw/images",
+  "target_column": "property_value",
+  "group_column": "specimen_id",
+  "encoder_name": "convnextv2_base",
+  "encoder_source": "timm",
+  "pretrained": false,
+  "freeze_encoder": false,
+  "image_size": 128,
+  "batch_size": 16,
+  "epochs": 4,
+  "learning_rate": 0.0003,
+  "weight_decay": 0.0001,
+  "seed": 42,
+  "save_path": "models/checkpoints/supervised_regression.pt",
+  "report_path": "reports/supervised_regression_metrics.json"
+}
