@@ -20,7 +20,7 @@ flowchart LR
     B --> H
     H --> I[Joint Structure Property Prediction]
     A --> K[Real Benchmark Ingestion]
-    K --> L[SEM Segmentation Showcase]
+    K --> L[SEM Segmentation Training]
     K --> M[TEM Target Registry]
     K --> N[EBSD Target Registry]
     L --> J[Reports and Checkpoints]
@@ -37,9 +37,11 @@ See the real benchmark target map here: [reports/real_benchmark_portfolio.md](re
 
 See the integrated NASA SEM benchmark showcase here: [reports/real_sem_benchmark_showcase.md](reports/real_sem_benchmark_showcase.md)
 
+See the trained SEM experiment report here: [reports/sem_ebc_segmentation_report.md](reports/sem_ebc_segmentation_report.md)
+
 ![Benchmark overview](reports/figures/benchmark_overview.png)
 
-![NASA SEM benchmark](reports/figures/real_sem_benchmark.png)
+![NASA EBC predictions](reports/figures/sem_ebc_predictions.png)
 
 ## What This Project Does
 
@@ -48,17 +50,17 @@ See the integrated NASA SEM benchmark showcase here: [reports/real_sem_benchmark
 - generates synthetic microscopy-like images for augmentation studies
 - runs a hybrid multitask model with classification plus regression outputs
 - supports public-dataset showcase collection from external microscopy sources
-- integrates a real NASA SEM segmentation benchmark showcase with actual images and masks
+- trains a real NASA SEM segmentation baseline with IoU and Dice reporting
 
 ## Current Reality
 
-The repo now has one real microscopy benchmark integrated directly into the portfolio:
-- NASA MicroNet SEM segmentation benchmark data
+The repo now has one real microscopy benchmark experiment integrated directly into the portfolio:
+- NASA EBC SEM segmentation baseline on public benchmark data
 
 What is still missing for a fuller research-grade benchmark suite:
 - real TEM or EMPIAR-derived encoder transfer evaluation
 - real EBSD indexing, phase, or orientation prediction with sample patterns and metrics
-- task-specific model evaluation on those additional modalities
+- stronger SEM benchmarks beyond the first baseline
 
 ## Runnable Entry Points
 
@@ -71,6 +73,7 @@ C:/Users/ghans/AppData/Local/Programs/Python/Python312/python.exe scripts/run_hy
 C:/Users/ghans/AppData/Local/Programs/Python/Python312/python.exe scripts/build_public_showcase.py
 C:/Users/ghans/AppData/Local/Programs/Python/Python312/python.exe scripts/build_benchmark_portfolio.py
 C:/Users/ghans/AppData/Local/Programs/Python/Python312/python.exe scripts/build_real_sem_showcase.py
+C:/Users/ghans/AppData/Local/Programs/Python/Python312/python.exe scripts/run_sem_segmentation.py
 ```
 
 ## Current Benchmark Results
@@ -88,16 +91,20 @@ C:/Users/ghans/AppData/Local/Programs/Python/Python312/python.exe scripts/build_
 | Hybrid multitask | regression RMSE | 0.0395 |
 | Hybrid multitask | regression R2 | 0.9804 |
 | Synthetic generation | generated images | 120 |
+| NASA EBC SEM segmentation | pixel accuracy | 0.9480 |
+| NASA EBC SEM segmentation | mean IoU foreground | 0.4334 |
+| NASA EBC SEM segmentation | mean Dice foreground | 0.5293 |
 
 ## Real Benchmark Evidence
 
-### NASA SEM Segmentation Showcase
+### NASA EBC SEM Segmentation Baseline
 
-- datasets integrated: `EBC1`, `EBC2`, `EBC3`, `Super1`, `Super2`, `Super3`, `Super4`
+- datasets used: `EBC1`, `EBC2`, `EBC3`
 - task type: semantic segmentation
-- evidence generated: real test-image inputs, masks, overlays, and split-count reports
+- model: `UNetSmall`
+- outputs generated: metrics JSON, prediction figure, benchmark report
 
-![NASA SEM benchmark](reports/figures/real_sem_benchmark.png)
+![NASA EBC predictions](reports/figures/sem_ebc_predictions.png)
 
 ## Example Images
 
@@ -126,12 +133,12 @@ Current local showcase sources:
 
 | Modality | Example task | Current status |
 |---|---|---|
-| SEM | materials segmentation | integrated in portfolio from NASA benchmark data |
+| SEM | materials segmentation | real trained benchmark baseline integrated |
 | TEM | encoder transfer or retrieval | target registry only |
 | EBSD | phase or orientation prediction | target registry only |
 
-The benchmark registry for these targets is tracked in [configs/real_benchmark_targets.json](configs/real_benchmark_targets.json), the generated target summary is in [reports/real_benchmark_portfolio.md](reports/real_benchmark_portfolio.md), and the integrated SEM showcase is in [reports/real_sem_benchmark_showcase.md](reports/real_sem_benchmark_showcase.md).
+The benchmark registry for these targets is tracked in [configs/real_benchmark_targets.json](configs/real_benchmark_targets.json), the generated target summary is in [reports/real_benchmark_portfolio.md](reports/real_benchmark_portfolio.md), the integrated SEM showcase is in [reports/real_sem_benchmark_showcase.md](reports/real_sem_benchmark_showcase.md), and the trained SEM experiment report is in [reports/sem_ebc_segmentation_report.md](reports/sem_ebc_segmentation_report.md).
 
 ## Important Note
 
-The synthetic starter results are still framework-level results, not publishable microscopy evidence. The SEM section is now real benchmark evidence from NASA's public microscopy benchmark data, while TEM and EBSD are still planned benchmark integrations.
+The synthetic starter results are still framework-level results, not publishable microscopy evidence. The SEM section now includes a real trained benchmark baseline on NASA's public microscopy data, while TEM and EBSD are still planned benchmark integrations.
