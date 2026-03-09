@@ -19,7 +19,9 @@ class MicroscopyImageDataset(Dataset):
 
     def __getitem__(self, index: int):
         row = self.table.iloc[index]
-        image = Image.open(self.image_root / row["image_path"]).convert("RGB")
+        override = row.get("image_root_override")
+        row_root = Path(override) if isinstance(override, str) and override else self.image_root
+        image = Image.open(row_root / row["image_path"]).convert("RGB")
         if self.transform is not None:
             image = self.transform(image)
         if self.target_column is None:
@@ -40,7 +42,9 @@ class MicroscopyHybridDataset(Dataset):
 
     def __getitem__(self, index: int):
         row = self.table.iloc[index]
-        image = Image.open(self.image_root / row["image_path"]).convert("RGB")
+        override = row.get("image_root_override")
+        row_root = Path(override) if isinstance(override, str) and override else self.image_root
+        image = Image.open(row_root / row["image_path"]).convert("RGB")
         if self.transform is not None:
             image = self.transform(image)
         return {

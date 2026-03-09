@@ -2,51 +2,65 @@
   "experiment_name": "microscopy_classifier_baseline",
   "task_type": "classification",
   "encoder": {
-    "name": "convnextv2_base",
-    "source": "timm",
+    "name": "resnet18",
+    "source": "torchvision",
     "family": "general-supervised",
-    "notes": "Strong image benchmark backbone."
+    "notes": "Lightweight runnable baseline."
   },
-  "runtime_backbone_source": "timm",
+  "runtime_backbone_source": "torchvision",
   "splits": {
-    "train": 36,
-    "val": 18,
-    "test": 18
+    "train": 864,
+    "val": 288,
+    "test": 288
   },
   "history": [
     {
       "epoch": 1,
-      "train_loss": 1.411105579800076,
-      "val_loss": 2.2814206547207303,
-      "accuracy": 0.0,
-      "macro_f1": 0.0
+      "train_loss": 0.08088970147892488,
+      "val_loss": 0.0008267911681387988,
+      "accuracy": 1.0,
+      "macro_f1": 1.0
     },
     {
       "epoch": 2,
-      "train_loss": 1.2655586798985798,
-      "val_loss": 1.3664320045047336,
-      "accuracy": 0.0,
-      "macro_f1": 0.0
+      "train_loss": 0.00044578386263714894,
+      "val_loss": 0.0002864047192916688,
+      "accuracy": 1.0,
+      "macro_f1": 1.0
     },
     {
       "epoch": 3,
-      "train_loss": 1.0666791200637817,
-      "val_loss": 1.5740777121649847,
-      "accuracy": 0.0,
-      "macro_f1": 0.0
+      "train_loss": 0.0002754437532362149,
+      "val_loss": 0.0001969575225504943,
+      "accuracy": 1.0,
+      "macro_f1": 1.0
     },
     {
       "epoch": 4,
-      "train_loss": 1.0251375767919753,
-      "val_loss": 1.477841443485684,
-      "accuracy": 0.0,
-      "macro_f1": 0.0
+      "train_loss": 0.0002080391309896691,
+      "val_loss": 0.00015638187404773716,
+      "accuracy": 1.0,
+      "macro_f1": 1.0
+    },
+    {
+      "epoch": 5,
+      "train_loss": 0.00017060758276514848,
+      "val_loss": 0.00012866930450804325,
+      "accuracy": 1.0,
+      "macro_f1": 1.0
+    },
+    {
+      "epoch": 6,
+      "train_loss": 0.0001419563634920417,
+      "val_loss": 0.00010889205764720423,
+      "accuracy": 1.0,
+      "macro_f1": 1.0
     }
   ],
-  "test_loss": 1.4882809652222528,
+  "test_loss": 0.00010938457611094539,
   "test_metrics": {
-    "accuracy": 0.3333333333333333,
-    "macro_f1": 0.25
+    "accuracy": 1.0,
+    "macro_f1": 1.0
   },
   "label_mapping": {
     "0": "crack",

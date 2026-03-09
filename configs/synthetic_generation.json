@@ -7,7 +7,7 @@
   "target_column": "target_class",
   "metadata_columns": ["magnification", "batch_id"],
   "image_size": 128,
-  "samples_per_class": 18,
+  "samples_per_class": 40,
   "output_dir": "data/interim/synthetic_images",
   "report_path": "reports/synthetic_generation_report.json",
   "seed": 42

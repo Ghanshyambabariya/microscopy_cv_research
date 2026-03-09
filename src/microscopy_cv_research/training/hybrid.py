@@ -22,14 +22,28 @@ from microscopy_cv_research.utils.repro import set_seed
 
 
 def _build_transforms(image_size: int):
-    train_transform = transforms.Compose([transforms.Resize((image_size, image_size)), transforms.RandomHorizontalFlip(), transforms.ToTensor()])
-    eval_transform = transforms.Compose([transforms.Resize((image_size, image_size)), transforms.ToTensor()])
+    train_transform = transforms.Compose([
+        transforms.Resize((image_size, image_size)),
+        transforms.RandomHorizontalFlip(),
+        transforms.RandomVerticalFlip(),
+        transforms.ToTensor(),
+    ])
+    eval_transform = transforms.Compose([
+        transforms.Resize((image_size, image_size)),
+        transforms.ToTensor(),
+    ])
     return train_transform, eval_transform
 
 
 def plan_hybrid_experiment(config_path: str | Path) -> dict:
     config = load_config(config_path)
-    return {"experiment_name": config["experiment_name"], "encoder": asdict(get_encoder_spec(config["encoder_name"])), "classification_target": config["classification_target"], "regression_target": config["regression_target"], "synthetic_mix_ratio": config["synthetic_mix_ratio"]}
+    return {
+        "experiment_name": config["experiment_name"],
+        "encoder": asdict(get_encoder_spec(config["encoder_name"])),
+        "classification_target": config["classification_target"],
+        "regression_target": config["regression_target"],
+        "synthetic_mix_ratio": config["synthetic_mix_ratio"],
+    }
 
 
 def run_hybrid_experiment(config_path: str | Path, synthetic_config_path: str | Path | None = None) -> dict:
@@ -37,10 +51,19 @@ def run_hybrid_experiment(config_path: str | Path, synthetic_config_path: str | 
     set_seed(config["seed"])
     table = pd.read_csv(config["dataset_csv"])
     train_df, val_df, test_df = make_group_train_val_test_split(table, group_column=config["group_column"], random_state=config["seed"])
-    synthetic_report = generate_synthetic_images(synthetic_config_path) if synthetic_config_path is not None and config.get("synthetic_mix_ratio", 0) > 0 else None
+
+    synthetic_report = None
+    if synthetic_config_path is not None and config.get("synthetic_mix_ratio", 0) > 0:
+        synthetic_report = generate_synthetic_images(synthetic_config_path)
+        synthetic_table = pd.read_csv(Path(synthetic_report["table_path"]))
+        synthetic_take = max(1, int(len(train_df) * config["synthetic_mix_ratio"]))
+        synthetic_subset = synthetic_table.sample(n=min(synthetic_take, len(synthetic_table)), random_state=config["seed"]).copy()
+        synthetic_subset["image_root_override"] = synthetic_report["image_dir"]
+        synthetic_subset[config["group_column"]] = synthetic_subset["specimen_id"].astype(str)
+        train_df = pd.concat([train_df, synthetic_subset], ignore_index=True)
 
     label_encoder = LabelEncoder()
-    label_encoder.fit(table[config["classification_target"]])
+    label_encoder.fit(pd.concat([table[config["classification_target"]], train_df[config["classification_target"]]], ignore_index=True))
     train_df = train_df.assign(**{config["classification_target"]: label_encoder.transform(train_df[config["classification_target"]]).astype("int64")})
     val_df = val_df.assign(**{config["classification_target"]: label_encoder.transform(val_df[config["classification_target"]]).astype("int64")})
     test_df = test_df.assign(**{config["classification_target"]: label_encoder.transform(test_df[config["classification_target"]]).astype("int64")})
@@ -71,6 +94,7 @@ def run_hybrid_experiment(config_path: str | Path, synthetic_config_path: str | 
         if primary_metric > best_metric:
             best_metric = primary_metric
             best_state = model.state_dict()
+
     if best_state is not None:
         model.load_state_dict(best_state)
 

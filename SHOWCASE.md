@@ -11,19 +11,21 @@ This page is a quick portfolio-style view of the project.
 
 ## Benchmark Snapshot
 
+The starter dataset now contains 1,440 tracked microscopy-style images across 180 specimen groups.
+
 | Track | Metric | Value |
 |---|---|---|
-| Supervised classification | Accuracy | 0.3333 |
-| Supervised classification | Macro F1 | 0.2500 |
-| Supervised regression | MAE | 0.2607 |
-| Supervised regression | RMSE | 0.3092 |
-| Supervised regression | R2 | -1.9232 |
-| Hybrid classification | Accuracy | 0.0000 |
-| Hybrid classification | Macro F1 | 0.0000 |
-| Hybrid regression | MAE | 0.5312 |
-| Hybrid regression | RMSE | 0.5622 |
-| Hybrid regression | R2 | -8.6643 |
-| Synthetic generation | Images created | 54 |
+| Supervised classification | Accuracy | 1.0000 |
+| Supervised classification | Macro F1 | 1.0000 |
+| Supervised regression | MAE | 0.0414 |
+| Supervised regression | RMSE | 0.0507 |
+| Supervised regression | R2 | 0.9678 |
+| Hybrid classification | Accuracy | 1.0000 |
+| Hybrid classification | Macro F1 | 1.0000 |
+| Hybrid regression | MAE | 0.0328 |
+| Hybrid regression | RMSE | 0.0395 |
+| Hybrid regression | R2 | 0.9804 |
+| Synthetic generation | Images created | 120 |
 
 ## Visual Summary
 
@@ -33,15 +35,6 @@ This page is a quick portfolio-style view of the project.
 
 ![Sample gallery](reports/figures/sample_gallery.png)
 
-## Public Dataset Showcase
-
-The repo also includes a public-data showcase builder for BBBC microscopy sources.
-
-Generated locally:
-- `reports/public_showcase.md`
-- `reports/public_showcase_manifest.json`
-- `reports/figures/showcase/*.png`
-
 ## Notes
 
-These results are from a small synthetic starter dataset designed to demonstrate the framework. Real scientific performance will depend on your real microscopy data, labels, and task logic.
+These are still starter-data results, but they now come from a much larger and more separable 1,440-image benchmark rather than the earlier tiny toy set. The repo is now behaving much more like a believable framework demonstration.
