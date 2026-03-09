@@ -28,6 +28,8 @@ flowchart LR
 
 See the full portfolio-style page here: [SHOWCASE.md](SHOWCASE.md)
 
+See the real benchmark target map here: [reports/real_benchmark_portfolio.md](reports/real_benchmark_portfolio.md)
+
 ![Benchmark overview](reports/figures/benchmark_overview.png)
 
 ![Sample gallery](reports/figures/sample_gallery.png)
@@ -40,6 +42,16 @@ See the full portfolio-style page here: [SHOWCASE.md](SHOWCASE.md)
 - runs a hybrid multitask model with classification plus regression outputs
 - supports public-dataset showcase collection from external microscopy sources
 
+## Reality Check
+
+The current tracked benchmark is still a starter benchmark built to verify the training framework. It is not yet comparable to NASA MicroNet-style microscopy transfer-learning results or to a real SEM, TEM, or EBSD evaluation suite.
+
+What is still missing for a research-grade portfolio:
+- real SEM segmentation or defect-analysis testing
+- real TEM or EMPIAR-derived encoder transfer evaluation
+- real EBSD indexing, phase, or orientation prediction
+- qualitative test panels with real input images and predicted outputs
+
 ## Runnable Entry Points
 
 ```powershell
@@ -49,6 +61,7 @@ C:/Users/ghans/AppData/Local/Programs/Python/Python312/python.exe scripts/run_su
 C:/Users/ghans/AppData/Local/Programs/Python/Python312/python.exe scripts/run_synthetic.py
 C:/Users/ghans/AppData/Local/Programs/Python/Python312/python.exe scripts/run_hybrid.py
 C:/Users/ghans/AppData/Local/Programs/Python/Python312/python.exe scripts/build_public_showcase.py
+C:/Users/ghans/AppData/Local/Programs/Python/Python312/python.exe scripts/build_benchmark_portfolio.py
 ```
 
 ## Current Benchmark Results
@@ -90,6 +103,17 @@ Current local showcase sources:
 - BBBC033 Human Motor Neurons
 - BBBC053 Image-Based Profiling MitoCheck
 
+## Real Benchmark Targets
+
+| Modality | Example task | Example benchmark source |
+|---|---|---|
+| SEM | materials segmentation | NASA benchmark segmentation data |
+| SEM | indentation or defect segmentation | Zenodo indentation mark segmentation data |
+| TEM | encoder transfer or retrieval | CEM500K / EMPIAR |
+| EBSD | phase or orientation prediction | Northwestern simulated EBSD / EBSD-indexing |
+
+The benchmark registry for these targets is tracked in [configs/real_benchmark_targets.json](configs/real_benchmark_targets.json), and the generated portfolio summary is in [reports/real_benchmark_portfolio.md](reports/real_benchmark_portfolio.md).
+
 ## Important Note
 
-These results are now much more believable as a framework demonstration because they come from a 1,440-image grouped starter dataset rather than the original tiny set. They are still not a substitute for real scientific validation on your microscopy data.
+These results are now much more believable as a framework demonstration because they come from a 1,440-image grouped starter dataset rather than the original tiny set. They are still not a substitute for real scientific validation on public or private SEM, TEM, and EBSD datasets.

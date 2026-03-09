@@ -8,6 +8,7 @@ This page is a quick portfolio-style view of the project.
 - Synthetic image generation for augmentation and stress testing
 - Hybrid multitask learning for structure-property prediction
 - Public microscopy dataset ingestion showcase
+- Real benchmark target registry for SEM, TEM, and EBSD work
 
 ## Benchmark Snapshot
 
@@ -35,6 +36,20 @@ The starter dataset now contains 1,440 tracked microscopy-style images across 18
 
 ![Sample gallery](reports/figures/sample_gallery.png)
 
+## Real Benchmark Direction
+
+This portfolio is now split into two levels:
+
+1. Current verified framework results
+- the tracked metrics on the 1,440-image starter dataset
+
+2. Real microscopy benchmark targets
+- SEM segmentation and defect tasks
+- TEM or EMPIAR-derived transfer tasks
+- EBSD phase or orientation tasks
+
+See [reports/real_benchmark_portfolio.md](reports/real_benchmark_portfolio.md) for the full benchmark map.
+
 ## Notes
 
-These are still starter-data results, but they now come from a much larger and more separable 1,440-image benchmark rather than the earlier tiny toy set. The repo is now behaving much more like a believable framework demonstration.
+These are still starter-data results, but they now come from a much larger and more separable 1,440-image benchmark rather than the earlier tiny toy set. The repo is behaving like a solid framework demonstration, but it is not yet a completed real-microscopy benchmark portfolio.
