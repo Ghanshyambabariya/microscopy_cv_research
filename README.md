@@ -20,5 +20,10 @@ C:\Users\ghans\AppData\Local\Programs\Python\Python312\python.exe scripts\create
 C:\Users\ghans\AppData\Local\Programs\Python\Python312\python.exe scripts\run_supervised.py --config configs\supervised_classification.json
 C:\Users\ghans\AppData\Local\Programs\Python\Python312\python.exe scripts\run_supervised.py --config configs\supervised_regression.json
 C:\Users\ghans\AppData\Local\Programs\Python\Python312\python.exe scripts\run_synthetic.py
-C:\Users\ghans\AppData\Local\Programs\Python\Python312\python.exe scripts\run_hybrid.py
+C:\Users\ghans\AppData\Local\Programs\Python\Python312\python.exe scripts\run_hybrid.py`r`nC:\Users\ghans\AppData\Local\Programs\Python\Python312\python.exe scripts\build_public_showcase.py
 ```
+
+## Public Showcase
+
+Use scripts/build_public_showcase.py to download a few official public microscopy datasets, extract representative sample images, validate that the project loader can read them, and build a local markdown showcase report.
+

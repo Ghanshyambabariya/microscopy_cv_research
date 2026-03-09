@@ -1,0 +1,27 @@
+[
+  {
+    "name": "bbbc028",
+    "title": "BBBC028 Human HT29 Colon-Cancer Cells",
+    "project_page": "https://bbbc.broadinstitute.org/BBBC028",
+    "download_url": "https://data.broadinstitute.org/bbbc/BBBC028/images.zip",
+    "license_note": "CC BY 3.0",
+    "sample_limit": 4
+  },
+  {
+    "name": "bbbc033",
+    "title": "BBBC033 Human Motor Neurons",
+    "project_page": "https://bbbc.broadinstitute.org/BBBC033",
+    "download_url": "https://data.broadinstitute.org/bbbc/BBBC033/BBBC033_v1_dataset.zip",
+    "license_note": "CC0 1.0",
+    "sample_limit": 4
+  },
+  {
+    "name": "bbbc053",
+    "title": "BBBC053 Image-Based Profiling MitoCheck",
+    "project_page": "https://bbbc.broadinstitute.org/BBBC053",
+    "download_url": "https://data.broadinstitute.org/bbbc/BBBC053/FCCP-20220127T153841Z-001.zip",
+    "license_note": "CC BY-NC-SA 4.0",
+    "sample_limit": 4
+  }
+]
+

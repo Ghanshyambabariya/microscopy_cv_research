@@ -19,3 +19,10 @@ reports/figures/generated/
 !data/processed/.gitkeep
 !models/.gitkeep
 !reports/figures/.gitkeep
+
+# Ignore public showcase downloads and generated previews
+data/external/showcase/
+reports/figures/showcase/
+reports/public_showcase.md
+reports/public_showcase_manifest.json
+
