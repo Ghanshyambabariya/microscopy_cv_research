@@ -24,6 +24,14 @@ flowchart LR
     I --> J
 ```
 
+## Quick Showcase
+
+See the full portfolio-style page here: [SHOWCASE.md](SHOWCASE.md)
+
+![Benchmark overview](reports/figures/benchmark_overview.png)
+
+![Sample gallery](reports/figures/sample_gallery.png)
+
 ## What This Project Does
 
 - builds a microscopy-style sample dataset with class labels and continuous property values
