@@ -1,0 +1,39 @@
+{
+  "dataset": "automatic_sem",
+  "display_name": "Automatic-SEM",
+  "model_name": "unet_small",
+  "num_classes": 2,
+  "train_samples": 20,
+  "val_samples": 6,
+  "test_samples": 6,
+  "val_metrics": {
+    "pixel_accuracy": 0.9283123405612245,
+    "mean_iou_fg": 0.16902818419836746,
+    "mean_dice_fg": 0.2891772610499967,
+    "per_class": {
+      "0": {
+        "iou": 0.9272515219135324,
+        "dice": 0.9622527328377788
+      },
+      "1": {
+        "iou": 0.16902818419836746,
+        "dice": 0.2891772610499967
+      }
+    }
+  },
+  "test_metrics": {
+    "pixel_accuracy": 0.9324046024659864,
+    "mean_iou_fg": 0.2265886287625418,
+    "mean_dice_fg": 0.36946148602590323,
+    "per_class": {
+      "0": {
+        "iou": 0.9310389231905766,
+        "dice": 0.9642880959149793
+      },
+      "1": {
+        "iou": 0.2265886287625418,
+        "dice": 0.36946148602590323
+      }
+    }
+  }
+}

@@ -1,15 +1,8 @@
 # SEM Benchmark Leaderboard
 
-This table aggregates real SEM segmentation experiments tracked in this repo.
-
-| Experiment | Dataset family | Pixel Acc | Mean IoU (fg) | Mean Dice (fg) | Notes |
+| Dataset | Model | Pixel Acc | Mean IoU (fg) | Mean Dice (fg) | Notes |
 |---|---|---|---|---|---|
-| NASA EBC baseline | EBC1/2/3 | 0.9480 | 0.4334 | 0.5293 | UNetSmall, class-weighted CE, 10 epochs |
-| NASA EBC active round 1 | EBC1/2/3 | 0.7649 | 0.1107 | 0.1813 | seed=6, acquisition=4, entropy selection |
-| NASA EBC active round 2 | EBC1/2/3 | 0.7791 | 0.0126 | 0.0245 | after two acquisition rounds |
-
-Planned additions (not yet integrated):
-- MudrockNet SEM (pore/grain)
-- EMPS particle SEM segmentation
-- Automatic SEM agglomerated-particle dataset
-- EBSD orientation/phase benchmarks (separate head)
+| nasa_ebc | unet_small | 0.8023 | 0.0084 | 0.0166 | train 20 |
+| emps | unet_small | 0.3849 | 0.3829 | 0.5538 | train 20 |
+| Automatic-SEM | unet_small | 0.9324 | 0.2266 | 0.3695 | train 20 |
+| MudrockNet | unet_small | 0.2577 | 0.1928 | 0.3208 | train 20 |

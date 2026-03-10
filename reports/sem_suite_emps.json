@@ -1,0 +1,39 @@
+{
+  "dataset": "emps",
+  "display_name": "emps",
+  "model_name": "unet_small",
+  "num_classes": 2,
+  "train_samples": 20,
+  "val_samples": 20,
+  "test_samples": 20,
+  "val_metrics": {
+    "pixel_accuracy": 0.33347217793367345,
+    "mean_iou_fg": 0.2707491329656228,
+    "mean_dice_fg": 0.4261252295073528,
+    "per_class": {
+      "0": {
+        "iou": 0.11429354583699136,
+        "dice": 0.20514081996434938
+      },
+      "1": {
+        "iou": 0.2707491329656228,
+        "dice": 0.4261252295073528
+      }
+    }
+  },
+  "test_metrics": {
+    "pixel_accuracy": 0.38486427774234694,
+    "mean_iou_fg": 0.38289770693836583,
+    "mean_dice_fg": 0.5537614315466229,
+    "per_class": {
+      "0": {
+        "iou": 0.00515391644466792,
+        "dice": 0.010254979581431367
+      },
+      "1": {
+        "iou": 0.38289770693836583,
+        "dice": 0.5537614315466229
+      }
+    }
+  }
+}

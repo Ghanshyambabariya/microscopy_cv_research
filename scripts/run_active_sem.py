@@ -18,8 +18,8 @@ def main() -> None:
     raw = load_config(cfg_path)
     cfg = ActiveConfig(
         project_root=REPO_ROOT,
-        benchmark_root=REPO_ROOT / raw["benchmark_root"],
-        datasets=raw["datasets"],
+        benchmark_root=REPO_ROOT / raw["benchmark_root"] if raw.get("benchmark_root") else None,
+        datasets=raw.get("datasets"),
         num_classes=raw.get("num_classes", 3),
         image_size=raw.get("image_size", 256),
         batch_size=raw.get("batch_size", 4),
@@ -29,6 +29,11 @@ def main() -> None:
         epochs_per_round=raw.get("epochs_per_round", 4),
         learning_rate=raw.get("learning_rate", 1e-3),
         base_channels=raw.get("base_channels", 32),
+        model_name=raw.get("model_name", "unet_small"),
+        dropout=raw.get("dropout", 0.1),
+        mc_samples=raw.get("mc_samples", 5),
+        registry_path=REPO_ROOT / raw["registry_path"] if raw.get("registry_path") else None,
+        dataset_key=raw.get("dataset_key"),
         results_path=REPO_ROOT / raw.get("results_path", "reports/sem_active_learning_log.json"),
     )
     results = run_active_learning(cfg)

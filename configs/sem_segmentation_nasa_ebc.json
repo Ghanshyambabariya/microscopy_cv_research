@@ -7,6 +7,8 @@
   "epochs": 10,
   "learning_rate": 0.001,
   "base_channels": 32,
+  "dropout": 0.1,
+  "model_name": "unet_small",
   "checkpoint_path": "models/checkpoints/sem_ebc_unet.pt",
   "results_path": "reports/sem_ebc_segmentation_metrics.json",
   "prediction_figure_path": "reports/figures/sem_ebc_predictions.png"

@@ -1,0 +1,47 @@
+{
+  "dataset": "nasa_ebc",
+  "display_name": "nasa_ebc",
+  "model_name": "unet_small",
+  "num_classes": 3,
+  "train_samples": 20,
+  "val_samples": 9,
+  "test_samples": 12,
+  "val_metrics": {
+    "pixel_accuracy": 0.7107049851190477,
+    "mean_iou_fg": 0.0038748113682092553,
+    "mean_dice_fg": 0.007690027921196712,
+    "per_class": {
+      "0": {
+        "iou": 0.7561278326773697,
+        "dice": 0.8611307429990299
+      },
+      "1": {
+        "iou": 0.0,
+        "dice": 0.0
+      },
+      "2": {
+        "iou": 0.007749622736418511,
+        "dice": 0.015380055842393424
+      }
+    }
+  },
+  "test_metrics": {
+    "pixel_accuracy": 0.8023125265731292,
+    "mean_iou_fg": 0.008444804756114038,
+    "mean_dice_fg": 0.01660908849322349,
+    "per_class": {
+      "0": {
+        "iou": 0.8075950383364778,
+        "dice": 0.8935574851762198
+      },
+      "1": {
+        "iou": 0.0,
+        "dice": 0.0
+      },
+      "2": {
+        "iou": 0.016889609512228076,
+        "dice": 0.03321817698644698
+      }
+    }
+  }
+}

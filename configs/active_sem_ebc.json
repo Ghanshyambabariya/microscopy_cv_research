@@ -4,11 +4,14 @@
   "num_classes": 3,
   "image_size": 256,
   "batch_size": 4,
-  "seed_size": 6,
-  "acquisition_size": 4,
-  "rounds": 2,
-  "epochs_per_round": 4,
+  "seed_size": 10,
+  "acquisition_size": 6,
+  "rounds": 3,
+  "epochs_per_round": 5,
   "learning_rate": 0.001,
   "base_channels": 32,
+  "model_name": "unet_small",
+  "dropout": 0.1,
+  "mc_samples": 5,
   "results_path": "reports/sem_active_learning_log.json"
 }

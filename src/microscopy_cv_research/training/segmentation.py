@@ -12,6 +12,7 @@ from torch.utils.data import DataLoader
 
 from microscopy_cv_research.evaluation.metrics import segmentation_metrics
 from microscopy_cv_research.training.engine import get_device, save_checkpoint, save_json
+from microscopy_cv_research.models.segmentation import create_segmentation_model
 
 
 def run_segmentation_epoch(model: nn.Module, dataloader: DataLoader, criterion: nn.Module, optimizer: torch.optim.Optimizer | None, device: torch.device) -> tuple[float, dict[str, float]]:
@@ -86,21 +87,28 @@ def create_prediction_figure(model: nn.Module, dataloader: DataLoader, device: t
     return metadata
 
 
-def compute_class_weights(dataset: Any, num_classes: int) -> torch.Tensor:
+def compute_class_weights(dataset: Any, num_classes: int, ignore_index: int | None = None) -> torch.Tensor:
     counts = np.zeros(num_classes, dtype=np.float64)
-    for sample in dataset.samples:
-        mask = np.array(Image.open(sample.mask_path).convert("L"), dtype=np.int64)
+    for idx in range(len(dataset)):
+        mask = dataset[idx]["mask"].numpy()
+        if ignore_index is not None:
+            mask = mask[mask != ignore_index]
+        if mask.size == 0:
+            continue
         bincount = np.bincount(mask.reshape(-1), minlength=num_classes)
-        counts += bincount
+        if bincount.size > counts.size:
+            new_counts = np.zeros(bincount.size, dtype=np.float64)
+            new_counts[: counts.size] = counts
+            counts = new_counts
+        counts[: bincount.size] += bincount
     counts = np.maximum(counts, 1.0)
-    weights = counts.sum() / (counts * num_classes)
+    weights = counts.sum() / (counts * counts.size)
     weights = weights / weights.mean()
     return torch.tensor(weights, dtype=torch.float32)
 
 
 def train_sem_segmentation(config: dict) -> dict[str, Any]:
     from microscopy_cv_research.data.segmentation import SemSegmentationDataset, load_nasa_ebc_samples
-    from microscopy_cv_research.models.segmentation import UNetSmall
 
     project_root = Path(config.get("project_root", Path(__file__).resolve().parents[3]))
     benchmark_root = project_root / config["benchmark_root"]
@@ -110,6 +118,8 @@ def train_sem_segmentation(config: dict) -> dict[str, Any]:
     epochs = int(config.get("epochs", 10))
     learning_rate = float(config.get("learning_rate", 1e-3))
     num_classes = int(config.get("num_classes", 3))
+    dropout = float(config.get("dropout", 0.1))
+    model_name = config.get("model_name", "unet_small")
 
     train_ds = SemSegmentationDataset(load_nasa_ebc_samples(benchmark_root, datasets, "train"), image_size=image_size)
     val_ds = SemSegmentationDataset(load_nasa_ebc_samples(benchmark_root, datasets, "val"), image_size=image_size)
@@ -120,8 +130,8 @@ def train_sem_segmentation(config: dict) -> dict[str, Any]:
     test_loader = DataLoader(test_ds, batch_size=batch_size, shuffle=False)
 
     device = get_device()
-    model = UNetSmall(num_classes=num_classes, base_channels=int(config.get("base_channels", 32))).to(device)
-    class_weights = compute_class_weights(train_ds, num_classes).to(device)
+    model = create_segmentation_model(model_name, num_classes=num_classes, base_channels=int(config.get("base_channels", 32)), dropout=dropout).to(device)
+    class_weights = compute_class_weights(train_loader.dataset, num_classes).to(device)
     criterion = nn.CrossEntropyLoss(weight=class_weights)
     optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate)
 
@@ -156,9 +166,11 @@ def train_sem_segmentation(config: dict) -> dict[str, Any]:
         "datasets": datasets,
         "num_classes": num_classes,
         "device": str(device),
+        "model_name": model_name,
         "image_size": image_size,
         "epochs": epochs,
         "batch_size": batch_size,
+        "dropout": dropout,
         "class_weights": class_weights.detach().cpu().tolist(),
         "train_samples": len(train_ds),
         "val_samples": len(val_ds),

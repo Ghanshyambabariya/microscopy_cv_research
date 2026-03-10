@@ -1,0 +1,35 @@
+{
+  "nasa_ebc": {
+    "type": "nasa_ebc",
+    "root": "data/external/nasa_microscopy_models/benchmark_segmentation_data",
+    "datasets": [
+      "EBC1",
+      "EBC2",
+      "EBC3"
+    ]
+  },
+  "emps": {
+    "type": "emps",
+    "root": "data/external/emps",
+    "threshold": 1,
+    "ignore_index": 255
+  },
+  "automatic_sem": {
+    "type": "mask_pairs",
+    "name": "Automatic-SEM",
+    "root": "data/external/automatic-sem-image-segmentation/Datasets",
+    "image_dir": "Electron Microscopy Images/SEM",
+    "mask_dir": "Electron Microscopy Image Masks/TiO2_Masks_Manual_4connected",
+    "pattern": "*.tif",
+    "mask_suffix": "_m",
+    "threshold": 128
+  },
+  "mudrocknet": {
+    "type": "pascal",
+    "name": "MudrockNet",
+    "root": "data/external/MudrockNet/dataset/data",
+    "mask_map": {
+      "255": 0
+    }
+  }
+}

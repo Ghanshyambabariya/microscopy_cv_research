@@ -1,0 +1,47 @@
+{
+  "dataset": "mudrocknet",
+  "display_name": "MudrockNet",
+  "model_name": "unet_small",
+  "num_classes": 3,
+  "train_samples": 20,
+  "val_samples": 20,
+  "test_samples": 20,
+  "val_metrics": {
+    "pixel_accuracy": 0.2306182238520408,
+    "mean_iou_fg": 0.14549670816232765,
+    "mean_dice_fg": 0.24659647046711983,
+    "per_class": {
+      "0": {
+        "iou": 0.0,
+        "dice": 0.0
+      },
+      "1": {
+        "iou": 0.22009417278865234,
+        "dice": 0.3607822702498516
+      },
+      "2": {
+        "iou": 0.07089924353600298,
+        "dice": 0.13241067068438805
+      }
+    }
+  },
+  "test_metrics": {
+    "pixel_accuracy": 0.25771085778061226,
+    "mean_iou_fg": 0.19276021216730277,
+    "mean_dice_fg": 0.3208494702798403,
+    "per_class": {
+      "0": {
+        "iou": 0.0,
+        "dice": 0.0
+      },
+      "1": {
+        "iou": 0.23754800385791996,
+        "dice": 0.38390107392584394
+      },
+      "2": {
+        "iou": 0.1479724204766856,
+        "dice": 0.25779786663383664
+      }
+    }
+  }
+}

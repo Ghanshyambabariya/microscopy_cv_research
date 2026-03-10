@@ -1,0 +1,15 @@
+{
+  "benchmark_root": "data/external/nasa_microscopy_models/benchmark_segmentation_data",
+  "datasets": ["EBC1", "EBC2", "EBC3"],
+  "num_classes": 3,
+  "image_size": 256,
+  "batch_size": 2,
+  "epochs": 6,
+  "learning_rate": 0.0005,
+  "base_channels": 32,
+  "dropout": 0.1,
+  "model_name": "swin_tiny",
+  "checkpoint_path": "models/checkpoints/sem_ebc_swin.pt",
+  "results_path": "reports/sem_ebc_segmentation_swin.json",
+  "prediction_figure_path": "reports/figures/sem_ebc_predictions_swin.png"
+}
