@@ -1,0 +1,14 @@
+{
+  "benchmark_root": "data/external/nasa_microscopy_models/benchmark_segmentation_data",
+  "datasets": ["EBC1", "EBC2", "EBC3"],
+  "num_classes": 3,
+  "image_size": 256,
+  "batch_size": 4,
+  "seed_size": 6,
+  "acquisition_size": 4,
+  "rounds": 2,
+  "epochs_per_round": 4,
+  "learning_rate": 0.001,
+  "base_channels": 32,
+  "results_path": "reports/sem_active_learning_log.json"
+}

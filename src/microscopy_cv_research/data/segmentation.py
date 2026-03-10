@@ -2,10 +2,12 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from pathlib import Path
+import random
+from typing import List
 
+from PIL import Image
 import numpy as np
 import torch
-from PIL import Image
 from torch.utils.data import Dataset
 from torchvision.transforms import functional as F
 
@@ -19,14 +21,14 @@ class SegmentationSample:
 
 
 class SemSegmentationDataset(Dataset):
-    def __init__(self, samples: list[SegmentationSample], image_size: int = 256) -> None:
+    def __init__(self, samples: List[SegmentationSample], image_size: int = 256) -> None:
         self.samples = samples
         self.image_size = image_size
 
     def __len__(self) -> int:
         return len(self.samples)
 
-    def __getitem__(self, index: int) -> dict[str, torch.Tensor | str]:
+    def __getitem__(self, index: int):
         sample = self.samples[index]
         image = Image.open(sample.image_path).convert("RGB")
         mask = Image.open(sample.mask_path).convert("L")
@@ -74,3 +76,12 @@ def load_nasa_ebc_samples(root: Path, datasets: list[str], split: str) -> list[S
                 )
             )
     return samples
+
+
+def split_labeled_unlabeled(samples: list[SegmentationSample], seed_size: int, rng: random.Random) -> tuple[list[SegmentationSample], list[SegmentationSample]]:
+    indices = list(range(len(samples)))
+    rng.shuffle(indices)
+    labeled_idx = set(indices[:seed_size])
+    labeled = [samples[i] for i in labeled_idx]
+    unlabeled = [samples[i] for i in indices[seed_size:]]
+    return labeled, unlabeled
