@@ -2,38 +2,72 @@
   "dataset": "emps",
   "display_name": "emps",
   "model_name": "unet_small",
+  "config_path": "C:\\Users\\ghans\\projects\\microscopy_cv_research\\configs\\sem_suite.json",
   "num_classes": 2,
   "train_samples": 20,
   "val_samples": 20,
   "test_samples": 20,
   "val_metrics": {
-    "pixel_accuracy": 0.33347217793367345,
-    "mean_iou_fg": 0.2707491329656228,
-    "mean_dice_fg": 0.4261252295073528,
+    "pixel_accuracy": 0.2703663105867347,
+    "mean_iou_fg": 0.2703663105867347,
+    "mean_dice_fg": 0.42565094545346155,
     "per_class": {
       "0": {
-        "iou": 0.11429354583699136,
-        "dice": 0.20514081996434938
+        "iou": 0.0,
+        "dice": 0.0
       },
       "1": {
-        "iou": 0.2707491329656228,
-        "dice": 0.4261252295073528
+        "iou": 0.2703663105867347,
+        "dice": 0.42565094545346155
       }
     }
   },
   "test_metrics": {
-    "pixel_accuracy": 0.38486427774234694,
-    "mean_iou_fg": 0.38289770693836583,
-    "mean_dice_fg": 0.5537614315466229,
+    "pixel_accuracy": 0.41593291613520406,
+    "mean_iou_fg": 0.41593291613520406,
+    "mean_dice_fg": 0.5875037035942282,
     "per_class": {
       "0": {
-        "iou": 0.00515391644466792,
-        "dice": 0.010254979581431367
+        "iou": 0.0,
+        "dice": 0.0
       },
       "1": {
-        "iou": 0.38289770693836583,
-        "dice": 0.5537614315466229
+        "iou": 0.41593291613520406,
+        "dice": 0.5875037035942282
       }
     }
-  }
+  },
+  "prediction_figure": "C:\\Users\\ghans\\projects\\microscopy_cv_research\\reports\\figures\\sem_suite_emps.png",
+  "figure_metadata": [
+    {
+      "image_path": "C:\\Users\\ghans\\projects\\microscopy_cv_research\\data\\external\\emps\\images\\ddffc403e3.png",
+      "true_labels": [
+        0,
+        1
+      ],
+      "pred_labels": [
+        1
+      ]
+    },
+    {
+      "image_path": "C:\\Users\\ghans\\projects\\microscopy_cv_research\\data\\external\\emps\\images\\4d951b622f.png",
+      "true_labels": [
+        0,
+        1
+      ],
+      "pred_labels": [
+        1
+      ]
+    },
+    {
+      "image_path": "C:\\Users\\ghans\\projects\\microscopy_cv_research\\data\\external\\emps\\images\\0384c4e782.png",
+      "true_labels": [
+        0,
+        1
+      ],
+      "pred_labels": [
+        1
+      ]
+    }
+  ]
 }

@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import argparse
 from pathlib import Path
 import json
 import sys
@@ -14,7 +15,12 @@ from microscopy_cv_research.training.active_sem import ActiveConfig, run_active_
 
 
 def main() -> None:
-    cfg_path = REPO_ROOT / "configs" / "active_sem_ebc.json"
+    parser = argparse.ArgumentParser(description="Run SEM active learning.")
+    parser.add_argument("--config", default="configs/active_sem_ebc.json", help="Path to active-learning config JSON.")
+    args = parser.parse_args()
+    cfg_path = Path(args.config)
+    if not cfg_path.is_absolute():
+        cfg_path = REPO_ROOT / cfg_path
     raw = load_config(cfg_path)
     cfg = ActiveConfig(
         project_root=REPO_ROOT,
@@ -32,6 +38,7 @@ def main() -> None:
         model_name=raw.get("model_name", "unet_small"),
         dropout=raw.get("dropout", 0.1),
         mc_samples=raw.get("mc_samples", 5),
+        seed=raw.get("seed", 42),
         registry_path=REPO_ROOT / raw["registry_path"] if raw.get("registry_path") else None,
         dataset_key=raw.get("dataset_key"),
         results_path=REPO_ROOT / raw.get("results_path", "reports/sem_active_learning_log.json"),

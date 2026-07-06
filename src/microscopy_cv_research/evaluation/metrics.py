@@ -16,7 +16,19 @@ def regression_metrics(y_true, y_pred) -> dict[str, float]:
     }
 
 
-def segmentation_metrics(y_true: np.ndarray, y_pred: np.ndarray, *, num_classes: int) -> dict[str, float]:
+def segmentation_metrics(y_true: np.ndarray, y_pred: np.ndarray, *, num_classes: int, ignore_index: int | None = None) -> dict[str, float]:
+    if ignore_index is not None:
+        valid = y_true != ignore_index
+        y_true = y_true[valid]
+        y_pred = y_pred[valid]
+        if y_true.size == 0:
+            return {
+                "pixel_accuracy": 0.0,
+                "mean_iou_fg": 0.0,
+                "mean_dice_fg": 0.0,
+                "per_class": {},
+            }
+
     ious: list[float] = []
     dices: list[float] = []
     per_class: dict[str, dict[str, float]] = {}

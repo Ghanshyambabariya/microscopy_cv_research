@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import argparse
 from pathlib import Path
 import random
 from typing import Any
@@ -13,7 +14,7 @@ from microscopy_cv_research.config import load_config
 from microscopy_cv_research.data.segmentation import SemSegmentationDataset, load_nasa_ebc_samples, load_sem_dataset_from_registry, SegmentationSample
 from microscopy_cv_research.models.segmentation import create_segmentation_model
 from microscopy_cv_research.training.engine import get_device, save_json
-from microscopy_cv_research.training.segmentation import run_segmentation_epoch, compute_class_weights
+from microscopy_cv_research.training.segmentation import run_segmentation_epoch, compute_class_weights, create_prediction_figure
 
 
 def split_samples(samples: list[SegmentationSample], seed: int = 42) -> tuple[list[SegmentationSample], list[SegmentationSample], list[SegmentationSample]]:
@@ -62,6 +63,14 @@ def make_loader(samples: list[SegmentationSample], image_size: int, batch_size: 
     return DataLoader(ds, batch_size=batch_size, shuffle=shuffle)
 
 
+def set_seed(seed: int) -> None:
+    random.seed(seed)
+    np.random.seed(seed)
+    torch.manual_seed(seed)
+    if torch.cuda.is_available():
+        torch.cuda.manual_seed_all(seed)
+
+
 def run_one_dataset(cfg: dict, registry: dict, dataset_key: str) -> dict[str, Any]:
     project_root = Path(cfg["project_root"])
     entry = registry[dataset_key]
@@ -99,12 +108,12 @@ def run_one_dataset(cfg: dict, registry: dict, dataset_key: str) -> dict[str, An
     if not train or not val or not test:
         return {"dataset": dataset_key, "skipped": True, "reason": "insufficient split"}
 
+    num_classes = infer_num_classes_full(train + val + test, mask_map, threshold)
+
     max_samples = cfg.get("max_samples")
     train = limit_samples(train, max_samples)
     val = limit_samples(val, max_samples)
     test = limit_samples(test, max_samples)
-
-    num_classes = infer_num_classes_full(train, mask_map, threshold)
     device = get_device()
     model = create_segmentation_model(cfg["model_name"], num_classes=num_classes, base_channels=cfg["base_channels"], dropout=cfg["dropout"]).to(device)
 
@@ -117,20 +126,26 @@ def run_one_dataset(cfg: dict, registry: dict, dataset_key: str) -> dict[str, An
     optimizer = torch.optim.Adam(model.parameters(), lr=cfg["learning_rate"])
 
     for _ in range(cfg["epochs"]):
-        run_segmentation_epoch(model, train_loader, criterion, optimizer, device)
-    _, val_metrics = run_segmentation_epoch(model, val_loader, criterion, None, device)
-    _, test_metrics = run_segmentation_epoch(model, test_loader, criterion, None, device)
+        run_segmentation_epoch(model, train_loader, criterion, optimizer, device, num_classes=num_classes, ignore_index=ignore_index)
+    _, val_metrics = run_segmentation_epoch(model, val_loader, criterion, None, device, num_classes=num_classes, ignore_index=ignore_index)
+    _, test_metrics = run_segmentation_epoch(model, test_loader, criterion, None, device, num_classes=num_classes, ignore_index=ignore_index)
+    figure_path = project_root / "reports" / "figures" / f"sem_suite_{dataset_key}.png"
+    display_name = entry.get("name", dataset_key)
+    figure_metadata = create_prediction_figure(model, test_loader, device, figure_path, title=f"{display_name} SEM segmentation predictions")
 
     result = {
         "dataset": dataset_key,
-        "display_name": entry.get("name", dataset_key),
+        "display_name": display_name,
         "model_name": cfg["model_name"],
+        "config_path": cfg.get("config_path"),
         "num_classes": num_classes,
         "train_samples": len(train),
         "val_samples": len(val),
         "test_samples": len(test),
         "val_metrics": val_metrics,
         "test_metrics": test_metrics,
+        "prediction_figure": str(figure_path),
+        "figure_metadata": figure_metadata,
     }
     out_path = project_root / "reports" / f"sem_suite_{dataset_key}.json"
     save_json(result, out_path)
@@ -144,16 +159,27 @@ def write_leaderboard(results: list[dict[str, Any]], output_path: Path) -> None:
             lines.append(f"| {result['dataset']} | - | - | - | - | skipped: {result.get('reason','')} |")
             continue
         test = result["test_metrics"]
+        fig = Path(result.get('prediction_figure', ''))
+        fig_note = f"; fig {fig.name}" if fig.name else ''
         lines.append(
-            f"| {result['display_name']} | {result['model_name']} | {test['pixel_accuracy']:.4f} | {test['mean_iou_fg']:.4f} | {test['mean_dice_fg']:.4f} | train {result['train_samples']} |"
+            f"| {result['display_name']} | {result['model_name']} | {test['pixel_accuracy']:.4f} | {test['mean_iou_fg']:.4f} | {test['mean_dice_fg']:.4f} | train {result['train_samples']}{fig_note} |"
         )
     output_path.write_text("\n".join(lines), encoding="utf-8")
 
 
 def main() -> None:
     root = Path(__file__).resolve().parents[1]
-    cfg = load_config(root / "configs" / "sem_suite.json")
+    parser = argparse.ArgumentParser(description="Run the multi-dataset SEM segmentation benchmark suite.")
+    parser.add_argument("--config", default="configs/sem_suite.json", help="Path to a SEM suite config JSON.")
+    args = parser.parse_args()
+
+    config_path = Path(args.config)
+    if not config_path.is_absolute():
+        config_path = root / config_path
+    cfg = load_config(config_path)
     cfg["project_root"] = str(root)
+    cfg["config_path"] = str(config_path)
+    set_seed(int(cfg.get("seed", 42)))
     registry = load_config(root / "configs" / "sem_dataset_registry.json")
     for entry in registry.values():
         entry_root = Path(entry["root"])

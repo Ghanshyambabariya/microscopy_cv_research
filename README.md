@@ -1,4 +1,4 @@
-# Microscopy CV Research
+﻿# Microscopy CV Research
 
 Research-structured computer vision project for microscopic images with three connected tracks:
 
@@ -64,7 +64,7 @@ The repo now has real microscopy experiments integrated directly into the portfo
 What is still missing for a fuller research-grade benchmark suite:
 - real TEM or EMPIAR-derived encoder transfer evaluation
 - real EBSD indexing, phase, or orientation prediction with sample patterns and metrics
-- more SEM datasets (MudrockNet, EMPS, Automatic SEM) added to the leaderboard
+- longer full-data SEM benchmark runs with stronger encoders and repeated seeds
 
 ## Runnable Entry Points
 
@@ -78,7 +78,9 @@ C:/Users/ghans/AppData/Local/Programs/Python/Python312/python.exe scripts/build_
 C:/Users/ghans/AppData/Local/Programs/Python/Python312/python.exe scripts/build_benchmark_portfolio.py
 C:/Users/ghans/AppData/Local/Programs/Python/Python312/python.exe scripts/build_real_sem_showcase.py
 C:/Users/ghans/AppData/Local/Programs/Python/Python312/python.exe scripts/run_sem_segmentation.py
-C:/Users/ghans/AppData/Local/Programs/Python/Python312/python.exe scripts/run_active_sem.py
+C:/Users/ghans/AppData/Local/Programs/Python/Python312/python.exe scripts/run_active_sem.py --config configs/active_sem_ebc.json
+C:/Users/ghans/AppData/Local/Programs/Python/Python312/python.exe scripts/run_sem_suite.py --config configs/sem_suite.json
+C:/Users/ghans/AppData/Local/Programs/Python/Python312/python.exe scripts/run_sem_suite.py --config configs/sem_suite_benchmark.json
 ```
 
 ## Current Benchmark Results
@@ -141,3 +143,12 @@ The benchmark registry for these targets is tracked in [configs/real_benchmark_t
 ## Important Note
 
 The synthetic starter results are still framework-level results, not publishable microscopy evidence. SEM now includes a real trained benchmark and an active-learning loop; TEM and EBSD remain planned integrations.
+
+## QA & CI
+- Run `pytest -q` for fast loader/class-weight checks (runs without datasets).
+- GitHub Actions workflow `.github/workflows/ci.yml` runs tests on pushes/PRs.
+
+## SEM Suite Outputs
+- Running `python scripts/run_sem_suite.py` now also saves qualitative grids to `reports/figures/sem_suite_<dataset>.png`, noted in the leaderboard.
+- Use `configs/sem_suite.json` for a fast smoke test and `configs/sem_suite_benchmark.json` for a longer full-data benchmark run.
+

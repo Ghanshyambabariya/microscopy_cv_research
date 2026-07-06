@@ -2,38 +2,75 @@
   "dataset": "automatic_sem",
   "display_name": "Automatic-SEM",
   "model_name": "unet_small",
+  "config_path": "C:\\Users\\ghans\\projects\\microscopy_cv_research\\configs\\sem_suite.json",
   "num_classes": 2,
   "train_samples": 20,
   "val_samples": 6,
   "test_samples": 6,
   "val_metrics": {
-    "pixel_accuracy": 0.9283123405612245,
-    "mean_iou_fg": 0.16902818419836746,
-    "mean_dice_fg": 0.2891772610499967,
+    "pixel_accuracy": 0.9334442761479592,
+    "mean_iou_fg": 0.2317101226993865,
+    "mean_dice_fg": 0.3762413224169598,
     "per_class": {
       "0": {
-        "iou": 0.9272515219135324,
-        "dice": 0.9622527328377788
+        "iou": 0.9320809591441733,
+        "dice": 0.9648466900238426
       },
       "1": {
-        "iou": 0.16902818419836746,
-        "dice": 0.2891772610499967
+        "iou": 0.2317101226993865,
+        "dice": 0.3762413224169598
       }
     }
   },
   "test_metrics": {
-    "pixel_accuracy": 0.9324046024659864,
-    "mean_iou_fg": 0.2265886287625418,
-    "mean_dice_fg": 0.36946148602590323,
+    "pixel_accuracy": 0.9359355070153061,
+    "mean_iou_fg": 0.26904419010081104,
+    "mean_dice_fg": 0.4240107510825743,
     "per_class": {
       "0": {
-        "iou": 0.9310389231905766,
-        "dice": 0.9642880959149793
+        "iou": 0.934388362923829,
+        "dice": 0.9660814558577063
       },
       "1": {
-        "iou": 0.2265886287625418,
-        "dice": 0.36946148602590323
+        "iou": 0.26904419010081104,
+        "dice": 0.4240107510825743
       }
     }
-  }
+  },
+  "prediction_figure": "C:\\Users\\ghans\\projects\\microscopy_cv_research\\reports\\figures\\sem_suite_automatic_sem.png",
+  "figure_metadata": [
+    {
+      "image_path": "C:\\Users\\ghans\\projects\\microscopy_cv_research\\data\\external\\automatic-sem-image-segmentation\\Datasets\\Electron Microscopy Images\\SEM\\1908264.tif",
+      "true_labels": [
+        0,
+        1
+      ],
+      "pred_labels": [
+        0,
+        1
+      ]
+    },
+    {
+      "image_path": "C:\\Users\\ghans\\projects\\microscopy_cv_research\\data\\external\\automatic-sem-image-segmentation\\Datasets\\Electron Microscopy Images\\SEM\\1908276.tif",
+      "true_labels": [
+        0,
+        1
+      ],
+      "pred_labels": [
+        0,
+        1
+      ]
+    },
+    {
+      "image_path": "C:\\Users\\ghans\\projects\\microscopy_cv_research\\data\\external\\automatic-sem-image-segmentation\\Datasets\\Electron Microscopy Images\\SEM\\1908278.tif",
+      "true_labels": [
+        0,
+        1
+      ],
+      "pred_labels": [
+        0,
+        1
+      ]
+    }
+  ]
 }

@@ -1,12 +1,12 @@
 {
   "model_name": "unet_small",
   "num_classes": null,
-  "image_size": 224,
+  "image_size": 256,
   "batch_size": 4,
-  "epochs": 1,
+  "epochs": 15,
   "learning_rate": 0.001,
   "base_channels": 32,
   "dropout": 0.1,
-  "max_samples": 20,
+  "max_samples": null,
   "seed": 42
 }

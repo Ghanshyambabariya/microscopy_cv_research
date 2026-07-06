@@ -33,13 +33,25 @@ class ActiveConfig:
     model_name: str = "unet_small"
     dropout: float = 0.1
     mc_samples: int = 5
+    seed: int = 42
+    mask_map: dict[int, int] | None = None
+    threshold: int | None = None
+    ignore_index: int | None = None
     registry_path: Path | None = None
     dataset_key: str | None = None
     results_path: Path | None = None
 
 
-def make_dataloader(samples: list[SegmentationSample], image_size: int, batch_size: int, shuffle: bool) -> DataLoader:
-    ds = SemSegmentationDataset(samples, image_size=image_size)
+def make_dataloader(
+    samples: list[SegmentationSample],
+    image_size: int,
+    batch_size: int,
+    shuffle: bool,
+    mask_map: dict[int, int] | None = None,
+    threshold: int | None = None,
+    ignore_index: int | None = None,
+) -> DataLoader:
+    ds = SemSegmentationDataset(samples, image_size=image_size, mask_map=mask_map, threshold=threshold, ignore_index=ignore_index)
     return DataLoader(ds, batch_size=batch_size, shuffle=shuffle)
 
 
@@ -77,6 +89,10 @@ def load_samples(cfg: ActiveConfig) -> tuple[list[SegmentationSample], list[Segm
     if cfg.registry_path and cfg.dataset_key:
         registry = load_config(cfg.registry_path)
         entry = registry[cfg.dataset_key]
+        mask_map = entry.get("mask_map")
+        cfg.mask_map = {int(k): int(v) for k, v in mask_map.items()} if isinstance(mask_map, dict) else None
+        cfg.threshold = entry.get("threshold")
+        cfg.ignore_index = entry.get("ignore_index")
         if entry.get("type") == "nasa_ebc":
             root = Path(entry["root"])
             train = load_nasa_ebc_samples(root, entry["datasets"], "train")
@@ -93,7 +109,11 @@ def load_samples(cfg: ActiveConfig) -> tuple[list[SegmentationSample], list[Segm
 
 
 def run_active_learning(cfg: ActiveConfig) -> dict[str, Any]:
-    rng = random.Random(42)
+    rng = random.Random(cfg.seed)
+    np.random.seed(cfg.seed)
+    torch.manual_seed(cfg.seed)
+    if torch.cuda.is_available():
+        torch.cuda.manual_seed_all(cfg.seed)
     train_samples, val_samples, test_samples = load_samples(cfg)
 
     labeled, unlabeled = split_labeled_unlabeled(train_samples, cfg.seed_size, rng)
@@ -103,18 +123,18 @@ def run_active_learning(cfg: ActiveConfig) -> dict[str, Any]:
     model = create_segmentation_model(cfg.model_name, num_classes=cfg.num_classes, base_channels=cfg.base_channels, dropout=cfg.dropout).to(device)
 
     for round_idx in range(cfg.rounds):
-        train_loader = make_dataloader(labeled, cfg.image_size, cfg.batch_size, shuffle=True)
-        val_loader = make_dataloader(val_samples, cfg.image_size, cfg.batch_size, shuffle=False)
-        test_loader = make_dataloader(test_samples, cfg.image_size, cfg.batch_size, shuffle=False)
+        train_loader = make_dataloader(labeled, cfg.image_size, cfg.batch_size, shuffle=True, mask_map=cfg.mask_map, threshold=cfg.threshold, ignore_index=cfg.ignore_index)
+        val_loader = make_dataloader(val_samples, cfg.image_size, cfg.batch_size, shuffle=False, mask_map=cfg.mask_map, threshold=cfg.threshold, ignore_index=cfg.ignore_index)
+        test_loader = make_dataloader(test_samples, cfg.image_size, cfg.batch_size, shuffle=False, mask_map=cfg.mask_map, threshold=cfg.threshold, ignore_index=cfg.ignore_index)
 
-        class_weights = compute_class_weights(train_loader.dataset, cfg.num_classes).to(device)
-        criterion = torch.nn.CrossEntropyLoss(weight=class_weights)
+        class_weights = compute_class_weights(train_loader.dataset, cfg.num_classes, ignore_index=cfg.ignore_index).to(device)
+        criterion = torch.nn.CrossEntropyLoss(weight=class_weights, ignore_index=cfg.ignore_index if cfg.ignore_index is not None else -100)
         optimizer = torch.optim.Adam(model.parameters(), lr=cfg.learning_rate)
 
         for _ in range(cfg.epochs_per_round):
-            run_segmentation_epoch(model, train_loader, criterion, optimizer, device)
-        _, val_metrics = run_segmentation_epoch(model, val_loader, criterion, None, device)
-        _, test_metrics = run_segmentation_epoch(model, test_loader, criterion, None, device)
+            run_segmentation_epoch(model, train_loader, criterion, optimizer, device, num_classes=cfg.num_classes, ignore_index=cfg.ignore_index)
+        _, val_metrics = run_segmentation_epoch(model, val_loader, criterion, None, device, num_classes=cfg.num_classes, ignore_index=cfg.ignore_index)
+        _, test_metrics = run_segmentation_epoch(model, test_loader, criterion, None, device, num_classes=cfg.num_classes, ignore_index=cfg.ignore_index)
 
         history.append({
             "round": round_idx + 1,
@@ -126,7 +146,7 @@ def run_active_learning(cfg: ActiveConfig) -> dict[str, Any]:
         if not unlabeled:
             break
 
-        unl_loader = make_dataloader(unlabeled, cfg.image_size, cfg.batch_size, shuffle=False)
+        unl_loader = make_dataloader(unlabeled, cfg.image_size, cfg.batch_size, shuffle=False, mask_map=cfg.mask_map, threshold=cfg.threshold, ignore_index=cfg.ignore_index)
         scores: list[tuple[float, str]] = []
         model.train()
         with torch.no_grad():
@@ -148,8 +168,12 @@ def run_active_learning(cfg: ActiveConfig) -> dict[str, Any]:
         "seed_size": cfg.seed_size,
         "acquisition_size": cfg.acquisition_size,
         "mc_samples": cfg.mc_samples,
+        "seed": cfg.seed,
         "model_name": cfg.model_name,
         "dataset_key": cfg.dataset_key or "nasa_ebc",
+        "mask_map": cfg.mask_map,
+        "threshold": cfg.threshold,
+        "ignore_index": cfg.ignore_index,
         "history": history,
     }
     out_path = cfg.results_path or (cfg.project_root / "reports/sem_active_learning_log.json")

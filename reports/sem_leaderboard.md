@@ -2,7 +2,7 @@
 
 | Dataset | Model | Pixel Acc | Mean IoU (fg) | Mean Dice (fg) | Notes |
 |---|---|---|---|---|---|
-| nasa_ebc | unet_small | 0.8023 | 0.0084 | 0.0166 | train 20 |
-| emps | unet_small | 0.3849 | 0.3829 | 0.5538 | train 20 |
-| Automatic-SEM | unet_small | 0.9324 | 0.2266 | 0.3695 | train 20 |
-| MudrockNet | unet_small | 0.2577 | 0.1928 | 0.3208 | train 20 |
+| nasa_ebc | unet_small | 0.7657 | 0.1174 | 0.1902 | train 20; fig sem_suite_nasa_ebc.png |
+| emps | unet_small | 0.4159 | 0.4159 | 0.5875 | train 20; fig sem_suite_emps.png |
+| Automatic-SEM | unet_small | 0.9359 | 0.2690 | 0.4240 | train 20; fig sem_suite_automatic_sem.png |
+| MudrockNet | unet_small | 0.2305 | 0.1153 | 0.1873 | train 20; fig sem_suite_mudrocknet.png |

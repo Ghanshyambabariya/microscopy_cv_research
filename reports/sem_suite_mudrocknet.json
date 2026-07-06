@@ -2,46 +2,82 @@
   "dataset": "mudrocknet",
   "display_name": "MudrockNet",
   "model_name": "unet_small",
+  "config_path": "C:\\Users\\ghans\\projects\\microscopy_cv_research\\configs\\sem_suite.json",
   "num_classes": 3,
   "train_samples": 20,
   "val_samples": 20,
   "test_samples": 20,
   "val_metrics": {
-    "pixel_accuracy": 0.2306182238520408,
-    "mean_iou_fg": 0.14549670816232765,
-    "mean_dice_fg": 0.24659647046711983,
+    "pixel_accuracy": 0.2260453204719388,
+    "mean_iou_fg": 0.1130226602359694,
+    "mean_dice_fg": 0.18436946554710365,
     "per_class": {
       "0": {
         "iou": 0.0,
         "dice": 0.0
       },
       "1": {
-        "iou": 0.22009417278865234,
-        "dice": 0.3607822702498516
+        "iou": 0.2260453204719388,
+        "dice": 0.3687389310942073
       },
       "2": {
-        "iou": 0.07089924353600298,
-        "dice": 0.13241067068438805
+        "iou": 0.0,
+        "dice": 0.0
       }
     }
   },
   "test_metrics": {
-    "pixel_accuracy": 0.25771085778061226,
-    "mean_iou_fg": 0.19276021216730277,
-    "mean_dice_fg": 0.3208494702798403,
+    "pixel_accuracy": 0.23053651147959184,
+    "mean_iou_fg": 0.11526825573979592,
+    "mean_dice_fg": 0.18734633985170884,
     "per_class": {
       "0": {
         "iou": 0.0,
         "dice": 0.0
       },
       "1": {
-        "iou": 0.23754800385791996,
-        "dice": 0.38390107392584394
+        "iou": 0.23053651147959184,
+        "dice": 0.3746926797034177
       },
       "2": {
-        "iou": 0.1479724204766856,
-        "dice": 0.25779786663383664
+        "iou": 0.0,
+        "dice": 0.0
       }
     }
-  }
+  },
+  "prediction_figure": "C:\\Users\\ghans\\projects\\microscopy_cv_research\\reports\\figures\\sem_suite_mudrocknet.png",
+  "figure_metadata": [
+    {
+      "image_path": "C:\\Users\\ghans\\projects\\microscopy_cv_research\\data\\external\\MudrockNet\\dataset\\data\\JPEGImages\\40_15_b.jpg",
+      "true_labels": [
+        0,
+        1,
+        2
+      ],
+      "pred_labels": [
+        1
+      ]
+    },
+    {
+      "image_path": "C:\\Users\\ghans\\projects\\microscopy_cv_research\\data\\external\\MudrockNet\\dataset\\data\\JPEGImages\\39_15_b.jpg",
+      "true_labels": [
+        0,
+        2
+      ],
+      "pred_labels": [
+        1
+      ]
+    },
+    {
+      "image_path": "C:\\Users\\ghans\\projects\\microscopy_cv_research\\data\\external\\MudrockNet\\dataset\\data\\JPEGImages\\23_3_e.jpg",
+      "true_labels": [
+        0,
+        1,
+        2
+      ],
+      "pred_labels": [
+        1
+      ]
+    }
+  ]
 }

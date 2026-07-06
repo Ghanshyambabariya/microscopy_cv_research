@@ -15,7 +15,15 @@ from microscopy_cv_research.training.engine import get_device, save_checkpoint, 
 from microscopy_cv_research.models.segmentation import create_segmentation_model
 
 
-def run_segmentation_epoch(model: nn.Module, dataloader: DataLoader, criterion: nn.Module, optimizer: torch.optim.Optimizer | None, device: torch.device) -> tuple[float, dict[str, float]]:
+def run_segmentation_epoch(
+    model: nn.Module,
+    dataloader: DataLoader,
+    criterion: nn.Module,
+    optimizer: torch.optim.Optimizer | None,
+    device: torch.device,
+    num_classes: int | None = None,
+    ignore_index: int | None = None,
+) -> tuple[float, dict[str, float]]:
     training = optimizer is not None
     model.train(training)
     total_loss = 0.0
@@ -38,11 +46,17 @@ def run_segmentation_epoch(model: nn.Module, dataloader: DataLoader, criterion: 
 
     y_pred = np.concatenate(preds, axis=0)
     y_true = np.concatenate(targets, axis=0)
-    metrics = segmentation_metrics(y_true, y_pred, num_classes=int(y_true.max()) + 1)
+    if num_classes is not None:
+        metric_classes = num_classes
+    elif ignore_index is not None and np.any(y_true != ignore_index):
+        metric_classes = int(y_true[y_true != ignore_index].max()) + 1
+    else:
+        metric_classes = int(y_true.max()) + 1
+    metrics = segmentation_metrics(y_true, y_pred, num_classes=metric_classes, ignore_index=ignore_index)
     return total_loss / max(len(dataloader.dataset), 1), metrics
 
 
-def create_prediction_figure(model: nn.Module, dataloader: DataLoader, device: torch.device, output_path: str | Path, num_examples: int = 3) -> list[dict[str, Any]]:
+def create_prediction_figure(model: nn.Module, dataloader: DataLoader, device: torch.device, output_path: str | Path, num_examples: int = 3, title: str = "SEM segmentation predictions") -> list[dict[str, Any]]:
     model.eval()
     batch = next(iter(dataloader))
     images = batch["image"].to(device)
@@ -78,7 +92,7 @@ def create_prediction_figure(model: nn.Module, dataloader: DataLoader, device: t
             "pred_labels": sorted(np.unique(predictions[row]).tolist()),
         })
 
-    fig.suptitle("NASA EBC SEM segmentation predictions", fontsize=14)
+    fig.suptitle(title, fontsize=14)
     fig.tight_layout()
     output_path = Path(output_path)
     output_path.parent.mkdir(parents=True, exist_ok=True)
@@ -140,8 +154,8 @@ def train_sem_segmentation(config: dict) -> dict[str, Any]:
     checkpoint_path = project_root / config.get("checkpoint_path", "models/checkpoints/sem_ebc_unet.pt")
 
     for epoch in range(1, epochs + 1):
-        train_loss, train_metrics = run_segmentation_epoch(model, train_loader, criterion, optimizer, device)
-        val_loss, val_metrics = run_segmentation_epoch(model, val_loader, criterion, None, device)
+        train_loss, train_metrics = run_segmentation_epoch(model, train_loader, criterion, optimizer, device, num_classes=num_classes)
+        val_loss, val_metrics = run_segmentation_epoch(model, val_loader, criterion, None, device, num_classes=num_classes)
         epoch_record = {
             "epoch": epoch,
             "train_loss": train_loss,
@@ -156,7 +170,7 @@ def train_sem_segmentation(config: dict) -> dict[str, Any]:
 
     state = torch.load(checkpoint_path, map_location=device)
     model.load_state_dict(state["model_state"])
-    test_loss, test_metrics = run_segmentation_epoch(model, test_loader, criterion, None, device)
+    test_loss, test_metrics = run_segmentation_epoch(model, test_loader, criterion, None, device, num_classes=num_classes)
 
     figure_path = project_root / config.get("prediction_figure_path", "reports/figures/sem_ebc_predictions.png")
     example_metadata = create_prediction_figure(model, test_loader, device, figure_path)
