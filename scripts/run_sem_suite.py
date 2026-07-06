@@ -1,8 +1,11 @@
 from __future__ import annotations
 
 import argparse
+from datetime import datetime, timezone
 from pathlib import Path
 import random
+import shutil
+import subprocess
 from typing import Any
 
 import numpy as np
@@ -71,8 +74,38 @@ def set_seed(seed: int) -> None:
         torch.cuda.manual_seed_all(seed)
 
 
+def get_git_commit(root: Path) -> str:
+    try:
+        result = subprocess.run(["git", "rev-parse", "--short", "HEAD"], cwd=root, capture_output=True, text=True, check=True)
+        return result.stdout.strip()
+    except Exception:
+        return "unknown"
+
+
+def make_run_dir(project_root: Path, config_path: Path, cfg: dict[str, Any]) -> Path:
+    run_id = datetime.now(timezone.utc).strftime("%Y%m%d_%H%M%S")
+    run_dir = project_root / "reports" / "runs" / f"sem_suite_{run_id}"
+    (run_dir / "datasets").mkdir(parents=True, exist_ok=True)
+    (run_dir / "figures").mkdir(parents=True, exist_ok=True)
+    shutil.copy2(config_path, run_dir / "config.json")
+    save_json(
+        {
+            "run_id": run_id,
+            "config_path": str(config_path),
+            "git_commit": get_git_commit(project_root),
+            "seed": cfg.get("seed"),
+            "model_name": cfg.get("model_name"),
+            "epochs": cfg.get("epochs"),
+            "max_samples": cfg.get("max_samples"),
+        },
+        run_dir / "run_metadata.json",
+    )
+    return run_dir
+
+
 def run_one_dataset(cfg: dict, registry: dict, dataset_key: str) -> dict[str, Any]:
     project_root = Path(cfg["project_root"])
+    run_dir = Path(cfg["run_dir"]) if cfg.get("run_dir") else None
     entry = registry[dataset_key]
     dataset_type = entry.get("type", "mask_pairs")
     mask_map = entry.get("mask_map")
@@ -131,13 +164,19 @@ def run_one_dataset(cfg: dict, registry: dict, dataset_key: str) -> dict[str, An
     _, test_metrics = run_segmentation_epoch(model, test_loader, criterion, None, device, num_classes=num_classes, ignore_index=ignore_index)
     figure_path = project_root / "reports" / "figures" / f"sem_suite_{dataset_key}.png"
     display_name = entry.get("name", dataset_key)
-    figure_metadata = create_prediction_figure(model, test_loader, device, figure_path, title=f"{display_name} SEM segmentation predictions")
+    figure_metadata = create_prediction_figure(model, test_loader, device, figure_path, title=f"{display_name} SEM segmentation predictions", ignore_index=ignore_index)
+    run_figure_path = None
+    if run_dir is not None:
+        run_figure_path = run_dir / "figures" / f"sem_suite_{dataset_key}.png"
+        create_prediction_figure(model, test_loader, device, run_figure_path, title=f"{display_name} SEM segmentation predictions", ignore_index=ignore_index)
 
     result = {
         "dataset": dataset_key,
         "display_name": display_name,
         "model_name": cfg["model_name"],
         "config_path": cfg.get("config_path"),
+        "run_dir": cfg.get("run_dir"),
+        "git_commit": cfg.get("git_commit"),
         "num_classes": num_classes,
         "train_samples": len(train),
         "val_samples": len(val),
@@ -145,26 +184,33 @@ def run_one_dataset(cfg: dict, registry: dict, dataset_key: str) -> dict[str, An
         "val_metrics": val_metrics,
         "test_metrics": test_metrics,
         "prediction_figure": str(figure_path),
+        "run_prediction_figure": str(run_figure_path) if run_figure_path else None,
         "figure_metadata": figure_metadata,
     }
     out_path = project_root / "reports" / f"sem_suite_{dataset_key}.json"
     save_json(result, out_path)
+    if run_dir is not None:
+        save_json(result, run_dir / "datasets" / f"{dataset_key}.json")
     return result
 
 
-def write_leaderboard(results: list[dict[str, Any]], output_path: Path) -> None:
-    lines = ["# SEM Benchmark Leaderboard", "", "| Dataset | Model | Pixel Acc | Mean IoU (fg) | Mean Dice (fg) | Notes |", "|---|---|---|---|---|---|"]
+def format_leaderboard(results: list[dict[str, Any]], title: str = "SEM Benchmark Leaderboard") -> str:
+    lines = [f"# {title}", "", "| Dataset | Model | Pixel Acc | Mean IoU (fg) | Mean Dice (fg) | Figure | Notes |", "|---|---|---|---|---|---|---|"]
     for result in results:
         if result.get("skipped"):
-            lines.append(f"| {result['dataset']} | - | - | - | - | skipped: {result.get('reason','')} |")
+            lines.append(f"| {result['dataset']} | - | - | - | - | - | skipped: {result.get('reason','')} |")
             continue
         test = result["test_metrics"]
         fig = Path(result.get('prediction_figure', ''))
-        fig_note = f"; fig {fig.name}" if fig.name else ''
+        fig_cell = fig.name if fig.name else "-"
         lines.append(
-            f"| {result['display_name']} | {result['model_name']} | {test['pixel_accuracy']:.4f} | {test['mean_iou_fg']:.4f} | {test['mean_dice_fg']:.4f} | train {result['train_samples']}{fig_note} |"
+            f"| {result['display_name']} | {result['model_name']} | {test['pixel_accuracy']:.4f} | {test['mean_iou_fg']:.4f} | {test['mean_dice_fg']:.4f} | {fig_cell} | train {result['train_samples']}; test {result['test_samples']} |"
         )
-    output_path.write_text("\n".join(lines), encoding="utf-8")
+    return "\n".join(lines)
+
+
+def write_leaderboard(results: list[dict[str, Any]], output_path: Path, title: str = "SEM Benchmark Leaderboard") -> None:
+    output_path.write_text(format_leaderboard(results, title=title), encoding="utf-8")
 
 
 def main() -> None:
@@ -179,7 +225,10 @@ def main() -> None:
     cfg = load_config(config_path)
     cfg["project_root"] = str(root)
     cfg["config_path"] = str(config_path)
+    cfg["git_commit"] = get_git_commit(root)
     set_seed(int(cfg.get("seed", 42)))
+    run_dir = make_run_dir(root, config_path, cfg)
+    cfg["run_dir"] = str(run_dir)
     registry = load_config(root / "configs" / "sem_dataset_registry.json")
     for entry in registry.values():
         entry_root = Path(entry["root"])
@@ -190,6 +239,10 @@ def main() -> None:
     for dataset_key in registry:
         results.append(run_one_dataset(cfg, registry, dataset_key))
     write_leaderboard(results, root / "reports" / "sem_leaderboard.md")
+    write_leaderboard(results, root / "reports" / "sem_comparison_table.md", title="SEM Comparison Table")
+    write_leaderboard(results, run_dir / "summary.md", title="SEM Run Summary")
+    save_json({"run_dir": str(run_dir), "results": results}, run_dir / "results.json")
+    print(f"Saved SEM run artifacts to {run_dir}")
 
 
 if __name__ == "__main__":

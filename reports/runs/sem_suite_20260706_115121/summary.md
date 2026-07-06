@@ -1,4 +1,4 @@
-# SEM Benchmark Leaderboard
+# SEM Run Summary
 
 | Dataset | Model | Pixel Acc | Mean IoU (fg) | Mean Dice (fg) | Figure | Notes |
 |---|---|---|---|---|---|---|

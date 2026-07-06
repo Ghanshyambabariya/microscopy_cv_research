@@ -56,7 +56,15 @@ def run_segmentation_epoch(
     return total_loss / max(len(dataloader.dataset), 1), metrics
 
 
-def create_prediction_figure(model: nn.Module, dataloader: DataLoader, device: torch.device, output_path: str | Path, num_examples: int = 3, title: str = "SEM segmentation predictions") -> list[dict[str, Any]]:
+def create_prediction_figure(
+    model: nn.Module,
+    dataloader: DataLoader,
+    device: torch.device,
+    output_path: str | Path,
+    num_examples: int = 3,
+    title: str = "SEM segmentation predictions",
+    ignore_index: int | None = None,
+) -> list[dict[str, Any]]:
     model.eval()
     batch = next(iter(dataloader))
     images = batch["image"].to(device)
@@ -67,7 +75,7 @@ def create_prediction_figure(model: nn.Module, dataloader: DataLoader, device: t
         predictions = model(images).argmax(dim=1).cpu().numpy()
 
     examples = min(num_examples, images.size(0))
-    fig, axes = plt.subplots(examples, 3, figsize=(9, 3 * examples))
+    fig, axes = plt.subplots(examples, 5, figsize=(15, 3 * examples))
     if examples == 1:
         axes = np.expand_dims(axes, axis=0)
 
@@ -76,6 +84,11 @@ def create_prediction_figure(model: nn.Module, dataloader: DataLoader, device: t
         image = images[row].cpu().permute(1, 2, 0).numpy()
         image = np.clip(image * np.array([0.229, 0.224, 0.225]) + np.array([0.485, 0.456, 0.406]), 0.0, 1.0)
         vmax = int(max(masks[row].max(), predictions[row].max()))
+        valid = masks[row] != ignore_index if ignore_index is not None else np.ones_like(masks[row], dtype=bool)
+        foreground = predictions[row] > 0
+        overlay = image.copy()
+        overlay[foreground] = 0.55 * overlay[foreground] + 0.45 * np.array([1.0, 0.15, 0.05])
+        error_map = np.logical_and(valid, masks[row] != predictions[row])
 
         axes[row, 0].imshow(image)
         axes[row, 0].set_title("Input")
@@ -83,13 +96,18 @@ def create_prediction_figure(model: nn.Module, dataloader: DataLoader, device: t
         axes[row, 1].set_title("Ground Truth")
         axes[row, 2].imshow(predictions[row], cmap="viridis", vmin=0, vmax=vmax)
         axes[row, 2].set_title("Prediction")
-        for col in range(3):
+        axes[row, 3].imshow(overlay)
+        axes[row, 3].set_title("Prediction Overlay")
+        axes[row, 4].imshow(error_map, cmap="magma", vmin=0, vmax=1)
+        axes[row, 4].set_title("Error Map")
+        for col in range(5):
             axes[row, col].axis("off")
 
         metadata.append({
             "image_path": image_paths[row],
             "true_labels": sorted(np.unique(masks[row]).tolist()),
             "pred_labels": sorted(np.unique(predictions[row]).tolist()),
+            "error_rate": float(error_map.sum() / max(valid.sum(), 1)),
         })
 
     fig.suptitle(title, fontsize=14)

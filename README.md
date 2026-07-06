@@ -149,6 +149,8 @@ The synthetic starter results are still framework-level results, not publishable
 - GitHub Actions workflow `.github/workflows/ci.yml` runs tests on pushes/PRs.
 
 ## SEM Suite Outputs
-- Running `python scripts/run_sem_suite.py` now also saves qualitative grids to `reports/figures/sem_suite_<dataset>.png`, noted in the leaderboard.
+- Running `python scripts/run_sem_suite.py` now saves qualitative grids with input, ground truth, prediction, overlay, and error-map panels.
+- Each SEM suite run writes timestamped artifacts to `reports/runs/sem_suite_<timestamp>/`, including the config snapshot, run metadata, per-dataset metrics, figures, and summary table.
+- The latest quick-run comparison table is also written to `reports/sem_comparison_table.md`.
 - Use `configs/sem_suite.json` for a fast smoke test and `configs/sem_suite_benchmark.json` for a longer full-data benchmark run.
 
