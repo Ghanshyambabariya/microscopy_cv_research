@@ -20,6 +20,8 @@ Computer vision workflow for microscopic material images: SEM segmentation, synt
 
 ![SEM predictions](results/sem_ebc_predictions.png)
 
+![Active learning loop](../../assets/active_learning_loop.svg)
+
 Leaderboard: [results/sem_leaderboard.md](results/sem_leaderboard.md)
 
 ## What To Inspect

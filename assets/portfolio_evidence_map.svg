@@ -1,0 +1,40 @@
+<svg width="1200" height="470" viewBox="0 0 1200 470" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="470" rx="30" fill="#F6F8F2"/>
+  <style>
+    .title{font:800 34px Segoe UI,Arial,sans-serif;fill:#132019}
+    .h{font:800 22px Segoe UI,Arial,sans-serif;fill:#132019}
+    .t{font:500 15px Segoe UI,Arial,sans-serif;fill:#34443A}
+    .m{font:800 24px Segoe UI,Arial,sans-serif;fill:#0F5E5C}
+  </style>
+  <text x="54" y="62" class="title">Portfolio Evidence Map</text>
+  <rect x="54" y="105" width="206" height="260" rx="24" fill="#E7F1F1" stroke="#5FA9A5"/>
+  <text x="82" y="150" class="h">Microscopy CV</text>
+  <text x="82" y="184" class="t">SEM segmentation</text>
+  <text x="82" y="210" class="t">active learning</text>
+  <text x="82" y="236" class="t">synthetic data</text>
+  <text x="82" y="306" class="m">IoU 0.1174</text>
+  <rect x="286" y="105" width="206" height="260" rx="24" fill="#EDF0FA" stroke="#859DE5"/>
+  <text x="314" y="150" class="h">Signal ML</text>
+  <text x="314" y="184" class="t">20 kHz force data</text>
+  <text x="314" y="210" class="t">spectral features</text>
+  <text x="314" y="236" class="t">quality regression</text>
+  <text x="314" y="306" class="m">R2 0.9998</text>
+  <rect x="518" y="105" width="206" height="260" rx="24" fill="#FFF4D8" stroke="#D3AA46"/>
+  <text x="546" y="150" class="h">Tool Wear</text>
+  <text x="546" y="184" class="t">real datasets</text>
+  <text x="546" y="210" class="t">grouped splits</text>
+  <text x="546" y="236" class="t">wear stages</text>
+  <text x="546" y="306" class="m">R2 0.8680</text>
+  <rect x="750" y="105" width="206" height="260" rx="24" fill="#EAF6E7" stroke="#7EBD6E"/>
+  <text x="778" y="150" class="h">Property ML</text>
+  <text x="778" y="184" class="t">composition table</text>
+  <text x="778" y="210" class="t">feature importance</text>
+  <text x="778" y="236" class="t">strength prediction</text>
+  <text x="778" y="306" class="m">R2 0.8990</text>
+  <rect x="982" y="105" width="164" height="260" rx="24" fill="#EFE9F6" stroke="#A98BD0"/>
+  <text x="1010" y="150" class="h">Platform</text>
+  <text x="1010" y="184" class="t">configs</text>
+  <text x="1010" y="210" class="t">reports</text>
+  <text x="1010" y="236" class="t">tests</text>
+  <text x="1010" y="306" class="m">11 tests</text>
+</svg>

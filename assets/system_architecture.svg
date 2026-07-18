@@ -1,0 +1,71 @@
+<svg width="1200" height="620" viewBox="0 0 1200 620" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="620" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#08111F"/>
+      <stop offset="0.55" stop-color="#102A35"/>
+      <stop offset="1" stop-color="#172416"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="12" stdDeviation="12" flood-color="#000000" flood-opacity="0.35"/>
+    </filter>
+    <style>
+      .title{font:700 38px Segoe UI,Arial,sans-serif;fill:#F8FAFC}
+      .subtitle{font:500 18px Segoe UI,Arial,sans-serif;fill:#C9D6E2}
+      .h{font:700 20px Segoe UI,Arial,sans-serif;fill:#F8FAFC}
+      .t{font:500 15px Segoe UI,Arial,sans-serif;fill:#D7E2EA}
+      .tiny{font:600 13px Segoe UI,Arial,sans-serif;fill:#9ED0FF}
+      .box{rx:22;filter:url(#shadow)}
+      .arrow{stroke:#8BD7CE;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+    </style>
+  </defs>
+  <rect width="1200" height="620" fill="url(#bg)"/>
+  <circle cx="1040" cy="90" r="96" stroke="#6CE5D5" stroke-opacity="0.18" stroke-width="2"/>
+  <circle cx="1120" cy="185" r="64" stroke="#F7C948" stroke-opacity="0.20" stroke-width="2"/>
+  <text x="62" y="70" class="title">MicroForge AI Research Architecture</text>
+  <text x="64" y="106" class="subtitle">A multimodal materials-intelligence stack for microscopy, process signals, tool wear, and property prediction.</text>
+
+  <rect x="58" y="165" width="205" height="138" class="box" fill="#10233A" stroke="#3F83C6"/>
+  <text x="84" y="204" class="h">Data Layer</text>
+  <text x="84" y="235" class="t">SEM image registries</text>
+  <text x="84" y="260" class="t">20 kHz force signals</text>
+  <text x="84" y="285" class="t">Tool-wear tables</text>
+
+  <rect x="345" y="165" width="220" height="138" class="box" fill="#112B31" stroke="#2B8C99"/>
+  <text x="372" y="204" class="h">Preprocessing</text>
+  <text x="372" y="235" class="t">schema checks</text>
+  <text x="372" y="260" class="t">grouped splits</text>
+  <text x="372" y="285" class="t">feature extraction</text>
+
+  <rect x="650" y="165" width="220" height="138" class="box" fill="#2B2718" stroke="#B9902E"/>
+  <text x="677" y="204" class="h">Model Zoo</text>
+  <text x="677" y="235" class="t">UNet / DeepLab</text>
+  <text x="677" y="260" class="t">MicroNet / Swin ready</text>
+  <text x="677" y="285" class="t">RF / multitask heads</text>
+
+  <rect x="955" y="165" width="185" height="138" class="box" fill="#202843" stroke="#6F8FE8"/>
+  <text x="982" y="204" class="h">Evaluation</text>
+  <text x="982" y="235" class="t">IoU / F1 / R2</text>
+  <text x="982" y="260" class="t">leaderboards</text>
+  <text x="982" y="285" class="t">visual reports</text>
+
+  <path d="M266 234 H337" class="arrow"/>
+  <path d="M568 234 H642" class="arrow"/>
+  <path d="M873 234 H947" class="arrow"/>
+  <path d="M327 400 C430 342 530 342 632 400" class="arrow" stroke-dasharray="8 8"/>
+  <path d="M632 400 C745 462 845 462 958 400" class="arrow" stroke-dasharray="8 8"/>
+
+  <rect x="130" y="395" width="235" height="110" class="box" fill="#0F1E31" stroke="#385C8C"/>
+  <text x="158" y="433" class="h">Microscopy CV</text>
+  <text x="158" y="463" class="t">segmentation, overlays, error maps</text>
+  <text x="158" y="488" class="tiny">NASA EBC + SEM suite</text>
+
+  <rect x="482" y="395" width="235" height="110" class="box" fill="#102D2D" stroke="#2B8C99"/>
+  <text x="510" y="433" class="h">Active Learning</text>
+  <text x="510" y="463" class="t">MC-dropout entropy acquisition</text>
+  <text x="510" y="488" class="tiny">low-label microscopy loop</text>
+
+  <rect x="835" y="395" width="235" height="110" class="box" fill="#30291A" stroke="#B9902E"/>
+  <text x="863" y="433" class="h">Materials ML</text>
+  <text x="863" y="463" class="t">signals, wear, properties</text>
+  <text x="863" y="488" class="tiny">process-structure-property</text>
+</svg>

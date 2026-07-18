@@ -20,6 +20,8 @@ Integration layer that connects microscopy, process signals, tool-wear benchmark
 
 ![Benchmark overview](results/benchmark_overview.png)
 
+![System architecture](../../assets/system_architecture.svg)
+
 Reports: [leaderboard](results/materials_ai_leaderboard.md) | [platform report](results/materials_ai_platform_report.md)
 
 ## What To Inspect

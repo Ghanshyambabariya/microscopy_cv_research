@@ -14,6 +14,12 @@ Research-grade materials-AI portfolio connecting **microscopy computer vision**,
 
 The repository is intentionally split into five clean portfolio projects. Each folder has its own README, result figures, benchmark evidence, and run commands.
 
+![MicroForge AI system architecture](assets/system_architecture.svg)
+
+## Visual Evidence
+
+![Portfolio evidence map](assets/portfolio_evidence_map.svg)
+
 ## Reviewer View
 
 | Reviewer | What They Should Notice First |
@@ -23,6 +29,8 @@ The repository is intentionally split into five clean portfolio projects. Each f
 | HR / recruiter | five clean role-specific projects with visual results and a one-line CV story |
 
 Reviewer guide: [docs/reviewer_guide.md](docs/reviewer_guide.md)
+
+Advanced system design: [docs/advanced_system_design.md](docs/advanced_system_design.md)
 
 ## Choose A Project
 
@@ -73,6 +81,7 @@ python -m pytest -q
 - Portfolio entry point: [README.md](README.md)
 - CV share wording: [docs/cv_share_link.md](docs/cv_share_link.md)
 - Reviewer guide: [docs/reviewer_guide.md](docs/reviewer_guide.md)
+- Advanced system design: [docs/advanced_system_design.md](docs/advanced_system_design.md)
 - Project index: [projects/README.md](projects/README.md)
 - Recruiter summary: [docs/recruiter_summary.md](docs/recruiter_summary.md)
 - Dataset cards: [docs/datasets.md](docs/datasets.md)
