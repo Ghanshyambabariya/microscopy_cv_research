@@ -1,4 +1,4 @@
-# Portfolio Projects
+# MicroForge AI Projects
 
 [Back to main README](../README.md)
 

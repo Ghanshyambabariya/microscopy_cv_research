@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/matsci_ai_portfolio.svg" alt="MatSci-AI Portfolio banner" width="100%">
+  <img src="assets/matsci_ai_portfolio.svg" alt="MicroForge AI materials intelligence portfolio banner" width="100%">
 </p>
 
 <p align="center">
@@ -8,9 +8,9 @@
   <img alt="Status" src="https://img.shields.io/badge/status-CV--ready%20portfolio-1F6FEB">
 </p>
 
-# MatSci-AI Portfolio
+# MicroForge AI: Materials Intelligence Portfolio
 
-Materials science portfolio connecting **microscopy computer vision**, **manufacturing signal analysis**, **tool-wear prediction**, **materials-property ML**, and **multimodal benchmark automation**.
+Research-grade materials-AI portfolio connecting **microscopy computer vision**, **manufacturing signal analysis**, **tool-wear prediction**, **materials-property ML**, and **multimodal benchmark automation**.
 
 The repository is intentionally split into five clean portfolio projects. Each folder has its own README, result figures, benchmark evidence, and run commands.
 
@@ -69,4 +69,4 @@ python -m pytest -q
 
 ## Positioning
 
-`MATSCI-AI-PORTFOLIO` is designed as a clean proof of materials-AI capability: real datasets where available, honest baseline metrics, leakage-aware validation, reproducible scripts, and clear next research upgrades.
+`MICROFORGE-AI` is designed as a clean proof of materials-AI capability: real datasets where available, honest baseline metrics, leakage-aware validation, reproducible scripts, and clear next research upgrades.

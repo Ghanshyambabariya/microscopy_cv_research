@@ -1,6 +1,6 @@
 # Materials AI Platform Direction
 
-This project is evolving from a microscopy-only computer-vision repository into a broader materials-AI portfolio system.
+MicroForge AI is evolving from a microscopy-only computer-vision repository into a broader materials-AI portfolio system.
 
 ## Core Research Question
 

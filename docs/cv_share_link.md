@@ -2,13 +2,13 @@
 
 Use this repository as a single portfolio link:
 
-**MatSci-AI Portfolio: Microscopy CV, Manufacturing Signals, Tool Wear, and Materials Informatics**
+**MicroForge AI: Materials Intelligence Portfolio**
 
 GitHub: <https://github.com/Ghanshyambabariya/microscopy_cv_research>
 
 ## One-Line CV Description
 
-Built a materials-AI portfolio combining SEM microscopy segmentation, active learning, high-frequency process-signal ML, real tool-wear benchmarks, and materials-property regression with reproducible Python pipelines and benchmark reports.
+Built MicroForge AI, a materials-intelligence portfolio combining SEM microscopy segmentation, active learning, high-frequency process-signal ML, real tool-wear benchmarks, and materials-property regression with reproducible Python pipelines and benchmark reports.
 
 ## Best Entry Points
 
