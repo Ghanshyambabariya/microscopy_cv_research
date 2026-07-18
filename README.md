@@ -53,6 +53,8 @@ See the materials-AI platform direction here: [docs/materials_ai_platform.md](do
 
 See the generated materials-AI report here: [reports/materials_ai_platform_report.md](reports/materials_ai_platform_report.md)
 
+See the external tool-wear benchmark here: [reports/external_tool_wear_vicomtech_report.md](reports/external_tool_wear_vicomtech_report.md)
+
 ![Benchmark overview](reports/figures/benchmark_overview.png)
 
 ![NASA EBC predictions](reports/figures/sem_ebc_predictions.png)
@@ -100,6 +102,7 @@ C:/Users/ghans/AppData/Local/Programs/Python/Python312/python.exe scripts/run_se
 C:/Users/ghans/AppData/Local/Programs/Python/Python312/python.exe scripts/run_materials_signal.py --config configs/materials_signal.json
 C:/Users/ghans/AppData/Local/Programs/Python/Python312/python.exe scripts/run_multimodal_materials.py --config configs/multimodal_materials.json
 C:/Users/ghans/AppData/Local/Programs/Python/Python312/python.exe scripts/build_materials_ai_report.py
+C:/Users/ghans/AppData/Local/Programs/Python/Python312/python.exe scripts/run_external_tool_wear.py --config configs/external_tool_wear_vicomtech.json
 ```
 
 ## Current Benchmark Results
@@ -126,6 +129,8 @@ C:/Users/ghans/AppData/Local/Programs/Python/Python312/python.exe scripts/build_
 | Materials signal ML | property regression R2 | 0.9998 |
 | Multimodal materials ML | process quality accuracy | 1.0000 |
 | Multimodal materials ML | property regression R2 | 0.9998 |
+| External Vicomtech tool-wear benchmark | flank-wear regression R2 | 0.8680 |
+| External Vicomtech tool-wear benchmark | wear-stage macro F1 | 0.6472 |
 
 ## Materials Process Signal ML
 
@@ -139,6 +144,17 @@ Current runnable baseline:
 - outputs: process-quality classification, property-value regression, feature table, summary figure
 
 ![Materials signal summary](reports/figures/materials_signal_summary.png)
+
+## External Online Data Benchmark
+
+The project can now download and model a real GitHub-hosted tool-wear dataset:
+- source: Vicomtech `dataset-machine-tool-wear`
+- data: 2,054 one-second turning-process segments from 13 tools
+- signals/features: acoustic emission, accelerometers, forces, motor current, voltage, torque, CNC control values
+- target: `Vb` flank wear
+- pipeline: download, schema validation, numeric cleaning, wear-stage derivation, group split by tool, regression, classification
+
+![External tool wear benchmark](reports/figures/external_tool_wear_vicomtech.png)
 
 ## Real Benchmark Evidence
 

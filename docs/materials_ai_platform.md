@@ -19,19 +19,26 @@ Can microscopy images and high-frequency process signals be fused to predict mat
 
 The signal module simulates grinding-style high-frequency data with a nominal 20 kHz sampling rate and 20 second process target. The default config analyzes a 1 second window for fast local runs while preserving the full-process metadata.
 
+The external data module downloads the Vicomtech machine-tool-wear dataset directly from GitHub, validates the schema, cleans numeric sensor features, derives wear-stage labels from flank wear, splits by tool ID, and trains both regression and classification baselines.
+
 Generated artifacts:
 
 - `data/processed/materials_signal_features.csv`
 - `data/processed/materials_multimodal_table.csv`
+- `data/processed/vicomtech_tool_wear_clean.csv`
 - `reports/materials_signal_metrics.json`
 - `reports/multimodal_materials_metrics.json`
+- `reports/external_tool_wear_vicomtech_metrics.json`
+- `reports/external_tool_wear_vicomtech_report.md`
 - `reports/figures/materials_signal_summary.png`
+- `reports/figures/external_tool_wear_vicomtech.png`
 
 ## How To Run
 
 ```powershell
 python scripts/run_materials_signal.py --config configs/materials_signal.json
 python scripts/run_multimodal_materials.py --config configs/multimodal_materials.json
+python scripts/run_external_tool_wear.py --config configs/external_tool_wear_vicomtech.json
 ```
 
 ## Next Research Upgrade

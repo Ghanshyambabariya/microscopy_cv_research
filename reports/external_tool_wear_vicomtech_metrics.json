@@ -1,0 +1,137 @@
+{
+  "experiment_name": "external_tool_wear_vicomtech",
+  "source_name": "Vicomtech dataset-machine-tool-wear",
+  "source_repo": "https://github.com/Vicomtech/dataset-machine-tool-wear",
+  "source_url": "https://raw.githubusercontent.com/Vicomtech/dataset-machine-tool-wear/main/Dataset_Machine_tool_wear.csv",
+  "raw_path": "data\\external\\vicomtech_tool_wear\\Dataset_Machine_tool_wear.csv",
+  "clean_path": "data\\processed\\vicomtech_tool_wear_clean.csv",
+  "data_audit": {
+    "raw_rows": 2054,
+    "clean_rows": 2054,
+    "raw_columns": 154,
+    "model_features": 150,
+    "groups": 13,
+    "target_min": 0.0,
+    "target_max": 792.346,
+    "wear_stage_counts": {
+      "high_wear": 699,
+      "low_wear": 678,
+      "medium_wear": 677
+    },
+    "dropped_feature_count": 2
+  },
+  "splits": {
+    "train": 1385,
+    "test": 669,
+    "train_groups": [
+      "11",
+      "12",
+      "13",
+      "14",
+      "15",
+      "16",
+      "3",
+      "6",
+      "9"
+    ],
+    "test_groups": [
+      "10",
+      "4",
+      "5",
+      "7"
+    ]
+  },
+  "flank_wear_regression": {
+    "mae": 33.474224962630785,
+    "rmse": 51.08337430426768,
+    "r2": 0.8680046036436088
+  },
+  "wear_stage_classification": {
+    "accuracy": 0.6547085201793722,
+    "macro_f1": 0.6472145619638244
+  },
+  "wear_stage_label_mapping": {
+    "0": "high_wear",
+    "1": "low_wear",
+    "2": "medium_wear"
+  },
+  "wear_stage_confusion_matrix": [
+    [
+      197,
+      0,
+      0
+    ],
+    [
+      0,
+      154,
+      173
+    ],
+    [
+      58,
+      0,
+      87
+    ]
+  ],
+  "top_features": [
+    [
+      "F_f_MAX",
+      0.3654894791329199
+    ],
+    [
+      "F_f_MEAN",
+      0.1560759954588125
+    ],
+    [
+      "F_c_MEAN",
+      0.13422461855348308
+    ],
+    [
+      "F_f_RMS",
+      0.11295861705063266
+    ],
+    [
+      "AE_C_0.15",
+      0.016293859912769743
+    ],
+    [
+      "AE_C_0.1",
+      0.014908835969495783
+    ],
+    [
+      "TV2.S_RMS",
+      0.014093186989653422
+    ],
+    [
+      "Iv_s_RMS",
+      0.014071093724373105
+    ],
+    [
+      "F_p_RMS",
+      0.013557200800759856
+    ],
+    [
+      "F_p_MEAN",
+      0.011077677783248039
+    ],
+    [
+      "TV2.S_MEAN",
+      0.010479660453556024
+    ],
+    [
+      "F_c_RMS",
+      0.01045925632389291
+    ],
+    [
+      "Iu_s_RMS",
+      0.010327016826597465
+    ],
+    [
+      "Iu_x_KURT",
+      0.01021333691226481
+    ],
+    [
+      "Vv_s_RMS",
+      0.007211728995392284
+    ]
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "experiment_name": "external_tool_wear_vicomtech",
+  "source_name": "Vicomtech dataset-machine-tool-wear",
+  "source_url": "https://raw.githubusercontent.com/Vicomtech/dataset-machine-tool-wear/main/Dataset_Machine_tool_wear.csv",
+  "source_repo": "https://github.com/Vicomtech/dataset-machine-tool-wear",
+  "raw_path": "data/external/vicomtech_tool_wear/Dataset_Machine_tool_wear.csv",
+  "clean_path": "data/processed/vicomtech_tool_wear_clean.csv",
+  "report_path": "reports/external_tool_wear_vicomtech_metrics.json",
+  "markdown_report_path": "reports/external_tool_wear_vicomtech_report.md",
+  "figure_path": "reports/figures/external_tool_wear_vicomtech.png",
+  "target_column": "Vb",
+  "group_column": "tool",
+  "classification_strategy": "quantile",
+  "test_size": 0.3,
+  "n_estimators": 300,
+  "seed": 42
+}
+
