@@ -1,248 +1,162 @@
-﻿# Microscopy CV Research
+# MatSci-AI Benchmark Platform
 
-Research-structured materials-AI project for microscopic images, process signals, and multimodal structure-property learning.
+![Python](https://img.shields.io/badge/Python-3.10%2B-3776AB)
+![PyTorch](https://img.shields.io/badge/PyTorch-vision%20%2B%20signals-EE4C2C)
+![scikit-learn](https://img.shields.io/badge/scikit--learn-benchmarks-F7931E)
+![Status](https://img.shields.io/badge/status-CV--ready%20research%20portfolio-2E8B57)
 
-1. Supervised learning with pretrained encoders for microscopy-style images
-2. Synthetic data generation for balancing, augmentation, and stress testing
-3. Hybrid learning that combines classification, regression, and synthetic mixing
-4. High-frequency materials process-signal ML for grinding-style `Fx`, `Fy`, `Fz`, `Mz` channels
-5. Multimodal fusion of microscopy descriptors and process-signal features
+**A materials-AI research portfolio connecting microscopy computer vision, high-frequency process-signal analysis, materials-property prediction, and multimodal machine learning.**
 
-## Framework
+This repository is designed as a shareable CV/project link for roles in materials informatics, ML engineering, computer vision, manufacturing analytics, process monitoring, and scientific AI.
 
-```mermaid
-flowchart LR
-    A[Microscopy Images] --> B[Data Audit and Group Split]
-    B --> C[Supervised Encoder Training]
-    B --> D[Synthetic Image Generation]
-    C --> E[Classification Output]
-    C --> F[Regression Output]
-    D --> G[Synthetic Dataset]
-    G --> H[Hybrid Multitask Training]
-    B --> H
-    H --> I[Joint Structure Property Prediction]
-    A --> K[Real Benchmark Ingestion]
-    K --> L[SEM Segmentation Training + Active Learning]
-    K --> M[TEM Target Registry]
-    K --> N[EBSD Target Registry]
-    A --> O[Process Signals Fx/Fy/Fz/Mz]
-    O --> P[Signal Feature Engineering]
-    P --> Q[Process Quality + Property ML]
-    P --> R[Multimodal Fusion]
-    H --> R
-    R --> I
-    L --> J[Reports and Checkpoints]
-    E --> J
-    F --> J
-    I --> J
-```
+## Executive Snapshot
 
-## Quick Showcase
-
-See the full portfolio-style page here: [SHOWCASE.md](SHOWCASE.md)
-
-See the real benchmark target map here: [reports/real_benchmark_portfolio.md](reports/real_benchmark_portfolio.md)
-
-See the integrated NASA SEM benchmark showcase here: [reports/real_sem_benchmark_showcase.md](reports/real_sem_benchmark_showcase.md)
-
-See the trained SEM experiment report here: [reports/sem_ebc_segmentation_report.md](reports/sem_ebc_segmentation_report.md)
-
-See the SEM leaderboard here: [reports/sem_leaderboard.md](reports/sem_leaderboard.md)
-
-See the materials-AI platform direction here: [docs/materials_ai_platform.md](docs/materials_ai_platform.md)
-
-See the generated materials-AI report here: [reports/materials_ai_platform_report.md](reports/materials_ai_platform_report.md)
-
-See the external tool-wear benchmark here: [reports/external_tool_wear_vicomtech_report.md](reports/external_tool_wear_vicomtech_report.md)
-
-See the external Uniwear force/vibration benchmark here: [reports/external_uniwear_tool_wear_report.md](reports/external_uniwear_tool_wear_report.md)
-
-See the concrete materials-property benchmark here: [reports/external_concrete_strength_report.md](reports/external_concrete_strength_report.md)
-
-See the unified materials-AI leaderboard here: [reports/materials_ai_leaderboard.md](reports/materials_ai_leaderboard.md)
-
-See dataset cards here: [docs/datasets.md](docs/datasets.md)
-
-![Benchmark overview](reports/figures/benchmark_overview.png)
-
-![NASA EBC predictions](reports/figures/sem_ebc_predictions.png)
-
-## What This Project Does
-
-- builds a 1,440-image microscopy-style starter dataset with specimen-level grouping
-- trains supervised classification and regression baselines
-- generates synthetic microscopy-like images for augmentation studies
-- runs a hybrid multitask model with classification plus regression outputs
-- supports public-dataset showcase collection from external microscopy sources
-- trains a real NASA SEM segmentation baseline with IoU and Dice reporting
-- runs an active-learning loop on SEM data with entropy-based acquisition
-- simulates high-frequency grinding process signals at 20 kHz nominal sampling
-- extracts physics-aware force, torque, spectral, and energy proxy features
-- trains process-quality classification and material-property regression models
-- fuses microscopy specimen descriptors with process-signal features for structure-process-property ML
-
-## Current Reality
-
-The repo now has real microscopy experiments integrated directly into the portfolio:
-- NASA EBC SEM segmentation baseline on public benchmark data
-- NASA EBC SEM active-learning loop (seed + acquisitions)
-
-What is still missing for a fuller research-grade benchmark suite:
-- real TEM or EMPIAR-derived encoder transfer evaluation
-- real EBSD indexing, phase, or orientation prediction with sample patterns and metrics
-- longer full-data SEM benchmark runs with stronger encoders and repeated seeds
-
-## Runnable Entry Points
-
-```powershell
-C:/Users/ghans/AppData/Local/Programs/Python/Python312/python.exe scripts/create_sample_dataset.py
-C:/Users/ghans/AppData/Local/Programs/Python/Python312/python.exe scripts/run_supervised.py --config configs/supervised_classification.json
-C:/Users/ghans/AppData/Local/Programs/Python/Python312/python.exe scripts/run_supervised.py --config configs/supervised_regression.json
-C:/Users/ghans/AppData/Local/Programs/Python/Python312/python.exe scripts/run_synthetic.py
-C:/Users/ghans/AppData/Local/Programs/Python/Python312/python.exe scripts/run_hybrid.py
-C:/Users/ghans/AppData/Local/Programs/Python/Python312/python.exe scripts/build_public_showcase.py
-C:/Users/ghans/AppData/Local/Programs/Python/Python312/python.exe scripts/build_benchmark_portfolio.py
-C:/Users/ghans/AppData/Local/Programs/Python/Python312/python.exe scripts/build_real_sem_showcase.py
-C:/Users/ghans/AppData/Local/Programs/Python/Python312/python.exe scripts/run_sem_segmentation.py
-C:/Users/ghans/AppData/Local/Programs/Python/Python312/python.exe scripts/run_active_sem.py --config configs/active_sem_ebc.json
-C:/Users/ghans/AppData/Local/Programs/Python/Python312/python.exe scripts/run_sem_suite.py --config configs/sem_suite.json
-C:/Users/ghans/AppData/Local/Programs/Python/Python312/python.exe scripts/run_sem_suite.py --config configs/sem_suite_benchmark.json
-C:/Users/ghans/AppData/Local/Programs/Python/Python312/python.exe scripts/run_materials_signal.py --config configs/materials_signal.json
-C:/Users/ghans/AppData/Local/Programs/Python/Python312/python.exe scripts/run_multimodal_materials.py --config configs/multimodal_materials.json
-C:/Users/ghans/AppData/Local/Programs/Python/Python312/python.exe scripts/build_materials_ai_report.py
-C:/Users/ghans/AppData/Local/Programs/Python/Python312/python.exe scripts/run_external_tool_wear.py --config configs/external_tool_wear_vicomtech.json
-C:/Users/ghans/AppData/Local/Programs/Python/Python312/python.exe scripts/run_external_uniwear.py --config configs/external_uniwear_tool_wear.json
-C:/Users/ghans/AppData/Local/Programs/Python/Python312/python.exe scripts/run_external_concrete.py --config configs/external_concrete_strength.json
-C:/Users/ghans/AppData/Local/Programs/Python/Python312/python.exe scripts/run_external_commons.py --config configs/external_commons_microscopy.json
-C:/Users/ghans/AppData/Local/Programs/Python/Python312/python.exe scripts/build_materials_ai_leaderboard.py
-C:/Users/ghans/AppData/Local/Programs/Python/Python312/python.exe scripts/run_all_benchmarks.py
-```
-
-## Current Benchmark Results
-
-| Track | Output | Result |
+| Area | What it demonstrates | Evidence |
 |---|---|---|
-| Supervised classification | accuracy | 1.0000 |
-| Supervised classification | macro F1 | 1.0000 |
-| Supervised regression | MAE | 0.0414 |
-| Supervised regression | RMSE | 0.0507 |
-| Supervised regression | R2 | 0.9678 |
-| Hybrid multitask | classification accuracy | 1.0000 |
-| Hybrid multitask | classification macro F1 | 1.0000 |
-| Hybrid multitask | regression MAE | 0.0328 |
-| Hybrid multitask | regression RMSE | 0.0395 |
-| Hybrid multitask | regression R2 | 0.9804 |
-| Synthetic generation | generated images | 120 |
-| NASA EBC SEM baseline | pixel accuracy | 0.9480 |
-| NASA EBC SEM baseline | mean IoU foreground | 0.4334 |
-| NASA EBC SEM baseline | mean Dice foreground | 0.5293 |
-| NASA EBC SEM active (round 1) | mean IoU foreground | 0.1107 |
-| NASA EBC SEM active (round 2) | mean IoU foreground | 0.0126 |
-| Materials signal ML | process quality accuracy | 1.0000 |
-| Materials signal ML | property regression R2 | 0.9998 |
-| Multimodal materials ML | process quality accuracy | 1.0000 |
-| Multimodal materials ML | property regression R2 | 0.9998 |
-| External Vicomtech tool-wear benchmark | flank-wear regression R2 | 0.8680 |
-| External Vicomtech tool-wear benchmark | wear-stage macro F1 | 0.6472 |
-| External Uniwear force/vibration benchmark | tool-wear regression R2 | 0.2397 |
-| External Uniwear force/vibration benchmark | wear-stage macro F1 | 0.5205 |
-| External concrete materials-property benchmark | compressive-strength regression R2 | 0.8990 |
+| Microscopy CV | SEM segmentation, active learning, synthetic microscopy data, pretrained encoders | [SEM leaderboard](reports/sem_leaderboard.md) |
+| Process-signal ML | force, vibration, acoustic/tool-wear style data, grouped validation | [Vicomtech report](reports/external_tool_wear_vicomtech_report.md), [Uniwear report](reports/external_uniwear_tool_wear_report.md) |
+| Materials informatics | composition/process/property regression | [Concrete strength report](reports/external_concrete_strength_report.md) |
+| Multimodal ML | microscopy descriptors + process-signal features | [Materials AI report](reports/materials_ai_platform_report.md) |
+| Reproducibility | configs, dataset cards, benchmark runner, tests, generated reports | [Dataset cards](docs/datasets.md), [Leaderboard](reports/materials_ai_leaderboard.md) |
 
-## Materials Process Signal ML
+## Headline Results
 
-The project now includes a materials-process signal track designed for grinding, machining, acoustic-emission, force, torque, vibration, or spindle-current datasets.
+| Benchmark | Modality | Task | Split strategy | Result |
+|---|---|---|---|---|
+| Vicomtech tool wear | process sensor features | flank-wear regression | held-out tool IDs | R2 `0.8680` |
+| Vicomtech tool wear | process sensor features | wear-stage classification | held-out tool IDs | macro F1 `0.6472` |
+| Katulu Uniwear | force/vibration windows | tool-wear regression | held-out experiments | R2 `0.2397` |
+| Katulu Uniwear | force/vibration windows | wear-stage classification | held-out experiments | macro F1 `0.5205` |
+| Concrete strength | materials tabular | compressive-strength regression | train/test split | R2 `0.8990` |
+| NASA EBC SEM suite | microscopy images | semantic segmentation | dataset split | quick-run foreground IoU `0.1174` |
 
-Current runnable baseline:
-- input channels: `Fx`, `Fy`, `Fz`, `Mz`
-- nominal sampling: `20 kHz`
-- nominal process duration: `20 seconds`
-- fast analysis window: `1 second`
-- outputs: process-quality classification, property-value regression, feature table, summary figure
+Full table: [reports/materials_ai_leaderboard.md](reports/materials_ai_leaderboard.md)
+
+## What Makes This Project Valuable
+
+- **End-to-end research workflow:** online dataset download, schema validation, cleaning, preprocessing, training, testing, visualization, and reporting.
+- **Real online datasets:** Vicomtech tool wear, Katulu Uniwear force/vibration, concrete strength, NASA SEM benchmark data, and optional CoMMonS microscopy target.
+- **Materials-science focus:** microstructure images, tool wear, process quality, compressive strength, and structure-process-property reasoning.
+- **ML breadth:** computer vision, signal processing, regression, classification, active learning, uncertainty-aware SEM workflows, and multimodal fusion.
+- **Portfolio readability:** every benchmark has a config, script, generated metrics, report, and figure.
+
+## Visual Evidence
+
+### Materials Process Signals
 
 ![Materials signal summary](reports/figures/materials_signal_summary.png)
 
-## External Online Data Benchmark
-
-The project can now download and model a real GitHub-hosted tool-wear dataset:
-- source: Vicomtech `dataset-machine-tool-wear`
-- data: 2,054 one-second turning-process segments from 13 tools
-- signals/features: acoustic emission, accelerometers, forces, motor current, voltage, torque, CNC control values
-- target: `Vb` flank wear
-- pipeline: download, schema validation, numeric cleaning, wear-stage derivation, group split by tool, regression, classification
+### External Tool-Wear Benchmark
 
 ![External tool wear benchmark](reports/figures/external_tool_wear_vicomtech.png)
 
-The project also supports the Katulu Uniwear dataset:
-- source: Katulu `uniwear-dataset`
-- data: 39,903 force/vibration rows from NUAA and PHM2010-derived experiments
-- signals: `force_z`, `vibration_x`, `vibration_y`
-- target: `tool_wear`
-- pipeline: download, clean, window by experiment, feature extraction, timestamp-leakage removal, held-out experiment evaluation
+### External Force/Vibration Benchmark
 
 ![External Uniwear benchmark](reports/figures/external_uniwear_tool_wear.png)
 
-The project also supports concrete compressive strength prediction:
-- source: UCI-style concrete dataset mirrored in `Machine-Learning-with-R-datasets`
-- data: cement, slag, ash, water, superplasticizer, aggregates, curing age
-- target: compressive strength
-- pipeline: download, numeric cleaning, random train/test split, property regression
+### Materials Property Prediction
 
 ![External concrete strength benchmark](reports/figures/external_concrete_strength.png)
 
-CoMMonS is configured as an optional large microscopy-material benchmark:
-- source: Georgia Tech OLIVES Lab `CoMMonS`
-- data: microscopic fabric/material surface images
-- archive: sampled version is about 1.1 GB
-- default behavior: document target without downloading
-- large-data command: `python scripts/run_external_commons.py --config configs/external_commons_microscopy.json --allow-large-download`
-
-## Real Benchmark Evidence
-
-### NASA EBC SEM Segmentation Baseline
-
-- datasets used: `EBC1`, `EBC2`, `EBC3`
-- task type: semantic segmentation
-- model: `UNetSmall`
-- outputs generated: metrics JSON, prediction figure, benchmark report, leaderboard entries
-
-### NASA EBC SEM Active Learning
-
-- seed size 6, acquisition size 4, 2 rounds, entropy selection
-- tracked metrics per round in `reports/sem_active_learning_log.json`
-- leaderboard entries added for round 1 and round 2
+### SEM Segmentation
 
 ![NASA EBC predictions](reports/figures/sem_ebc_predictions.png)
 
-## Public Microscopy Showcase
+## System Architecture
 
-The project can also download official public microscopy datasets, extract readable preview images, and validate that the project loader can work on them.
+```mermaid
+flowchart LR
+    A["Microscopy images"] --> B["SEM segmentation"]
+    A --> C["Supervised CV"]
+    A --> D["Synthetic data"]
+    E["Process signals"] --> F["Signal features"]
+    F --> G["Tool wear / quality ML"]
+    H["Materials tabular data"] --> I["Property regression"]
+    C --> J["Multimodal fusion"]
+    F --> J
+    G --> K["Benchmark reports"]
+    I --> K
+    B --> K
+    J --> K
+```
 
-Current local showcase sources:
-- BBBC028 Human HT29 Colon-Cancer Cells
-- BBBC033 Human Motor Neurons
-- BBBC053 Image-Based Profiling MitoCheck
+## Repository Map
 
-## Real Benchmark Targets
+| Path | Purpose |
+|---|---|
+| `configs/` | Reproducible experiment configs for each benchmark |
+| `scripts/run_all_benchmarks.py` | Compact benchmark runner for the platform |
+| `scripts/run_external_tool_wear.py` | Vicomtech tool-wear extraction, cleaning, training, reporting |
+| `scripts/run_external_uniwear.py` | Katulu Uniwear time-window feature extraction and modeling |
+| `scripts/run_external_concrete.py` | Concrete compressive-strength materials-property benchmark |
+| `scripts/run_sem_suite.py` | Multi-dataset SEM segmentation benchmark |
+| `src/microscopy_cv_research/signals/` | Signal simulation, CSV loading, and feature extraction |
+| `src/microscopy_cv_research/training/` | CV, signal, multimodal, and external benchmark training logic |
+| `reports/` | Generated metrics, figures, leaderboards, and benchmark summaries |
+| `docs/datasets.md` | Dataset cards for all online data sources |
 
-| Modality | Example task | Current status |
-|---|---|---|
-| SEM | materials segmentation | real trained benchmark + active loop |
-| TEM | encoder transfer or retrieval | target registry only |
-| EBSD | phase or orientation prediction | target registry only |
+## Quick Start
 
-The benchmark registry for these targets is tracked in [configs/real_benchmark_targets.json](configs/real_benchmark_targets.json), the generated target summary is in [reports/real_benchmark_portfolio.md](reports/real_benchmark_portfolio.md), the integrated SEM showcase is in [reports/real_sem_benchmark_showcase.md](reports/real_sem_benchmark_showcase.md), the trained SEM experiment is in [reports/sem_ebc_segmentation_report.md](reports/sem_ebc_segmentation_report.md), and the SEM leaderboard is in [reports/sem_leaderboard.md](reports/sem_leaderboard.md).
+```powershell
+git clone https://github.com/Ghanshyambabariya/microscopy_cv_research.git
+cd microscopy_cv_research
+python -m pip install -e . pytest timm
+python scripts/run_all_benchmarks.py
+python -m pytest -q
+```
 
-## Important Note
+Optional SEM benchmark:
 
-The synthetic starter results are still framework-level results, not publishable microscopy evidence. SEM now includes a real trained benchmark and an active-learning loop; TEM and EBSD remain planned integrations.
+```powershell
+python scripts/run_sem_suite.py --config configs/sem_suite.json
+```
 
-## QA & CI
-- Run `pytest -q` for fast loader/class-weight checks (runs without datasets).
-- GitHub Actions workflow `.github/workflows/ci.yml` runs tests on pushes/PRs.
+Optional large CoMMonS microscopy-material benchmark:
 
-## SEM Suite Outputs
-- Running `python scripts/run_sem_suite.py` now saves qualitative grids with input, ground truth, prediction, overlay, and error-map panels.
-- Each SEM suite run writes timestamped artifacts to `reports/runs/sem_suite_<timestamp>/`, including the config snapshot, run metadata, per-dataset metrics, figures, and summary table.
-- The latest quick-run comparison table is also written to `reports/sem_comparison_table.md`.
-- Use `configs/sem_suite.json` for a fast smoke test and `configs/sem_suite_benchmark.json` for a longer full-data benchmark run.
+```powershell
+python scripts/run_external_commons.py --config configs/external_commons_microscopy.json --allow-large-download
+```
+
+Note: CoMMonS is treated as an optional large-data target because the sampled archive is about `1.1 GB`.
+
+## Key Reports
+
+- [Materials AI platform report](reports/materials_ai_platform_report.md)
+- [Materials AI leaderboard](reports/materials_ai_leaderboard.md)
+- [Dataset cards](docs/datasets.md)
+- [Vicomtech tool-wear benchmark](reports/external_tool_wear_vicomtech_report.md)
+- [Katulu Uniwear benchmark](reports/external_uniwear_tool_wear_report.md)
+- [Concrete strength benchmark](reports/external_concrete_strength_report.md)
+- [CoMMonS microscopy target](reports/external_commons_microscopy_report.md)
+- [SEM comparison table](reports/sem_comparison_table.md)
+
+## Skills Demonstrated
+
+| Category | Evidence in this repo |
+|---|---|
+| Materials science | SEM, tool wear, process monitoring, concrete strength, structure-process-property framing |
+| Computer vision | microscopy classification, regression, segmentation, synthetic image generation |
+| Signal analysis | force/vibration/acoustic-style features, spectral bands, RMS, crest factor, grouped evaluation |
+| Machine learning | Random Forest baselines, PyTorch CV models, active learning, multimodal fusion |
+| Research engineering | dataset validation, leakage-aware splitting, config-driven experiments, generated reports, tests |
+
+## Current Scope And Honesty Notes
+
+- The project includes both **real external datasets** and **simulated starter data**.
+- Simulated grinding signals are clearly documented and are intended as a scaffold for future measured sensor data.
+- CoMMonS is implemented as an optional large microscopy benchmark, but the archive is not committed because of size.
+- SEM quick-run results are smoke-test results; use `configs/sem_suite_benchmark.json` for longer full-data runs.
+
+## Citation-Style Dataset Sources
+
+- Vicomtech: [dataset-machine-tool-wear](https://github.com/Vicomtech/dataset-machine-tool-wear)
+- Katulu: [uniwear-dataset](https://github.com/katulu-io/uniwear-dataset)
+- Concrete strength mirror: [Machine-Learning-with-R-datasets](https://github.com/stedy/Machine-Learning-with-R-datasets)
+- CoMMonS: [CoMMonS microscopic material surface dataset](https://github.com/olivesgatech/CoMMonS)
+
+## Project Identity
+
+**Project ID:** `MATSCI-AI-BENCH`
+
+**Positioning:** A practical materials-AI benchmark platform for microscopy, process signals, and structure-property machine learning.
 

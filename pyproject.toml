@@ -1,7 +1,7 @@
 [project]
 name = "microscopy-cv-research"
 version = "0.1.0"
-description = "Research-structured project for supervised, synthetic, and hybrid learning on microscopic images"
+description = "Materials-AI benchmark platform for microscopy CV, process-signal ML, and structure-property prediction"
 readme = "README.md"
 requires-python = ">=3.10"
 authors = [
