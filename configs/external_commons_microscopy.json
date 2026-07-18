@@ -1,0 +1,18 @@
+{
+  "experiment_name": "external_commons_microscopy",
+  "source_name": "CoMMonS microscopic material surface dataset",
+  "source_repo": "https://github.com/olivesgatech/CoMMonS",
+  "sampled_zip_url": "https://www.dropbox.com/sh/102r6p8512nmv6g/AADpPLArkAIg9DOos4EawoCKa/CoMMonS_Sampled.zip?dl=1",
+  "expected_archive_size_gb": 1.1,
+  "raw_archive_path": "data/external/commons/CoMMonS_Sampled.zip",
+  "extract_dir": "data/external/commons/CoMMonS_Sampled",
+  "manifest_path": "data/processed/commons_manifest.csv",
+  "report_path": "reports/external_commons_microscopy_report.json",
+  "markdown_report_path": "reports/external_commons_microscopy_report.md",
+  "figure_path": "reports/figures/external_commons_microscopy_gallery.png",
+  "max_images": 500,
+  "image_size": 96,
+  "test_size": 0.25,
+  "seed": 42
+}
+

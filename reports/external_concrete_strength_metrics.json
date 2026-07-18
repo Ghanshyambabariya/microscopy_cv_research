@@ -1,0 +1,70 @@
+{
+  "experiment_name": "external_concrete_strength",
+  "source_name": "Concrete Compressive Strength",
+  "source_repo": "https://github.com/stedy/Machine-Learning-with-R-datasets",
+  "source_url": "https://raw.githubusercontent.com/stedy/Machine-Learning-with-R-datasets/master/concrete.csv",
+  "raw_path": "data\\external\\concrete_strength\\concrete.csv",
+  "clean_path": "data\\processed\\concrete_strength_clean.csv",
+  "data_audit": {
+    "raw_rows": 1030,
+    "clean_rows": 1005,
+    "columns": [
+      "cement",
+      "slag",
+      "ash",
+      "water",
+      "superplastic",
+      "coarseagg",
+      "fineagg",
+      "age",
+      "strength"
+    ],
+    "feature_count": 8,
+    "target_min": 2.33,
+    "target_max": 82.6,
+    "missing_values_after_cleaning": 0
+  },
+  "splits": {
+    "train": 753,
+    "test": 252
+  },
+  "regression_metrics": {
+    "mae": 3.695848731943403,
+    "rmse": 5.4097746894392795,
+    "r2": 0.8989773247360728
+  },
+  "top_features": [
+    [
+      "age",
+      0.34564947967043086
+    ],
+    [
+      "cement",
+      0.3214977824474155
+    ],
+    [
+      "water",
+      0.09028554824311567
+    ],
+    [
+      "superplastic",
+      0.0826577923606662
+    ],
+    [
+      "slag",
+      0.07615251005387327
+    ],
+    [
+      "fineagg",
+      0.04236127646659723
+    ],
+    [
+      "coarseagg",
+      0.027000115931065636
+    ],
+    [
+      "ash",
+      0.014395494826835652
+    ]
+  ]
+}

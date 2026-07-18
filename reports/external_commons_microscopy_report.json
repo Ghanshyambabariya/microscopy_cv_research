@@ -1,0 +1,7 @@
+{
+  "experiment_name": "external_commons_microscopy",
+  "source_name": "CoMMonS microscopic material surface dataset",
+  "source_repo": "https://github.com/olivesgatech/CoMMonS",
+  "status": "large_dataset_not_downloaded",
+  "message": "CoMMonS is configured as an optional large microscopy-material benchmark. The sampled archive is about 1.1 GB, so the default run documents the target without downloading or committing the archive."
+}

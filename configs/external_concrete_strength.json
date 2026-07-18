@@ -1,0 +1,16 @@
+{
+  "experiment_name": "external_concrete_strength",
+  "source_name": "Concrete Compressive Strength",
+  "source_url": "https://raw.githubusercontent.com/stedy/Machine-Learning-with-R-datasets/master/concrete.csv",
+  "source_repo": "https://github.com/stedy/Machine-Learning-with-R-datasets",
+  "raw_path": "data/external/concrete_strength/concrete.csv",
+  "clean_path": "data/processed/concrete_strength_clean.csv",
+  "report_path": "reports/external_concrete_strength_metrics.json",
+  "markdown_report_path": "reports/external_concrete_strength_report.md",
+  "figure_path": "reports/figures/external_concrete_strength.png",
+  "target_column": "strength",
+  "test_size": 0.25,
+  "n_estimators": 300,
+  "seed": 42
+}
+

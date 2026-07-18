@@ -57,6 +57,12 @@ See the external tool-wear benchmark here: [reports/external_tool_wear_vicomtech
 
 See the external Uniwear force/vibration benchmark here: [reports/external_uniwear_tool_wear_report.md](reports/external_uniwear_tool_wear_report.md)
 
+See the concrete materials-property benchmark here: [reports/external_concrete_strength_report.md](reports/external_concrete_strength_report.md)
+
+See the unified materials-AI leaderboard here: [reports/materials_ai_leaderboard.md](reports/materials_ai_leaderboard.md)
+
+See dataset cards here: [docs/datasets.md](docs/datasets.md)
+
 ![Benchmark overview](reports/figures/benchmark_overview.png)
 
 ![NASA EBC predictions](reports/figures/sem_ebc_predictions.png)
@@ -106,6 +112,10 @@ C:/Users/ghans/AppData/Local/Programs/Python/Python312/python.exe scripts/run_mu
 C:/Users/ghans/AppData/Local/Programs/Python/Python312/python.exe scripts/build_materials_ai_report.py
 C:/Users/ghans/AppData/Local/Programs/Python/Python312/python.exe scripts/run_external_tool_wear.py --config configs/external_tool_wear_vicomtech.json
 C:/Users/ghans/AppData/Local/Programs/Python/Python312/python.exe scripts/run_external_uniwear.py --config configs/external_uniwear_tool_wear.json
+C:/Users/ghans/AppData/Local/Programs/Python/Python312/python.exe scripts/run_external_concrete.py --config configs/external_concrete_strength.json
+C:/Users/ghans/AppData/Local/Programs/Python/Python312/python.exe scripts/run_external_commons.py --config configs/external_commons_microscopy.json
+C:/Users/ghans/AppData/Local/Programs/Python/Python312/python.exe scripts/build_materials_ai_leaderboard.py
+C:/Users/ghans/AppData/Local/Programs/Python/Python312/python.exe scripts/run_all_benchmarks.py
 ```
 
 ## Current Benchmark Results
@@ -136,6 +146,7 @@ C:/Users/ghans/AppData/Local/Programs/Python/Python312/python.exe scripts/run_ex
 | External Vicomtech tool-wear benchmark | wear-stage macro F1 | 0.6472 |
 | External Uniwear force/vibration benchmark | tool-wear regression R2 | 0.2397 |
 | External Uniwear force/vibration benchmark | wear-stage macro F1 | 0.5205 |
+| External concrete materials-property benchmark | compressive-strength regression R2 | 0.8990 |
 
 ## Materials Process Signal ML
 
@@ -169,6 +180,21 @@ The project also supports the Katulu Uniwear dataset:
 - pipeline: download, clean, window by experiment, feature extraction, timestamp-leakage removal, held-out experiment evaluation
 
 ![External Uniwear benchmark](reports/figures/external_uniwear_tool_wear.png)
+
+The project also supports concrete compressive strength prediction:
+- source: UCI-style concrete dataset mirrored in `Machine-Learning-with-R-datasets`
+- data: cement, slag, ash, water, superplasticizer, aggregates, curing age
+- target: compressive strength
+- pipeline: download, numeric cleaning, random train/test split, property regression
+
+![External concrete strength benchmark](reports/figures/external_concrete_strength.png)
+
+CoMMonS is configured as an optional large microscopy-material benchmark:
+- source: Georgia Tech OLIVES Lab `CoMMonS`
+- data: microscopic fabric/material surface images
+- archive: sampled version is about 1.1 GB
+- default behavior: document target without downloading
+- large-data command: `python scripts/run_external_commons.py --config configs/external_commons_microscopy.json --allow-large-download`
 
 ## Real Benchmark Evidence
 
