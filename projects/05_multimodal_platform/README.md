@@ -1,42 +1,34 @@
-# Project 05: Multimodal Materials AI Platform
+# 05. Multimodal Materials AI Platform
 
-**Focus:** connecting microscopy, process signals, and materials-property prediction into one benchmark platform.
+[Back to project index](../README.md) | [Back to portfolio](../../README.md)
 
-This project is the top-level integration layer. It collects the benchmark results, dataset cards, reports, and project automation.
+Integration layer that connects microscopy, process signals, tool-wear benchmarks, and materials-property prediction into one reproducible portfolio.
 
-## Why This Project Is Unique
+> Role fit: ML engineering, scientific software, research automation, materials-AI portfolio review.
 
-- Connects multiple modalities instead of showing one isolated model.
-- Keeps benchmark scripts, configs, generated reports, figures, and dataset cards together.
-- Gives a recruiter or research supervisor one clean view of the whole portfolio.
-- Supports optional large microscopy datasets without committing huge archives.
+## At A Glance
 
-## Main Evidence
-
-| Component | Evidence |
+| Item | Details |
 |---|---|
-| Unified benchmark runner | `scripts/run_all_benchmarks.py` |
-| Leaderboard | `reports/materials_ai_leaderboard.md` |
-| Dataset cards | `docs/datasets.md` |
-| CV-ready summary | `docs/recruiter_summary.md` |
+| Inputs | microscopy images, manufacturing signals, tool-wear tables, property datasets |
+| Outputs | leaderboard, dataset cards, benchmark reports, recruiter summary |
+| Automation | shared configs, scripts, generated reports, copied project snapshots |
+| Main evidence | [materials_ai_leaderboard.md](results/materials_ai_leaderboard.md) |
+| Main command | `python scripts/run_all_benchmarks.py` |
 
-## Results
+## Result Snapshot
 
 ![Benchmark overview](results/benchmark_overview.png)
 
-See:
-- [results/materials_ai_leaderboard.md](results/materials_ai_leaderboard.md)
-- [results/materials_ai_platform_report.md](results/materials_ai_platform_report.md)
+Reports: [leaderboard](results/materials_ai_leaderboard.md) | [platform report](results/materials_ai_platform_report.md)
 
-## Run
+## What To Inspect
 
-```powershell
-python scripts/run_all_benchmarks.py
-python scripts/build_materials_ai_leaderboard.py
-python scripts/build_materials_ai_report.py
-```
+- `scripts/run_all_benchmarks.py` for the unified benchmark runner.
+- `scripts/build_materials_ai_leaderboard.py` for collecting metrics into one table.
+- `docs/recruiter_summary.md` for a short, CV-ready explanation.
+- `docs/datasets.md` for dataset cards and limitations.
 
-## Next Upgrade
+## Research Upgrade Path
 
-Create a lightweight dashboard or GitHub Pages site that displays the five project cards, figures, and leaderboard interactively.
-
+Build a lightweight dashboard or GitHub Pages site, add model cards, and track dataset-by-dataset performance changes after active-learning retraining.

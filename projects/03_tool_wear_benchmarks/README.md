@@ -1,43 +1,35 @@
-# Project 03: Real Tool-Wear Benchmarks
+# 03. Real Tool-Wear Benchmarks
 
-**Focus:** real online manufacturing datasets for tool-wear prediction.
+[Back to project index](../README.md) | [Back to portfolio](../../README.md)
 
-This project downloads real GitHub-hosted machining datasets, cleans them, creates wear labels or time windows, splits by tool/experiment to reduce leakage, trains models, and reports performance.
+Real online machining benchmark project for tool-wear regression and wear-stage classification.
 
-## Why This Project Is Unique
+> Role fit: predictive maintenance, machining AI, manufacturing data science, leakage-aware ML.
 
-- Uses real online datasets, not only synthetic data.
-- Validates schema and cleans numeric features before training.
-- Uses grouped validation: held-out tool IDs or held-out experiment tags.
-- Includes both tabular sensor features and time-window force/vibration features.
+## At A Glance
 
-## Benchmarks
+| Item | Details |
+|---|---|
+| Data | Vicomtech tool-wear data and Katulu Uniwear force/vibration data |
+| Tasks | flank-wear regression and wear-stage classification |
+| Validation | held-out tool IDs and held-out experiment tags |
+| Best result | Vicomtech flank-wear R2 `0.8680`; Uniwear macro F1 `0.5205` |
+| Main commands | `python scripts/run_external_tool_wear.py --config configs/external_tool_wear_vicomtech.json` and `python scripts/run_external_uniwear.py --config configs/external_uniwear_tool_wear.json` |
 
-| Dataset | Task | Split | Result |
-|---|---|---|---|
-| Vicomtech tool wear | flank-wear regression | held-out tool IDs | R2 `0.8680` |
-| Vicomtech tool wear | wear-stage classification | held-out tool IDs | macro F1 `0.6472` |
-| Katulu Uniwear | tool-wear regression | held-out experiment tags | R2 `0.2397` |
-| Katulu Uniwear | wear-stage classification | held-out experiment tags | macro F1 `0.5205` |
-
-## Results
+## Result Snapshots
 
 ![Vicomtech tool wear](results/external_tool_wear_vicomtech.png)
 
 ![Uniwear force vibration](results/external_uniwear_tool_wear.png)
 
-Reports:
-- [Vicomtech report](results/external_tool_wear_vicomtech_report.md)
-- [Uniwear report](results/external_uniwear_tool_wear_report.md)
+Reports: [Vicomtech](results/external_tool_wear_vicomtech_report.md) | [Uniwear](results/external_uniwear_tool_wear_report.md)
 
-## Run
+## What To Inspect
 
-```powershell
-python scripts/run_external_tool_wear.py --config configs/external_tool_wear_vicomtech.json
-python scripts/run_external_uniwear.py --config configs/external_uniwear_tool_wear.json
-```
+- `scripts/run_external_tool_wear.py` for real tabular machining-data ingestion and grouped validation.
+- `scripts/run_external_uniwear.py` for force/vibration dataset cleaning and experiment-level splits.
+- `configs/online_dataset_registry.json` for the online dataset registry used by the benchmark system.
 
-## Next Upgrade
+## Research Upgrade Path
 
-Add temporal models such as 1D CNN, LSTM, or Transformer on raw time-series windows for the Uniwear dataset.
-
+Add temporal deep learning on raw windows, compare frequency-domain features against learned embeddings, and report uncertainty-aware wear-stage predictions for active inspection.

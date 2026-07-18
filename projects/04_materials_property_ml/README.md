@@ -1,36 +1,33 @@
-# Project 04: Materials Property ML
+# 04. Materials Property ML
 
-**Focus:** materials-informatics regression from composition/process variables to properties.
+[Back to project index](../README.md) | [Back to portfolio](../../README.md)
 
-This project adds a compact real tabular materials dataset: concrete mix composition and curing age to compressive strength.
+Materials-informatics workflow for predicting properties from composition, processing, and descriptor-style tabular data.
 
-## Why This Project Is Unique
+> Role fit: materials informatics, property prediction, structure-property relationships, applied ML.
 
-- Shows materials-property prediction beyond images and process signals.
-- Uses a clean real dataset that runs quickly and gives interpretable feature importances.
-- Demonstrates composition/process/property regression, a core materials-informatics workflow.
+## At A Glance
 
-## Main Evidence
+| Item | Details |
+|---|---|
+| Data | concrete mix composition, curing age, and compressive strength |
+| Task | compressive-strength regression |
+| Model | RandomForest baseline with feature importance reporting |
+| Current result | R2 `0.8990` |
+| Main command | `python scripts/run_external_concrete.py --config configs/external_concrete_strength.json` |
 
-| Dataset | Task | Model | Result |
-|---|---|---|---|
-| Concrete compressive strength | property regression | RandomForest | R2 `0.8990` |
-
-Top drivers from the trained model include curing age, cement, water, superplasticizer, and slag.
-
-## Results
+## Result Snapshot
 
 ![Concrete strength](results/external_concrete_strength.png)
 
-See: [results/external_concrete_strength_report.md](results/external_concrete_strength_report.md)
+Report: [results/external_concrete_strength_report.md](results/external_concrete_strength_report.md)
 
-## Run
+## What To Inspect
 
-```powershell
-python scripts/run_external_concrete.py --config configs/external_concrete_strength.json
-```
+- `scripts/run_external_concrete.py` for download, cleaning, preprocessing, training, and reporting.
+- `reports/external_concrete_strength_report.md` for metrics and top feature drivers.
+- `docs/structure_property_roadmap.md` for planned alloy, battery, polymer, and heat-treatment extensions.
 
-## Next Upgrade
+## Research Upgrade Path
 
-Add composition-based alloy, battery, polymer, or heat-treatment property datasets.
-
+Add richer open materials datasets and compare RandomForest/XGBoost baselines against graph, composition-transformer, or descriptor-fusion models.

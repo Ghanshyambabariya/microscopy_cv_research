@@ -1,38 +1,34 @@
-# Project 01: Microscopy CV Research
+# 01. Microscopy CV Research
 
-**Focus:** computer vision for microscopic material images.
+[Back to project index](../README.md) | [Back to portfolio](../../README.md)
 
-This project contains the microscopy-facing part of the portfolio: SEM segmentation, synthetic microscopy data, supervised image classification/regression, active learning, and benchmark reporting.
+Computer vision workflow for microscopic material images: SEM segmentation, synthetic microscopy generation, active learning, and transfer-learning-ready benchmark structure.
 
-## Why This Project Is Unique
+> Role fit: microscopy AI, scientific computer vision, materials characterization, segmentation research.
 
-- Uses real NASA EBC SEM segmentation data in addition to synthetic/starter microscopy data.
-- Includes active learning for low-label microscopy workflows.
-- Produces qualitative segmentation figures with prediction overlays and error maps.
-- Designed for research roles involving microstructure analysis, defect segmentation, and scientific computer vision.
+## At A Glance
 
-## Main Evidence
+| Item | Details |
+|---|---|
+| Data | NASA EBC SEM benchmark snapshots plus synthetic/starter microscopy data |
+| Tasks | semantic segmentation, uncertainty ranking, synthetic data expansion |
+| Model | lightweight UNet baseline; designed for MicroNet/Swin encoder upgrade |
+| Current result | foreground IoU `0.1174` smoke test; previous SEM pixel accuracy `0.9480` |
+| Main command | `python scripts/run_sem_suite.py --config configs/sem_suite.json` |
 
-| Task | Dataset | Model | Result |
-|---|---|---|---|
-| SEM segmentation | NASA EBC quick suite | UNetSmall | foreground IoU `0.1174` smoke-test |
-| SEM baseline report | NASA EBC | UNetSmall | pixel accuracy `0.9480` previous trained run |
-| Active learning | NASA EBC | entropy acquisition | tracked rounds in `sem_active_learning_log.json` |
-
-## Results
+## Result Snapshot
 
 ![SEM predictions](results/sem_ebc_predictions.png)
 
-See: [results/sem_leaderboard.md](results/sem_leaderboard.md)
+Leaderboard: [results/sem_leaderboard.md](results/sem_leaderboard.md)
 
-## Run
+## What To Inspect
 
-```powershell
-python scripts/run_sem_suite.py --config configs/sem_suite.json
-python scripts/run_active_sem.py --config configs/active_sem_ebc.json
-```
+- `scripts/run_sem_suite.py` for dataset loading, preprocessing, training, and evaluation.
+- `scripts/run_active_sem.py` for entropy-based active learning rounds.
+- `configs/sem_suite.json` and `configs/active_sem_ebc.json` for reproducible benchmark settings.
+- `reports/real_sem_benchmark_showcase.md` for the broader SEM benchmark narrative.
 
-## Next Upgrade
+## Research Upgrade Path
 
-Run the longer `configs/sem_suite_benchmark.json` config on GPU and add a stronger pretrained encoder comparison.
-
+Replace the lightweight baseline encoder with a microscopy-pretrained encoder such as MicroNet or Swin, run the longer GPU config, and report cross-dataset SEM/TEM/EBSD generalization.

@@ -1,0 +1,33 @@
+<svg width="1200" height="360" viewBox="0 0 1200 360" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="360" fill="#0B1220"/>
+  <path d="M0 260 C210 205 355 332 565 260 C775 188 967 235 1200 160 V360 H0 V260Z" fill="#12394A"/>
+  <path d="M0 305 C230 255 390 365 605 295 C820 225 1005 280 1200 220 V360 H0 V305Z" fill="#1D5B68"/>
+  <g opacity="0.35">
+    <circle cx="965" cy="88" r="62" stroke="#6CE5D5" stroke-width="2"/>
+    <circle cx="1016" cy="126" r="38" stroke="#F7C948" stroke-width="2"/>
+    <circle cx="915" cy="136" r="26" stroke="#9ED0FF" stroke-width="2"/>
+  </g>
+  <g opacity="0.52">
+    <path d="M78 252 L152 205 L226 243 L300 178 L374 218 L448 152" stroke="#6CE5D5" stroke-width="4" stroke-linecap="round"/>
+    <circle cx="78" cy="252" r="7" fill="#6CE5D5"/>
+    <circle cx="152" cy="205" r="7" fill="#6CE5D5"/>
+    <circle cx="226" cy="243" r="7" fill="#6CE5D5"/>
+    <circle cx="300" cy="178" r="7" fill="#6CE5D5"/>
+    <circle cx="374" cy="218" r="7" fill="#6CE5D5"/>
+    <circle cx="448" cy="152" r="7" fill="#6CE5D5"/>
+  </g>
+  <rect x="65" y="58" width="138" height="138" rx="18" fill="#121B2E" stroke="#2B8C99"/>
+  <path d="M86 103 H182 M86 137 H182 M120 80 V174 M154 80 V174" stroke="#9ED0FF" stroke-width="3" opacity="0.75"/>
+  <circle cx="116" cy="117" r="10" fill="#F7C948"/>
+  <circle cx="154" cy="151" r="13" fill="#6CE5D5"/>
+  <text x="240" y="105" fill="#F8FAFC" font-family="Segoe UI, Arial, sans-serif" font-size="46" font-weight="700">MatSci-AI Portfolio</text>
+  <text x="242" y="150" fill="#C9D6E2" font-family="Segoe UI, Arial, sans-serif" font-size="24">Microscopy CV | Process Signals | Tool Wear | Materials Properties | Multimodal ML</text>
+  <g font-family="Segoe UI, Arial, sans-serif" font-size="18" font-weight="600">
+    <rect x="242" y="188" width="150" height="42" rx="21" fill="#183B46" stroke="#2B8C99"/>
+    <text x="270" y="216" fill="#D9FFF8">Real Data</text>
+    <rect x="410" y="188" width="178" height="42" rx="21" fill="#203047" stroke="#476A9E"/>
+    <text x="438" y="216" fill="#E3EFFF">Benchmarks</text>
+    <rect x="606" y="188" width="188" height="42" rx="21" fill="#3C3320" stroke="#B9902E"/>
+    <text x="634" y="216" fill="#FFF1C7">CV Ready</text>
+  </g>
+</svg>
