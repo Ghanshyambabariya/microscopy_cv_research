@@ -1,0 +1,29 @@
+{
+  "compact_runnable": [
+    {
+      "name": "Vicomtech dataset-machine-tool-wear",
+      "type": "tabular_sensor_features",
+      "source_repo": "https://github.com/Vicomtech/dataset-machine-tool-wear",
+      "status": "implemented",
+      "runner": "scripts/run_external_tool_wear.py",
+      "report": "reports/external_tool_wear_vicomtech_report.md"
+    },
+    {
+      "name": "Katulu Uniwear Dataset",
+      "type": "force_vibration_time_series",
+      "source_repo": "https://github.com/katulu-io/uniwear-dataset",
+      "status": "implemented",
+      "runner": "scripts/run_external_uniwear.py",
+      "report": "reports/external_uniwear_tool_wear_report.md"
+    }
+  ],
+  "large_targets": [
+    {
+      "name": "CoMMonS microscopic material surface dataset",
+      "type": "microscopy_material_surface_images",
+      "source_repo": "https://github.com/olivesgatech/CoMMonS",
+      "status": "documented_large_target",
+      "reason": "Sampled archive is about 1.1 GB; use for a dedicated image benchmark run rather than committing directly into this lightweight repo."
+    }
+  ]
+}

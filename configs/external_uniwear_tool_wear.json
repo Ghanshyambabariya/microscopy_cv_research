@@ -1,0 +1,20 @@
+{
+  "experiment_name": "external_uniwear_tool_wear",
+  "source_name": "Katulu Uniwear Dataset",
+  "source_url": "https://raw.githubusercontent.com/katulu-io/uniwear-dataset/main/data/uniwear.csv",
+  "source_repo": "https://github.com/katulu-io/uniwear-dataset",
+  "raw_path": "data/external/uniwear/uniwear.csv",
+  "clean_path": "data/processed/uniwear_tool_wear_clean.csv",
+  "feature_table_path": "data/processed/uniwear_window_features.csv",
+  "report_path": "reports/external_uniwear_tool_wear_metrics.json",
+  "markdown_report_path": "reports/external_uniwear_tool_wear_report.md",
+  "figure_path": "reports/figures/external_uniwear_tool_wear.png",
+  "target_column": "tool_wear",
+  "group_column": "experiment_tag",
+  "window_size": 64,
+  "stride": 32,
+  "test_size": 0.3,
+  "n_estimators": 250,
+  "seed": 42
+}
+

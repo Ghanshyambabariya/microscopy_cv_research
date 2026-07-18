@@ -55,6 +55,8 @@ See the generated materials-AI report here: [reports/materials_ai_platform_repor
 
 See the external tool-wear benchmark here: [reports/external_tool_wear_vicomtech_report.md](reports/external_tool_wear_vicomtech_report.md)
 
+See the external Uniwear force/vibration benchmark here: [reports/external_uniwear_tool_wear_report.md](reports/external_uniwear_tool_wear_report.md)
+
 ![Benchmark overview](reports/figures/benchmark_overview.png)
 
 ![NASA EBC predictions](reports/figures/sem_ebc_predictions.png)
@@ -103,6 +105,7 @@ C:/Users/ghans/AppData/Local/Programs/Python/Python312/python.exe scripts/run_ma
 C:/Users/ghans/AppData/Local/Programs/Python/Python312/python.exe scripts/run_multimodal_materials.py --config configs/multimodal_materials.json
 C:/Users/ghans/AppData/Local/Programs/Python/Python312/python.exe scripts/build_materials_ai_report.py
 C:/Users/ghans/AppData/Local/Programs/Python/Python312/python.exe scripts/run_external_tool_wear.py --config configs/external_tool_wear_vicomtech.json
+C:/Users/ghans/AppData/Local/Programs/Python/Python312/python.exe scripts/run_external_uniwear.py --config configs/external_uniwear_tool_wear.json
 ```
 
 ## Current Benchmark Results
@@ -131,6 +134,8 @@ C:/Users/ghans/AppData/Local/Programs/Python/Python312/python.exe scripts/run_ex
 | Multimodal materials ML | property regression R2 | 0.9998 |
 | External Vicomtech tool-wear benchmark | flank-wear regression R2 | 0.8680 |
 | External Vicomtech tool-wear benchmark | wear-stage macro F1 | 0.6472 |
+| External Uniwear force/vibration benchmark | tool-wear regression R2 | 0.2397 |
+| External Uniwear force/vibration benchmark | wear-stage macro F1 | 0.5205 |
 
 ## Materials Process Signal ML
 
@@ -155,6 +160,15 @@ The project can now download and model a real GitHub-hosted tool-wear dataset:
 - pipeline: download, schema validation, numeric cleaning, wear-stage derivation, group split by tool, regression, classification
 
 ![External tool wear benchmark](reports/figures/external_tool_wear_vicomtech.png)
+
+The project also supports the Katulu Uniwear dataset:
+- source: Katulu `uniwear-dataset`
+- data: 39,903 force/vibration rows from NUAA and PHM2010-derived experiments
+- signals: `force_z`, `vibration_x`, `vibration_y`
+- target: `tool_wear`
+- pipeline: download, clean, window by experiment, feature extraction, timestamp-leakage removal, held-out experiment evaluation
+
+![External Uniwear benchmark](reports/figures/external_uniwear_tool_wear.png)
 
 ## Real Benchmark Evidence
 

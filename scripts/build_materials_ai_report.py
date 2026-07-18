@@ -18,6 +18,8 @@ def metric(value: float) -> str:
 def main() -> None:
     signal = load_json(REPO_ROOT / "reports" / "materials_signal_metrics.json")
     multimodal = load_json(REPO_ROOT / "reports" / "multimodal_materials_metrics.json")
+    vicomtech = load_json(REPO_ROOT / "reports" / "external_tool_wear_vicomtech_metrics.json")
+    uniwear = load_json(REPO_ROOT / "reports" / "external_uniwear_tool_wear_metrics.json")
     lines = [
         "# Materials AI Platform Report",
         "",
@@ -49,6 +51,21 @@ def main() -> None:
         f"- property regression MAE: `{metric(multimodal['property_metrics']['mae'])}`",
         f"- property regression R2: `{metric(multimodal['property_metrics']['r2'])}`",
         "",
+        "## Real Online Benchmarks",
+        "",
+        "| Dataset | Source | Task | Held-out split | Main result |",
+        "|---|---|---|---|---|",
+        f"| Vicomtech tool wear | `{vicomtech['source_repo']}` | flank-wear regression + wear-stage classification | tool IDs | R2 `{metric(vicomtech['flank_wear_regression']['r2'])}`, macro F1 `{metric(vicomtech['wear_stage_classification']['macro_f1'])}` |",
+        f"| Katulu Uniwear | `{uniwear['source_repo']}` | force/vibration window wear prediction | experiment tags | R2 `{metric(uniwear['tool_wear_regression']['r2'])}`, macro F1 `{metric(uniwear['wear_stage_classification']['macro_f1'])}` |",
+        "",
+        "![External tool wear benchmark](figures/external_tool_wear_vicomtech.png)",
+        "",
+        "![External Uniwear benchmark](figures/external_uniwear_tool_wear.png)",
+        "",
+        "## Large Microscopy Target",
+        "",
+        "CoMMonS is a strong next microscopy-material dataset target: it contains 6,912 microscopic fabric-surface images across 24 samples and expert-rated fabric properties. The sampled archive is about 1.1 GB, so it is documented as a large-data target rather than committed directly into this lightweight GitHub portfolio.",
+        "",
         "## Interpretation",
         "",
         "The current signal data is simulated but physics-inspired: force level, chatter-band energy, torque, bursts, and impulse behavior are linked to material class and property values. This gives a working ML scaffold that can be replaced with real grinding, milling, acoustic-emission, vibration, force, torque, spindle-current, or temperature CSV files.",
@@ -62,4 +79,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

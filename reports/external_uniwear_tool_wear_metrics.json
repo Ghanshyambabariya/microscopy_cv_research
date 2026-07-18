@@ -1,0 +1,123 @@
+{
+  "experiment_name": "external_uniwear_tool_wear",
+  "source_name": "Katulu Uniwear Dataset",
+  "source_repo": "https://github.com/katulu-io/uniwear-dataset",
+  "source_url": "https://raw.githubusercontent.com/katulu-io/uniwear-dataset/main/data/uniwear.csv",
+  "raw_path": "data\\external\\uniwear\\uniwear.csv",
+  "clean_path": "data\\processed\\uniwear_tool_wear_clean.csv",
+  "feature_table_path": "data\\processed\\uniwear_window_features.csv",
+  "data_audit": {
+    "raw_rows": 39903,
+    "clean_rows": 39903,
+    "raw_columns": 7,
+    "groups": 12,
+    "dataset_tags": [
+      "nuaa",
+      "phm2010"
+    ],
+    "target_min": 0.03141635516,
+    "target_max": 0.3127433992991257,
+    "wear_stage_counts": {
+      "high_wear": 13567,
+      "low_wear": 13168,
+      "medium_wear": 13168
+    }
+  },
+  "window_feature_rows": 1229,
+  "splits": {
+    "train": 839,
+    "test": 390,
+    "train_groups": [
+      "W2",
+      "W3",
+      "W4",
+      "W5",
+      "W6",
+      "W7",
+      "W8",
+      "c6"
+    ],
+    "test_groups": [
+      "W1",
+      "W9",
+      "c1",
+      "c4"
+    ]
+  },
+  "tool_wear_regression": {
+    "mae": 0.0382558504015324,
+    "rmse": 0.051669124617859545,
+    "r2": 0.23974780787193284
+  },
+  "wear_stage_classification": {
+    "accuracy": 0.5666666666666667,
+    "macro_f1": 0.5204833681526734
+  },
+  "wear_stage_label_mapping": {
+    "0": "high_wear",
+    "1": "low_wear",
+    "2": "medium_wear"
+  },
+  "top_features": [
+    [
+      "force_z_mean",
+      0.08821192839287424
+    ],
+    [
+      "vibration_x_dominant_frequency_hz",
+      0.08431769232320009
+    ],
+    [
+      "vibration_x_mean",
+      0.07607646322591
+    ],
+    [
+      "vibration_x_spectral_centroid_hz",
+      0.06903060990242413
+    ],
+    [
+      "vibration_x_peak",
+      0.06743830202392971
+    ],
+    [
+      "force_z_rms",
+      0.0668750115795498
+    ],
+    [
+      "vibration_x_rms",
+      0.06459785131329593
+    ],
+    [
+      "vibration_y_dominant_frequency_hz",
+      0.06430123903892705
+    ],
+    [
+      "vibration_y_spectral_centroid_hz",
+      0.05768953635058161
+    ],
+    [
+      "vibration_y_mean",
+      0.040223523019526815
+    ],
+    [
+      "force_z_peak",
+      0.039784881819287216
+    ],
+    [
+      "force_z_spectral_centroid_hz",
+      0.03466078956184167
+    ],
+    [
+      "vibration_y_peak",
+      0.03182624198165196
+    ],
+    [
+      "force_z_crest_factor",
+      0.030248784187162224
+    ],
+    [
+      "vibration_x_crest_factor",
+      0.025436849587904986
+    ]
+  ]
+}
