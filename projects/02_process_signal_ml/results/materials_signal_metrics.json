@@ -1,0 +1,95 @@
+{
+  "experiment_name": "materials_signal_intelligence",
+  "task": "high-frequency grinding signal classification and property regression",
+  "sampling_rate_hz": 20000,
+  "nominal_process_seconds": 20.0,
+  "analysis_window_seconds": 1.0,
+  "feature_table_path": "data\\processed\\materials_signal_features.csv",
+  "splits": {
+    "train": 135,
+    "test": 45
+  },
+  "num_features": 55,
+  "quality_label_mapping": {
+    "0": "pass",
+    "1": "reject",
+    "2": "review"
+  },
+  "quality_metrics": {
+    "accuracy": 1.0,
+    "macro_f1": 1.0
+  },
+  "quality_confusion_matrix": [
+    [
+      16,
+      0,
+      0
+    ],
+    [
+      0,
+      14,
+      0
+    ],
+    [
+      0,
+      0,
+      15
+    ]
+  ],
+  "property_metrics": {
+    "mae": 0.0021244027777778994,
+    "rmse": 0.004223361857946835,
+    "r2": 0.9997657588299842
+  },
+  "top_signal_features": [
+    [
+      "F_resultant_rms",
+      0.047420218787947825
+    ],
+    [
+      "Fy_peak",
+      0.045611045010269684
+    ],
+    [
+      "F_resultant_spectral_centroid_hz",
+      0.043171764811357455
+    ],
+    [
+      "Mz_std",
+      0.04217470903107493
+    ],
+    [
+      "Fz_mean",
+      0.04155079064709185
+    ],
+    [
+      "F_resultant_mean",
+      0.04076451271567746
+    ],
+    [
+      "Fz_bandpower_low",
+      0.04003995227483816
+    ],
+    [
+      "Fy_bandpower_low",
+      0.039681810405930155
+    ],
+    [
+      "Mz_rms",
+      0.037211978896546496
+    ],
+    [
+      "Fz_peak",
+      0.03570404736031121
+    ],
+    [
+      "F_resultant_bandpower_low",
+      0.03535829220195211
+    ],
+    [
+      "Fx_peak",
+      0.03499689531208192
+    ]
+  ],
+  "figure_path": "reports/figures/materials_signal_summary.png"
+}
