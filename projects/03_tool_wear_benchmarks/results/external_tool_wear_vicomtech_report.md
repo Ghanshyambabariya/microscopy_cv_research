@@ -14,7 +14,7 @@
 - wear-stage accuracy: `0.6547`
 - wear-stage macro F1: `0.6472`
 
-![External tool wear benchmark](figures/external_tool_wear_vicomtech.png)
+![External tool wear benchmark](external_tool_wear_vicomtech.png)
 
 ## Why This Matters
 

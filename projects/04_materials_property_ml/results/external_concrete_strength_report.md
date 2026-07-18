@@ -11,7 +11,7 @@
 - compressive-strength RMSE: `5.4098`
 - compressive-strength R2: `0.8990`
 
-![External concrete strength benchmark](figures/external_concrete_strength.png)
+![External concrete strength benchmark](external_concrete_strength.png)
 
 ## Why This Matters
 

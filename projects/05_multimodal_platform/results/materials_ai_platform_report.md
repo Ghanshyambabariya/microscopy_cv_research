@@ -14,7 +14,7 @@ This report connects microscopy computer vision, high-frequency materials proces
 - property regression MAE: `0.0021`
 - property regression R2: `0.9998`
 
-![Materials signal summary](figures/materials_signal_summary.png)
+![Materials signal summary](materials_signal_summary.png)
 
 ## Multimodal Fusion
 
@@ -35,9 +35,9 @@ This report connects microscopy computer vision, high-frequency materials proces
 | Vicomtech tool wear | `https://github.com/Vicomtech/dataset-machine-tool-wear` | flank-wear regression + wear-stage classification | tool IDs | R2 `0.8680`, macro F1 `0.6472` |
 | Katulu Uniwear | `https://github.com/katulu-io/uniwear-dataset` | force/vibration window wear prediction | experiment tags | R2 `0.2397`, macro F1 `0.5205` |
 
-![External tool wear benchmark](figures/external_tool_wear_vicomtech.png)
+![External tool wear benchmark](external_tool_wear_vicomtech.png)
 
-![External Uniwear benchmark](figures/external_uniwear_tool_wear.png)
+![External Uniwear benchmark](external_uniwear_tool_wear.png)
 
 ## Large Microscopy Target
 

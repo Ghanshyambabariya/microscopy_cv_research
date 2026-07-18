@@ -14,7 +14,7 @@
 - wear-stage accuracy: `0.5667`
 - wear-stage macro F1: `0.5205`
 
-![External Uniwear benchmark](figures/external_uniwear_tool_wear.png)
+![External Uniwear benchmark](external_uniwear_tool_wear.png)
 
 ## Why This Matters
 
