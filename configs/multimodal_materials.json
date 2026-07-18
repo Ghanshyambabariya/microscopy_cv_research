@@ -1,0 +1,12 @@
+{
+  "experiment_name": "multimodal_materials_intelligence",
+  "microscopy_labels_csv": "data/processed/labels.csv",
+  "signal_feature_table_path": "data/processed/materials_signal_features.csv",
+  "sampling_rate_hz": 20000,
+  "duration_seconds": 20.0,
+  "analysis_window_seconds": 1.0,
+  "n_estimators": 250,
+  "seed": 42,
+  "multimodal_table_path": "data/processed/materials_multimodal_table.csv",
+  "report_path": "reports/multimodal_materials_metrics.json"
+}

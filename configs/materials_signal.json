@@ -1,0 +1,12 @@
+{
+  "experiment_name": "materials_signal_intelligence",
+  "microscopy_labels_csv": "data/processed/labels.csv",
+  "sampling_rate_hz": 20000,
+  "duration_seconds": 20.0,
+  "analysis_window_seconds": 1.0,
+  "n_estimators": 200,
+  "seed": 42,
+  "feature_table_path": "data/processed/materials_signal_features.csv",
+  "report_path": "reports/materials_signal_metrics.json",
+  "figure_path": "reports/figures/materials_signal_summary.png"
+}
