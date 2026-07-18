@@ -1,5 +1,7 @@
 # Methodology Notes
 
+These notes define the standard MicroForge AI should follow as it grows from a portfolio into publishable materials-AI research.
+
 ## Recommended Experimental Order
 
 1. Data audit and label QA
@@ -16,6 +18,20 @@
 - Separate model selection, ablation, and final blind test evaluation
 - Record acquisition metadata: microscope, magnification, stain, illumination, batch
 - Treat synthetic data as a controlled intervention, not as a free accuracy booster
+- Report dataset provenance, license, number of samples, label source, and known bias
+- Include failure cases, not only best examples
+- Compare simple baselines against deep models before claiming improvement
+- Keep train, validation, and test transforms explicit and version controlled
+
+## Professor Review Checklist
+
+| Standard | Expected Evidence |
+|---|---|
+| Dataset validity | source link, label description, sample count, license note |
+| Leakage control | split by physical unit, tool ID, experiment, batch, or acquisition session |
+| Reproducibility | config file, script command, random seed, saved report |
+| Baseline strength | simple model, stronger model, and ablation comparison |
+| Scientific interpretation | error analysis tied back to microstructure/process/property meaning |
 
 ## Minimum Paper-Style Sections
 

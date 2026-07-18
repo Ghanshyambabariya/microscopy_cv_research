@@ -14,6 +14,16 @@ Research-grade materials-AI portfolio connecting **microscopy computer vision**,
 
 The repository is intentionally split into five clean portfolio projects. Each folder has its own README, result figures, benchmark evidence, and run commands.
 
+## Reviewer View
+
+| Reviewer | What They Should Notice First |
+|---|---|
+| Professor / research supervisor | honest dataset labeling, leakage-aware validation, reproducible configs, and clear research upgrade path |
+| Technical hiring manager | end-to-end ML pipelines: data ingestion, cleaning, features, models, metrics, reports, and tests |
+| HR / recruiter | five clean role-specific projects with visual results and a one-line CV story |
+
+Reviewer guide: [docs/reviewer_guide.md](docs/reviewer_guide.md)
+
 ## Choose A Project
 
 | Project | What It Shows | Best Evidence | Role Fit |
@@ -62,6 +72,7 @@ python -m pytest -q
 
 - Portfolio entry point: [README.md](README.md)
 - CV share wording: [docs/cv_share_link.md](docs/cv_share_link.md)
+- Reviewer guide: [docs/reviewer_guide.md](docs/reviewer_guide.md)
 - Project index: [projects/README.md](projects/README.md)
 - Recruiter summary: [docs/recruiter_summary.md](docs/recruiter_summary.md)
 - Dataset cards: [docs/datasets.md](docs/datasets.md)

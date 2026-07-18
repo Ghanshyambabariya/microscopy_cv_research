@@ -2,6 +2,10 @@
 
 These cards summarize the online datasets currently connected to the materials-AI platform.
 
+## Dataset Review Standard
+
+Each dataset should eventually include: source URL, license or usage note, sample count, label definition, split strategy, preprocessing steps, known limitations, and benchmark command.
+
 ## Runnable Datasets
 
 ### Vicomtech dataset-machine-tool-wear
@@ -11,6 +15,7 @@ These cards summarize the online datasets currently connected to the materials-A
 - status: `implemented`
 - runner: `scripts/run_external_tool_wear.py`
 - report: `reports/external_tool_wear_vicomtech_report.md`
+- reviewer note: strongest current real-data manufacturing benchmark because validation is grouped by held-out tool IDs
 
 ### Katulu Uniwear Dataset
 
@@ -19,6 +24,7 @@ These cards summarize the online datasets currently connected to the materials-A
 - status: `implemented`
 - runner: `scripts/run_external_uniwear.py`
 - report: `reports/external_uniwear_tool_wear_report.md`
+- reviewer note: useful for force/vibration wear-stage modeling; temporal deep learning is the next natural upgrade
 
 ### Concrete Compressive Strength
 
@@ -27,6 +33,7 @@ These cards summarize the online datasets currently connected to the materials-A
 - status: `implemented`
 - runner: `scripts/run_external_concrete.py`
 - report: `reports/external_concrete_strength_report.md`
+- reviewer note: compact materials-property regression benchmark for materials-informatics positioning
 
 ## Large Optional Targets
 

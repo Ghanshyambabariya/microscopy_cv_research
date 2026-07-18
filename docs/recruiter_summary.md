@@ -1,12 +1,14 @@
-# Recruiter Summary: MatSci-AI Benchmark Platform
+# Recruiter Summary: MicroForge AI
 
 ## One-Line Pitch
 
-Materials-AI portfolio project combining microscopy computer vision, high-frequency process-signal analysis, materials-property prediction, and multimodal machine learning.
+Research-oriented materials-intelligence portfolio combining microscopy computer vision, high-frequency process-signal analysis, tool-wear prediction, materials-property ML, and multimodal benchmark automation.
 
 ## Why It Is Relevant
 
 This project demonstrates practical ML work across the full data lifecycle: online dataset discovery, download, cleaning, preprocessing, train/test splitting, model training, metrics, visualizations, and reproducible reports.
+
+It is designed to be easy to review: the root README gives the full story, while each project folder gives one focused role-specific case study.
 
 ## Best Evidence
 
@@ -33,5 +35,11 @@ Python, PyTorch, torchvision, scikit-learn, pandas, NumPy, matplotlib, image pro
 
 ## Suggested CV Bullet
 
-Built a materials-AI benchmark platform integrating microscopy CV, high-frequency process-signal ML, and materials-property prediction; implemented real GitHub dataset ingestion, cleaning, leakage-aware splitting, benchmark training, reporting, and visual evidence across SEM, tool-wear, force/vibration, and concrete-strength datasets.
+Built MicroForge AI, a materials-intelligence portfolio integrating microscopy CV, high-frequency process-signal ML, tool-wear prediction, and materials-property regression; implemented real GitHub dataset ingestion, cleaning, leakage-aware splitting, benchmark training, reporting, and visual evidence across SEM, force/vibration, machining, and concrete-strength datasets.
 
+## Reviewer Confidence Signals
+
+- Clear project folders for different job/research directions.
+- Real datasets are separated from simulated development scaffolding.
+- Manufacturing benchmarks use grouped validation where leakage risk is high.
+- Tests and config-driven scripts make the work reproducible instead of notebook-only.
