@@ -1,10 +1,10 @@
 # 04. Materials Property ML
 
-[Back to project index](../README.md) | [Back to portfolio](../../README.md)
+[Back to project index](../README.md) | [Back to main README](../../README.md)
 
 Materials-informatics workflow for predicting properties from composition, processing, and descriptor-style tabular data.
 
-> Role fit: materials informatics, property prediction, structure-property relationships, applied ML.
+Context: materials informatics, property prediction, and structure-property relationships.
 
 ## At A Glance
 

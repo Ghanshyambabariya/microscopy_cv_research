@@ -64,13 +64,13 @@ def main() -> None:
         "",
         "## Large Microscopy Target",
         "",
-        "CoMMonS is a strong next microscopy-material dataset target: it contains 6,912 microscopic fabric-surface images across 24 samples and expert-rated fabric properties. The sampled archive is about 1.1 GB, so it is documented as a large-data target rather than committed directly into this lightweight GitHub portfolio.",
+        "CoMMonS is a strong next microscopy-material dataset target: it contains 6,912 microscopic fabric-surface images across 24 samples and expert-rated fabric properties. The sampled archive is about 1.1 GB, so it is documented as a large-data target rather than committed directly into this lightweight repository.",
         "",
         "## Interpretation",
         "",
         "The current signal data is simulated but physics-inspired: force level, chatter-band energy, torque, bursts, and impulse behavior are linked to material class and property values. This gives a working ML scaffold that can be replaced with real grinding, milling, acoustic-emission, vibration, force, torque, spindle-current, or temperature CSV files.",
         "",
-        "The portfolio value is the full structure: microscopy CV, high-frequency signal features, supervised ML, regression, multimodal fusion, and generated reports.",
+        "The project value is the full structure: microscopy CV, high-frequency signal features, supervised ML, regression, multimodal fusion, and generated reports.",
     ]
     out_path = REPO_ROOT / "reports" / "materials_ai_platform_report.md"
     out_path.write_text("\n".join(lines) + "\n", encoding="utf-8")

@@ -15,9 +15,9 @@ def main() -> None:
     encoder_refs = config["encoder_references"]
 
     markdown_lines = [
-        "# Real Microscopy Benchmark Portfolio",
+        "# Real Microscopy Benchmark Notes",
         "",
-        "This report separates the current synthetic starter benchmark from the real microscopy targets the project should support for a research-grade portfolio.",
+        "This report separates the current synthetic starter benchmark from the real microscopy targets the project should support next.",
         "",
         "## Encoder References",
         "",
@@ -35,7 +35,7 @@ def main() -> None:
             "",
             "## Real Benchmark Targets",
             "",
-            "| Modality | Task | Dataset | Status | Portfolio goal | Source |",
+            "| Modality | Task | Dataset | Status | Project goal | Source |",
             "|---|---|---|---|---|---|",
         ]
     )
@@ -52,7 +52,7 @@ def main() -> None:
             "",
             "- The current repo is a valid framework demonstration, but it is not yet comparable to NASA-style microscopy transfer-learning benchmarks.",
             "- The next scientific step is to ingest at least one real SEM task, one TEM task, and one EBSD task and report task-appropriate metrics.",
-            "- Real portfolio evidence should include actual test images, predicted outputs, metric tables, and failure-case visualizations.",
+            "- Real evidence should include actual test images, predicted outputs, metric tables, and failure-case visualizations.",
             "",
         ]
     )

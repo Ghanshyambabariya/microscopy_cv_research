@@ -1,6 +1,6 @@
-# Real Microscopy Benchmark Portfolio
+# Real Microscopy Benchmark Notes
 
-This report separates the current synthetic starter benchmark from the real microscopy targets the project should support for a research-grade portfolio.
+This report separates the current synthetic starter benchmark from the real microscopy targets the project should support next.
 
 ## Encoder References
 
@@ -11,7 +11,7 @@ This report separates the current synthetic starter benchmark from the real micr
 
 ## Real Benchmark Targets
 
-| Modality | Task | Dataset | Status | Portfolio goal | Source |
+| Modality | Task | Dataset | Status | Project goal | Source |
 |---|---|---|---|---|---|
 | SEM | semantic segmentation | NASA benchmark segmentation data | not yet integrated | Show transfer learning from microscopy encoders on materials microstructure segmentation. | https://github.com/nasa/pretrained-microscopy-models |
 | SEM | indentation-mark segmentation | Indentation mark segmentation data | not yet integrated | Demonstrate defect or feature segmentation on real SEM images tied to materials characterization. | https://zenodo.org/record/7639189 |
@@ -24,4 +24,4 @@ This report separates the current synthetic starter benchmark from the real micr
 
 - The current repo is a valid framework demonstration, but it is not yet comparable to NASA-style microscopy transfer-learning benchmarks.
 - The next scientific step is to ingest at least one real SEM task, one TEM task, and one EBSD task and report task-appropriate metrics.
-- Real portfolio evidence should include actual test images, predicted outputs, metric tables, and failure-case visualizations.
+- Real evidence should include actual test images, predicted outputs, metric tables, and failure-case visualizations.

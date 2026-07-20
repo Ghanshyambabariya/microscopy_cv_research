@@ -1,6 +1,6 @@
 # Methodology Notes
 
-These notes define the standard MicroForge AI should follow as it grows from a portfolio into publishable materials-AI research.
+These notes define the standard MicroForge AI should follow as it grows into publishable materials-AI research.
 
 ## Recommended Experimental Order
 

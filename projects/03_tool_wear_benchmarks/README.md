@@ -1,10 +1,10 @@
 # 03. Real Tool-Wear Benchmarks
 
-[Back to project index](../README.md) | [Back to portfolio](../../README.md)
+[Back to project index](../README.md) | [Back to main README](../../README.md)
 
 Real online machining benchmark project for tool-wear regression and wear-stage classification.
 
-> Role fit: predictive maintenance, machining AI, manufacturing data science, leakage-aware ML.
+Context: machining data, grouped validation, and tool-wear prediction.
 
 ## At A Glance
 

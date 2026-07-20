@@ -35,7 +35,7 @@ This report records a real segmentation baseline trained on NASA's public EBC be
 - This is a real microscopy experiment, not a synthetic starter result.
 - The model segments the dominant foreground phase well.
 - The rare crack-like class is still difficult, but the weighted training run now predicts it instead of collapsing to zero.
-- This is a valid baseline for the portfolio, not the final best model.
+- This is a valid baseline for the project, not the final best model.
 
 ## Prediction Examples
 

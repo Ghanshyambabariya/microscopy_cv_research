@@ -21,7 +21,7 @@ This report is built from NASA's `pretrained-microscopy-models` benchmark segmen
 | Super3 | 1 | 4 | 4 |
 | Super4 | 4 | 4 | 5 |
 
-## Portfolio Figure
+## Result Figure
 
 ![NASA SEM benchmark](reports/figures/real_sem_benchmark.png)
 
@@ -40,6 +40,6 @@ Detailed experiment report: [reports/sem_ebc_segmentation_report.md](reports/sem
 
 ## Interpretation
 
-- This is the first real microscopy benchmark integrated directly into the project portfolio.
+- This is the first real microscopy benchmark integrated directly into the project structure.
 - It is now more than a showcase: the repo contains a trained segmentation baseline with real benchmark metrics.
 - TEM and EBSD are still benchmark targets rather than fully integrated evaluated tasks.

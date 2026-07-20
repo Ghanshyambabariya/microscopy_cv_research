@@ -1,48 +1,34 @@
 <p align="center">
-  <img src="assets/matsci_ai_portfolio.svg" alt="MicroForge AI materials intelligence portfolio banner" width="100%">
+  <img src="assets/matsci_ai_portfolio.svg" alt="MicroForge materials ML banner" width="100%">
 </p>
 
 <p align="center">
   <img alt="Python" src="https://img.shields.io/badge/Python-3.10%2B-3776AB">
   <img alt="ML" src="https://img.shields.io/badge/ML-CV%20%7C%20Signals%20%7C%20Materials-2E8B57">
-  <img alt="Status" src="https://img.shields.io/badge/status-CV--ready%20portfolio-1F6FEB">
+  <img alt="Status" src="https://img.shields.io/badge/status-active%20research%20workspace-1F6FEB">
 </p>
 
-# MicroForge AI: Materials Intelligence Portfolio
+# MicroForge AI: Materials ML Research Workspace
 
-Research-grade materials-AI portfolio connecting **microscopy computer vision**, **manufacturing signal analysis**, **tool-wear prediction**, **materials-property ML**, and **multimodal benchmark automation**.
+This repository is my working materials ML project. It connects microscopy image analysis, manufacturing/process signals, tool-wear prediction, and materials-property regression in one reproducible Python codebase.
 
-The repository is intentionally split into five clean portfolio projects. Each folder has its own README, result figures, benchmark evidence, and run commands.
+The project is split into smaller folders so each part can be checked independently. Shared code is in `src/`, experiment runners are in `scripts/`, configuration files are in `configs/`, and generated outputs are in `reports/`.
 
 ![MicroForge AI system architecture](assets/system_architecture.svg)
 
-## Visual Evidence
+## Project Areas
 
-![Portfolio evidence map](assets/portfolio_evidence_map.svg)
+![Project evidence map](assets/portfolio_evidence_map.svg)
 
-## Reviewer View
+| Project | Main Question | Current Output |
+|---|---|---|
+| [01 Microscopy CV](projects/01_microscopy_cv) | Can a segmentation workflow be built for SEM-style material images? | SEM prediction panels, active-learning log, segmentation metrics |
+| [02 Process Signal ML](projects/02_process_signal_ml) | Can high-frequency force/torque signals be converted into useful process features? | 20 kHz `Fx`, `Fy`, `Fz`, `Mz` feature table and model results |
+| [03 Tool-Wear Benchmarks](projects/03_tool_wear_benchmarks) | How well do models predict wear on real machining datasets? | Vicomtech and Uniwear grouped-validation reports |
+| [04 Materials Property ML](projects/04_materials_property_ml) | Can tabular composition/process variables predict material properties? | concrete compressive-strength regression report |
+| [05 Multimodal Platform](projects/05_multimodal_platform) | Can these experiments be run and summarized from one project structure? | combined leaderboard, reports, and benchmark overview |
 
-| Reviewer | What They Should Notice First |
-|---|---|
-| Professor / research supervisor | honest dataset labeling, leakage-aware validation, reproducible configs, and clear research upgrade path |
-| Technical hiring manager | end-to-end ML pipelines: data ingestion, cleaning, features, models, metrics, reports, and tests |
-| HR / recruiter | five clean role-specific projects with visual results and a one-line CV story |
-
-Reviewer guide: [docs/reviewer_guide.md](docs/reviewer_guide.md)
-
-Advanced system design: [docs/advanced_system_design.md](docs/advanced_system_design.md)
-
-## Choose A Project
-
-| Project | What It Shows | Best Evidence | Role Fit |
-|---|---|---|---|
-| [01 Microscopy CV](projects/01_microscopy_cv) | SEM segmentation, active learning, synthetic microscopy data | NASA EBC SEM predictions and IoU baseline | CV research, microscopy AI |
-| [02 Process Signal ML](projects/02_process_signal_ml) | `Fx`, `Fy`, `Fz`, `Mz` feature engineering for grinding-style signals | 20 kHz signal features and process-quality model | manufacturing ML, sensor analytics |
-| [03 Tool-Wear Benchmarks](projects/03_tool_wear_benchmarks) | Real machining datasets with grouped validation | Vicomtech R2 `0.8680`, Uniwear macro F1 `0.5205` | predictive maintenance, machining AI |
-| [04 Materials Property ML](projects/04_materials_property_ml) | Structure/property regression from tabular materials data | concrete strength R2 `0.8990` | materials informatics |
-| [05 Multimodal Platform](projects/05_multimodal_platform) | Unified benchmark reports, dataset cards, and recruiter summary | portfolio leaderboard and generated reports | ML engineering, research portfolio |
-
-## Headline Results
+## Current Results
 
 | Benchmark | Task | Validation | Result |
 |---|---|---|---|
@@ -57,13 +43,13 @@ Full leaderboard: [reports/materials_ai_leaderboard.md](reports/materials_ai_lea
 ## Repository Map
 
 ```text
-projects/                  Clean project folders for CV/recruiter review
-src/                       Shared reusable Python package
-scripts/                   Download, clean, train, evaluate, and report commands
-configs/                   Dataset and benchmark configurations
-reports/                   Generated metrics, leaderboards, and benchmark summaries
-docs/                      Dataset cards, methodology, CV summary, and roadmaps
-tests/                     Smoke tests for data, models, and benchmark scripts
+projects/                  Short project-specific summaries and copied result figures
+src/                       Reusable Python package
+scripts/                   Data loading, preprocessing, training, evaluation, and reporting
+configs/                   Dataset and benchmark configuration files
+reports/                   Generated metrics, figures, leaderboards, and summaries
+docs/                      Dataset notes, methodology, project summary, and research notes
+tests/                     Smoke tests for data, models, reports, links, and visuals
 ```
 
 ## Quick Start
@@ -76,17 +62,14 @@ python scripts/run_all_benchmarks.py
 python -m pytest -q
 ```
 
-## Best Links For A CV
+## Useful Notes
 
-- Portfolio entry point: [README.md](README.md)
-- CV share wording: [docs/cv_share_link.md](docs/cv_share_link.md)
-- Reviewer guide: [docs/reviewer_guide.md](docs/reviewer_guide.md)
-- Advanced system design: [docs/advanced_system_design.md](docs/advanced_system_design.md)
-- Project index: [projects/README.md](projects/README.md)
-- Recruiter summary: [docs/recruiter_summary.md](docs/recruiter_summary.md)
-- Dataset cards: [docs/datasets.md](docs/datasets.md)
-- Methodology: [docs/methodology.md](docs/methodology.md)
+- [Project summary](docs/project_summary.md)
+- [Research notes](docs/research_notes.md)
+- [System design](docs/advanced_system_design.md)
+- [Dataset cards](docs/datasets.md)
+- [Methodology](docs/methodology.md)
 
-## Positioning
+## Current Status
 
-`MICROFORGE-AI` is designed as a clean proof of materials-AI capability: real datasets where available, honest baseline metrics, leakage-aware validation, reproducible scripts, and clear next research upgrades.
+This is an active research workspace. Some parts use real online datasets, and some parts are scaffolds for future experimental data. The microscopy results are baseline results, not final claims.

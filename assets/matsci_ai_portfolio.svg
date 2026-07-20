@@ -21,7 +21,7 @@
   <circle cx="116" cy="117" r="10" fill="#F7C948"/>
   <circle cx="154" cy="151" r="13" fill="#6CE5D5"/>
   <text x="240" y="105" fill="#F8FAFC" font-family="Segoe UI, Arial, sans-serif" font-size="46" font-weight="700">MicroForge AI</text>
-  <text x="242" y="150" fill="#C9D6E2" font-family="Segoe UI, Arial, sans-serif" font-size="24">Materials Intelligence Portfolio | Microscopy CV | Process Signals | Property ML</text>
+  <text x="242" y="150" fill="#C9D6E2" font-family="Segoe UI, Arial, sans-serif" font-size="24">Materials ML Research Workspace | Microscopy CV | Process Signals | Property ML</text>
   <g font-family="Segoe UI, Arial, sans-serif" font-size="18" font-weight="600">
     <rect x="242" y="188" width="150" height="42" rx="21" fill="#183B46" stroke="#2B8C99"/>
     <text x="270" y="216" fill="#D9FFF8">Real Data</text>

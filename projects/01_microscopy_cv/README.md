@@ -1,10 +1,10 @@
 # 01. Microscopy CV Research
 
-[Back to project index](../README.md) | [Back to portfolio](../../README.md)
+[Back to project index](../README.md) | [Back to main README](../../README.md)
 
 Computer vision workflow for microscopic material images: SEM segmentation, synthetic microscopy generation, active learning, and transfer-learning-ready benchmark structure.
 
-> Role fit: microscopy AI, scientific computer vision, materials characterization, segmentation research.
+Context: microscopy image analysis, semantic segmentation, and low-label learning.
 
 ## At A Glance
 

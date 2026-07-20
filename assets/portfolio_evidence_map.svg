@@ -6,7 +6,7 @@
     .t{font:500 15px Segoe UI,Arial,sans-serif;fill:#34443A}
     .m{font:800 24px Segoe UI,Arial,sans-serif;fill:#0F5E5C}
   </style>
-  <text x="54" y="62" class="title">Portfolio Evidence Map</text>
+  <text x="54" y="62" class="title">Project Evidence Map</text>
   <rect x="54" y="105" width="206" height="260" rx="24" fill="#E7F1F1" stroke="#5FA9A5"/>
   <text x="82" y="150" class="h">Microscopy CV</text>
   <text x="82" y="184" class="t">SEM segmentation</text>

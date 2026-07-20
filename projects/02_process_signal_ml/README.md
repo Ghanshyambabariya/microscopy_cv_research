@@ -1,10 +1,10 @@
 # 02. Materials Process Signal ML
 
-[Back to project index](../README.md) | [Back to portfolio](../../README.md)
+[Back to project index](../README.md) | [Back to main README](../../README.md)
 
 High-frequency process-signal workflow for materials manufacturing, built around grinding-style force and torque channels.
 
-> Role fit: manufacturing analytics, signal processing, sensor fusion, process-property ML.
+Context: manufacturing signals, feature extraction, and process-property modeling.
 
 ## At A Glance
 

@@ -8,7 +8,7 @@ The project already has:
 - grouped train/validation/test splits
 - a showcase page
 
-That makes it a strong framework repo. It does **not** yet make it comparable to NASA's microscopy encoder work or to a real SEM, TEM, or EBSD benchmark portfolio.
+That makes it a useful framework repo. It does **not** yet make it comparable to NASA's microscopy encoder work or to a complete SEM, TEM, or EBSD benchmark.
 
 ## Why It Is Not Yet Comparable
 
@@ -18,7 +18,7 @@ The present classification and regression metrics come from internally generated
 
 ### 2. The modality coverage is incomplete
 
-A serious microscopy portfolio should show at least one real task from each of these:
+A serious microscopy project should show at least one real task from each of these:
 - SEM
 - TEM or cryo-EM
 - EBSD
@@ -33,9 +33,9 @@ Real microscopy projects usually need one or more of:
 - orientation prediction
 - retrieval or representation learning
 
-### 4. The portfolio should show actual test cases
+### 4. The project should show actual test cases
 
-A strong research portfolio page should contain:
+A strong project page should contain:
 - real test images
 - predicted masks or labels
 - metric tables
@@ -70,5 +70,5 @@ The README and showcase should make the following clear:
 1. Integrate one real SEM segmentation dataset
 2. Integrate one real TEM benchmark or EMPIAR-derived subset
 3. Integrate one EBSD benchmark
-4. Add qualitative result panels to the portfolio
+4. Add qualitative result panels to the repository
 5. Add a benchmark comparison table for encoders and tasks

@@ -112,13 +112,13 @@ def write_markdown(summary: list[dict], figure_path: Path, output_path: Path) ->
     lines.extend(
         [
             "",
-            "## Portfolio Figure",
+            "## Result Figure",
             "",
             f"![NASA SEM benchmark]({figure_path.as_posix()})",
             "",
             "## Interpretation",
             "",
-            "- This is the first real microscopy benchmark integrated directly into the project portfolio.",
+            "- This is the first real microscopy benchmark integrated directly into the project structure.",
             "- It is segmentation-focused, so it complements the repo's existing classification and regression starter tracks.",
             "- TEM and EBSD are still benchmark targets rather than fully integrated evaluated tasks.",
         ]
