@@ -28,6 +28,16 @@ The project is split into smaller folders so each part can be checked independen
 | [04 Materials Property ML](projects/04_materials_property_ml) | Can tabular composition/process variables predict material properties? | concrete compressive-strength regression report |
 | [05 Multimodal Platform](projects/05_multimodal_platform) | Can these experiments be run and summarized from one project structure? | combined leaderboard, reports, and benchmark overview |
 
+## Application Links
+
+| If the role is about | Share this project page |
+|---|---|
+| microscopy image analysis | [Microscopy CV](projects/01_microscopy_cv) |
+| high-frequency signal analysis | [Process-Signal ML](projects/02_process_signal_ml) |
+| predictive maintenance or condition monitoring | [Tool-Wear Prediction Benchmark](projects/03_tool_wear_benchmarks) |
+| materials informatics | [Materials Property ML](projects/04_materials_property_ml) |
+| broad ML/research engineering | [Multimodal Platform](projects/05_multimodal_platform) |
+
 ## Current Results
 
 | Benchmark | Task | Validation | Result |

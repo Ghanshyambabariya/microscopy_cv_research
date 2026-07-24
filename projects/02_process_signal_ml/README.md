@@ -1,33 +1,47 @@
-# 02. Materials Process Signal ML
+# Process-Signal ML
 
 [Back to project index](../README.md) | [Back to main README](../../README.md)
 
-High-frequency process-signal workflow for materials manufacturing, built around grinding-style force and torque channels.
+This project turns high-frequency force and moment channels into machine-learning features. The current example uses 20 kHz `Fx`, `Fy`, `Fz`, and `Mz` records so the full pipeline can run without a private machine dataset.
 
-Context: manufacturing signals, feature extraction, and process-property modeling.
+## Why This Project Matters
 
-## At A Glance
+Raw high-frequency signals are usually too large to use directly in simple ML workflows. Windowing and feature extraction make the signal easier to inspect, compare, and model.
 
-| Item | Details |
-|---|---|
-| Data | realistic 20 kHz simulated grinding records for `Fx`, `Fy`, `Fz`, and `Mz` |
-| Tasks | process-quality classification and property regression |
-| Features | RMS, peak, crest factor, spectral centroid, bandpower, resultant force, energy proxy |
-| Current result | process-quality accuracy `1.0000`; property regression R2 `0.9998` |
-| Main command | `python scripts/run_materials_signal.py --config configs/materials_signal.json` |
+## Methods
 
-## Result Snapshot
+- generated synchronized high-frequency force/moment channels
+- segmented the signal into analysis windows
+- extracted RMS, peak, crest factor, spectral centroid, bandpower, resultant force, and energy features
+- trained baseline models for process-state classification and property regression
+- saved signal plots, feature tables, and metrics
+
+## Best Result
+
+| Task | Data | Model | Result |
+|---|---|---|---|
+| process-state classification | 20 kHz force/moment windows | Random Forest | accuracy `1.0000` |
+| property regression | 20 kHz force/moment windows | Random Forest | R2 `0.9998` |
+
+## Relevance
+
+Signal processing, sensor analytics, process monitoring, feature engineering, and process-property modelling.
+
+## Results
 
 ![Materials signal summary](results/materials_signal_summary.png)
 
 Metrics: [results/materials_signal_metrics.json](results/materials_signal_metrics.json)
 
-## What To Inspect
+## Main Files
 
-- `src/microscopy_cv/signal_features.py` for reusable high-frequency feature extraction.
-- `scripts/run_materials_signal.py` for simulation, preprocessing, model training, and reporting.
-- `configs/materials_signal.json` for sampling rate, channel setup, and benchmark parameters.
+- `scripts/run_materials_signal.py`
+- `configs/materials_signal.json`
+- `src/microscopy_cv_research/signals/features.py`
+- `src/microscopy_cv_research/training/materials_signal.py`
 
-## Research Upgrade Path
+## Run
 
-Replace the simulated signals with measured force, acoustic-emission, vibration, spindle-current, or temperature CSV files, then compare classical feature models against 1D CNN, LSTM, and Transformer windows.
+```powershell
+python scripts/run_materials_signal.py --config configs/materials_signal.json
+```
