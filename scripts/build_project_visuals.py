@@ -38,7 +38,7 @@ def system_architecture_svg() -> str:
   <rect width="1400" height="760" fill="url(#bg)"/>
   <circle cx="1190" cy="96" r="105" stroke="#6CE5D5" stroke-opacity=".16" stroke-width="2"/>
   <circle cx="1278" cy="190" r="68" stroke="#F4C95D" stroke-opacity=".18" stroke-width="2"/>
-  <text x="74" y="82" class="title">MicroForge AI Research Architecture</text>
+  <text x="74" y="82" class="title">Materials ML Research Architecture</text>
   <text x="76" y="122" class="subtitle">Data, preprocessing, models, and reports kept as separate reproducible layers.</text>
 
   <rect x="78" y="190" width="270" height="180" class="card" fill="#10243A" stroke="#3F83C6"/>
@@ -78,23 +78,29 @@ def system_architecture_svg() -> str:
   <path d="M867 404 V454" class="muted"/>
   <path d="M1194 404 V454" class="muted"/>
 
-  <rect x="78" y="470" width="360" height="150" class="card" fill="#0D1F32" stroke="#385C8C"/>
-  <text x="108" y="510" class="section">Microscopy CV</text>
-  <text x="108" y="548" class="body">segmentation, prediction panels,</text>
-  <text x="108" y="576" class="body">active learning, SEM benchmarks</text>
-  <text x="108" y="608" class="small">project: 01_microscopy_cv</text>
+  <rect x="62" y="470" width="290" height="150" class="card" fill="#0D1F32" stroke="#385C8C"/>
+  <text x="88" y="510" class="section">Microscopy CV</text>
+  <text x="88" y="548" class="body">segmentation masks</text>
+  <text x="88" y="576" class="body">active learning</text>
+  <text x="88" y="608" class="small">project: 01_microscopy_cv</text>
 
-  <rect x="520" y="470" width="360" height="150" class="card" fill="#102D2D" stroke="#2B8C99"/>
-  <text x="550" y="510" class="section">Signal + Tool Wear</text>
-  <text x="550" y="548" class="body">high-frequency features, grouped</text>
-  <text x="550" y="576" class="body">validation, condition indicators</text>
-  <text x="550" y="608" class="small">projects: 02 and 03</text>
+  <rect x="386" y="470" width="290" height="150" class="card" fill="#102D2D" stroke="#2B8C99"/>
+  <text x="412" y="510" class="section">Process Signals</text>
+  <text x="412" y="548" class="body">20 kHz force windows</text>
+  <text x="412" y="576" class="body">spectral features</text>
+  <text x="412" y="608" class="small">project: 02_process_signal_ml</text>
 
-  <rect x="962" y="470" width="360" height="150" class="card" fill="#2C2818" stroke="#BE9440"/>
-  <text x="992" y="510" class="section">Materials Property ML</text>
-  <text x="992" y="548" class="body">tabular regression, feature</text>
-  <text x="992" y="576" class="body">importance, benchmark reports</text>
-  <text x="992" y="608" class="small">project: 04_materials_property_ml</text>
+  <rect x="710" y="470" width="290" height="150" class="card" fill="#302815" stroke="#BE9440"/>
+  <text x="736" y="510" class="section">Tool Wear</text>
+  <text x="736" y="548" class="body">public machining data</text>
+  <text x="736" y="576" class="body">grouped validation</text>
+  <text x="736" y="608" class="small">project: 03_tool_wear_benchmarks</text>
+
+  <rect x="1034" y="470" width="290" height="150" class="card" fill="#172E20" stroke="#66B879"/>
+  <text x="1060" y="510" class="section">Property ML</text>
+  <text x="1060" y="548" class="body">tabular regression</text>
+  <text x="1060" y="576" class="body">feature importance</text>
+  <text x="1060" y="608" class="small">project: 04_materials_property_ml</text>
 </svg>"""
 
 
@@ -156,7 +162,7 @@ def active_learning_svg() -> str:
 </svg>"""
 
 
-def multimodal_cards_svg() -> str:
+def project_evidence_svg() -> str:
     return """<svg width="1400" height="560" viewBox="0 0 1400 560" fill="none" xmlns="http://www.w3.org/2000/svg">
   <rect width="1400" height="560" rx="30" fill="#F6F8F2"/>
   <style>
@@ -169,55 +175,47 @@ def multimodal_cards_svg() -> str:
     .card{filter:drop-shadow(0 8px 14px rgba(37,45,35,.12))}
   </style>
   <text x="64" y="70" class="title">Project Evidence Map</text>
-  <text x="66" y="104" class="subtitle">Four focused project pages plus one combined benchmark layer.</text>
+  <text x="66" y="104" class="subtitle">Four independent project pages with separate methods and results.</text>
 
-  <rect x="64" y="150" width="240" height="270" rx="24" class="card" fill="#E7F1F1" stroke="#5FA9A5"/>
-  <text x="94" y="190" class="k">PROJECT 01</text>
-  <text x="94" y="228" class="h">Microscopy CV</text>
-  <text x="94" y="264" class="t">SEM segmentation</text>
-  <text x="94" y="292" class="t">active learning</text>
-  <text x="94" y="320" class="t">prediction panels</text>
-  <text x="94" y="376" class="m">IoU 0.1174</text>
+  <rect x="88" y="150" width="270" height="270" rx="24" class="card" fill="#E7F1F1" stroke="#5FA9A5"/>
+  <text x="118" y="190" class="k">PROJECT 01</text>
+  <text x="118" y="228" class="h">Microscopy CV</text>
+  <text x="118" y="264" class="t">SEM segmentation</text>
+  <text x="118" y="292" class="t">active learning</text>
+  <text x="118" y="320" class="t">prediction panels</text>
+  <text x="118" y="376" class="m">IoU 0.1174</text>
 
-  <rect x="338" y="150" width="240" height="270" rx="24" class="card" fill="#EDF0FA" stroke="#859DE5"/>
-  <text x="368" y="190" class="k">PROJECT 02</text>
-  <text x="368" y="228" class="h">Signal ML</text>
-  <text x="368" y="264" class="t">20 kHz windows</text>
-  <text x="368" y="292" class="t">spectral features</text>
-  <text x="368" y="320" class="t">process metrics</text>
-  <text x="368" y="376" class="m">R2 0.9998</text>
+  <rect x="394" y="150" width="270" height="270" rx="24" class="card" fill="#EDF0FA" stroke="#859DE5"/>
+  <text x="424" y="190" class="k">PROJECT 02</text>
+  <text x="424" y="228" class="h">Signal ML</text>
+  <text x="424" y="264" class="t">20 kHz windows</text>
+  <text x="424" y="292" class="t">spectral features</text>
+  <text x="424" y="320" class="t">process metrics</text>
+  <text x="424" y="376" class="m">R2 0.9998</text>
 
-  <rect x="612" y="150" width="240" height="270" rx="24" class="card" fill="#FFF4D8" stroke="#D3AA46"/>
-  <text x="642" y="190" class="k">PROJECT 03</text>
-  <text x="642" y="228" class="h">Tool Wear</text>
-  <text x="642" y="264" class="t">real datasets</text>
-  <text x="642" y="292" class="t">grouped splits</text>
-  <text x="642" y="320" class="t">wear prediction</text>
-  <text x="642" y="376" class="m">R2 0.8680</text>
+  <rect x="700" y="150" width="270" height="270" rx="24" class="card" fill="#FFF4D8" stroke="#D3AA46"/>
+  <text x="730" y="190" class="k">PROJECT 03</text>
+  <text x="730" y="228" class="h">Tool Wear</text>
+  <text x="730" y="264" class="t">real datasets</text>
+  <text x="730" y="292" class="t">grouped splits</text>
+  <text x="730" y="320" class="t">wear prediction</text>
+  <text x="730" y="376" class="m">R2 0.8680</text>
 
-  <rect x="886" y="150" width="240" height="270" rx="24" class="card" fill="#EAF6E7" stroke="#7EBD6E"/>
-  <text x="916" y="190" class="k">PROJECT 04</text>
-  <text x="916" y="228" class="h">Property ML</text>
-  <text x="916" y="264" class="t">tabular features</text>
-  <text x="916" y="292" class="t">feature ranking</text>
-  <text x="916" y="320" class="t">strength model</text>
-  <text x="916" y="376" class="m">R2 0.8990</text>
-
-  <rect x="1160" y="150" width="176" height="270" rx="24" class="card" fill="#EFE9F6" stroke="#A98BD0"/>
-  <text x="1186" y="190" class="k">PROJECT 05</text>
-  <text x="1186" y="228" class="h">Platform</text>
-  <text x="1186" y="264" class="t">configs</text>
-  <text x="1186" y="292" class="t">reports</text>
-  <text x="1186" y="320" class="t">tests</text>
-  <text x="1186" y="376" class="m">13 tests</text>
+  <rect x="1006" y="150" width="270" height="270" rx="24" class="card" fill="#EAF6E7" stroke="#7EBD6E"/>
+  <text x="1036" y="190" class="k">PROJECT 04</text>
+  <text x="1036" y="228" class="h">Property ML</text>
+  <text x="1036" y="264" class="t">tabular features</text>
+  <text x="1036" y="292" class="t">feature ranking</text>
+  <text x="1036" y="320" class="t">strength model</text>
+  <text x="1036" y="376" class="m">R2 0.8990</text>
 </svg>"""
 
 
 def main() -> None:
     write_svg(ASSETS / "system_architecture.svg", system_architecture_svg())
     write_svg(ASSETS / "active_learning_loop.svg", active_learning_svg())
-    write_svg(ASSETS / "portfolio_evidence_map.svg", multimodal_cards_svg())
-    print("wrote portfolio visuals to assets/")
+    write_svg(ASSETS / "project_evidence_map.svg", project_evidence_svg())
+    print("wrote project visuals to assets/")
 
 
 if __name__ == "__main__":

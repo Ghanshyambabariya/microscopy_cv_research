@@ -1,14 +1,14 @@
-# Materials Property ML
+# 04. Materials Property ML
 
 [Back to project index](../README.md) | [Back to main README](../../README.md)
 
-This project predicts a material property from tabular composition and process variables. The current dataset is concrete compressive strength, which is small enough to run quickly and still useful for checking a full property-regression workflow.
+Independent project for material-property regression from tabular composition and process variables.
 
-## Why This Project Matters
+## Why Used
 
 Many materials problems are tabular before they become deep-learning problems. A clean baseline with sensible preprocessing, feature importance, and a clear metric is often the first useful step.
 
-## Methods
+## How Used
 
 - downloaded a public tabular property dataset
 - cleaned numeric features and target values
@@ -17,7 +17,7 @@ Many materials problems are tabular before they become deep-learning problems. A
 - reported MAE, RMSE, R2, and feature importance
 - saved a result plot and Markdown report
 
-## Best Result
+## Final Results
 
 | Dataset | Task | Model | Result |
 |---|---|---|---|
@@ -25,9 +25,9 @@ Many materials problems are tabular before they become deep-learning problems. A
 
 Top drivers in the current model include curing age, cement, water, superplasticizer, and slag.
 
-## Relevance
+## Research Alignment
 
-Materials informatics, structure-property relationships, property prediction, tabular ML, and interpretable baseline modelling.
+The implementation follows materials-informatics baseline practice by using explicit preprocessing, interpretable feature importance, and regression metrics before introducing larger models.
 
 ## Results
 

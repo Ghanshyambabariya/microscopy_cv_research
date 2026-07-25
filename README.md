@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/matsci_ai_portfolio.svg" alt="MicroForge materials ML banner" width="100%">
+  <img src="assets/materials_ml_banner.svg" alt="Materials ML research projects banner" width="100%">
 </p>
 
 <p align="center">
@@ -8,17 +8,17 @@
   <img alt="Status" src="https://img.shields.io/badge/status-active%20research%20workspace-1F6FEB">
 </p>
 
-# MicroForge AI: Materials ML Research Workspace
+# Materials ML Research Projects
 
-This repository is my working materials ML project. It connects microscopy image analysis, manufacturing/process signals, tool-wear prediction, and materials-property regression in one reproducible Python codebase.
+This repository contains four independent materials-machine-learning projects that share a reproducible Python codebase. Each project has its own research question, data path, methods, outputs, and result page.
 
-The project is split into smaller folders so each part can be checked independently. Shared code is in `src/`, experiment runners are in `scripts/`, configuration files are in `configs/`, and generated outputs are in `reports/`.
+Shared code is kept in `src/`, experiment runners are in `scripts/`, configuration files are in `configs/`, and generated outputs are in `reports/`.
 
-![MicroForge AI system architecture](assets/system_architecture.svg)
+![Materials ML research architecture](assets/system_architecture.svg)
 
 ## Project Areas
 
-![Project evidence map](assets/portfolio_evidence_map.svg)
+![Project evidence map](assets/project_evidence_map.svg)
 
 | Project | Method Focus | Current Output |
 |---|---|---|
@@ -26,7 +26,6 @@ The project is split into smaller folders so each part can be checked independen
 | [02 Process Signal ML](projects/02_process_signal_ml) | 20 kHz force/moment feature extraction and ML modelling | `Fx`, `Fy`, `Fz`, `Mz` feature table and model results |
 | [03 Tool-Wear Benchmarks](projects/03_tool_wear_benchmarks) | grouped-validation wear regression and classification | Vicomtech and Uniwear benchmark reports |
 | [04 Materials Property ML](projects/04_materials_property_ml) | tabular preprocessing, property regression, and feature importance | concrete compressive-strength regression report |
-| [05 Multimodal Platform](projects/05_multimodal_platform) | shared benchmark automation and report generation | combined leaderboard, reports, and benchmark overview |
 
 ## Current Results
 
@@ -55,8 +54,8 @@ tests/                     Smoke tests for data, models, reports, links, and vis
 ## Quick Start
 
 ```powershell
-git clone https://github.com/Ghanshyambabariya/microscopy_cv_research.git
-cd microscopy_cv_research
+git clone https://github.com/Ghanshyambabariya/materials-ml-research-projects.git
+cd materials-ml-research-projects
 python -m pip install -e . pytest timm
 python scripts/run_all_benchmarks.py
 python -m pytest -q
@@ -66,6 +65,7 @@ python -m pytest -q
 
 - [Project summary](docs/project_summary.md)
 - [Research notes](docs/research_notes.md)
+- [Research upgrade audit](docs/research_upgrade_audit.md)
 - [System design](docs/advanced_system_design.md)
 - [Dataset cards](docs/datasets.md)
 - [Methodology](docs/methodology.md)

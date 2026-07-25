@@ -1,13 +1,13 @@
 # Project Summary
 
-MicroForge AI is a materials ML research workspace that connects four areas I want to keep developing together:
+This repository contains four separate materials-ML projects:
 
 - microscopy image analysis
 - high-frequency process signals
 - machining/tool-wear prediction
 - materials-property regression
 
-The repository is split into small projects so that each part can be read and tested independently. The shared code lives in `src/`, while scripts, configs, reports, and copied result figures are kept separate.
+The repository is split so each project can be read and tested independently. Shared implementation code lives in `src/`, while scripts, configs, reports, and copied result figures are kept separate.
 
 ## Current Focus
 
@@ -17,11 +17,10 @@ The repository is split into small projects so that each part can be read and te
 | Process signals | 20 kHz force/torque signal simulation and feature extraction |
 | Tool wear | real Vicomtech and Uniwear benchmarks with grouped validation |
 | Property ML | concrete compressive-strength regression from tabular variables |
-| Automation | config-driven benchmark scripts, generated reports, and tests |
 
 ## Short Description
 
-Built a materials ML research workspace combining SEM image segmentation, active learning, process-signal feature extraction, real tool-wear benchmarks, and materials-property regression with reproducible Python scripts and generated reports.
+Four separate materials-ML projects covering SEM image segmentation, high-frequency process-signal feature extraction, real tool-wear benchmarks, and tabular materials-property regression.
 
 ## Current Scope
 

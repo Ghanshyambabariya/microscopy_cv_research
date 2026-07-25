@@ -26,7 +26,7 @@
         "qualitative overlay figures"
       ],
       "current_status": "not yet integrated",
-      "portfolio_goal": "Show transfer learning from microscopy encoders on materials microstructure segmentation."
+      "method_purpose": "Transfer learning from microscopy encoders on materials microstructure segmentation."
     },
     {
       "modality": "SEM",
@@ -40,7 +40,7 @@
         "failure-case gallery"
       ],
       "current_status": "not yet integrated",
-      "portfolio_goal": "Demonstrate defect or feature segmentation on real SEM images tied to materials characterization."
+      "method_purpose": "Defect or feature segmentation on real SEM images tied to materials characterization."
     },
     {
       "modality": "TEM",
@@ -54,7 +54,7 @@
         "embedding visualizations"
       ],
       "current_status": "not yet integrated",
-      "portfolio_goal": "Compare generic, biomedical, and microscopy-specific encoders on real TEM-like imagery."
+      "method_purpose": "Comparison of generic, biomedical, and microscopy-specific encoders on real TEM-like imagery."
     },
     {
       "modality": "TEM",
@@ -67,7 +67,7 @@
         "task-specific previews"
       ],
       "current_status": "partially represented by external showcase only",
-      "portfolio_goal": "Show that the framework is ready to ingest open electron microscopy data, not only synthetic images."
+      "method_purpose": "Open electron microscopy data ingestion reference."
     },
     {
       "modality": "EBSD",
@@ -81,7 +81,7 @@
         "pattern examples"
       ],
       "current_status": "not yet integrated",
-      "portfolio_goal": "Connect microscopy CV with structure-property or crystallographic prediction tasks."
+      "method_purpose": "Connection between microscopy CV and structure-property or crystallographic prediction tasks."
     },
     {
       "modality": "EBSD",
@@ -94,7 +94,7 @@
         "error breakdown"
       ],
       "current_status": "not yet integrated",
-      "portfolio_goal": "Benchmark the repo against a real EBSD-oriented learning task instead of only texture-class toy labels."
+      "method_purpose": "EBSD-oriented learning task reference beyond texture-class labels."
     }
   ]
 }

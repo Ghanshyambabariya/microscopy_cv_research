@@ -48,7 +48,7 @@ def write_dataset_cards() -> None:
     lines = [
         "# Dataset Cards",
         "",
-        "These cards summarize the online datasets currently connected to the materials-AI platform.",
+        "These cards summarize the online datasets currently connected to the separate materials-ML projects.",
         "",
     ]
     for section in ["compact_runnable", "large_targets"]:
@@ -81,4 +81,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

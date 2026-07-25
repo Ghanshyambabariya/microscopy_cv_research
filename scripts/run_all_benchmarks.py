@@ -12,12 +12,10 @@ PYTHON = sys.executable
 
 DEFAULT_COMMANDS = [
     ["scripts/run_materials_signal.py", "--config", "configs/materials_signal.json"],
-    ["scripts/run_multimodal_materials.py", "--config", "configs/multimodal_materials.json"],
     ["scripts/run_external_tool_wear.py", "--config", "configs/external_tool_wear_vicomtech.json"],
     ["scripts/run_external_uniwear.py", "--config", "configs/external_uniwear_tool_wear.json"],
     ["scripts/run_external_concrete.py", "--config", "configs/external_concrete_strength.json"],
     ["scripts/run_external_commons.py", "--config", "configs/external_commons_microscopy.json"],
-    ["scripts/build_materials_ai_report.py"],
     ["scripts/build_materials_ai_leaderboard.py"],
 ]
 
@@ -28,7 +26,7 @@ def run_command(command: list[str]) -> None:
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Run the compact materials-AI benchmark suite.")
+    parser = argparse.ArgumentParser(description="Run the separate materials-ML project benchmark suite.")
     parser.add_argument("--include-sem", action="store_true", help="Also run the slower SEM quick benchmark.")
     args = parser.parse_args()
     commands = DEFAULT_COMMANDS.copy()
@@ -40,4 +38,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

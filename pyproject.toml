@@ -1,7 +1,7 @@
 [project]
-name = "microscopy-cv-research"
+name = "materials-ml-research-projects"
 version = "0.1.0"
-description = "Materials-AI benchmark platform for microscopy CV, process-signal ML, and structure-property prediction"
+description = "Separate materials-ML research projects for microscopy CV, process-signal ML, tool wear, and property prediction"
 readme = "README.md"
 requires-python = ">=3.10"
 authors = [

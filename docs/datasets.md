@@ -1,10 +1,6 @@
 # Dataset Cards
 
-These cards summarize the online datasets currently connected to the materials-AI platform.
-
-## Dataset Card Fields
-
-Dataset cards record source URL, license or usage note, sample count, label definition, split strategy, preprocessing steps, known limitations, and benchmark command.
+These cards summarize the online datasets currently connected to the separate materials-ML projects.
 
 ## Runnable Datasets
 
@@ -15,7 +11,6 @@ Dataset cards record source URL, license or usage note, sample count, label defi
 - status: `implemented`
 - runner: `scripts/run_external_tool_wear.py`
 - report: `reports/external_tool_wear_vicomtech_report.md`
-- note: strongest current real-data manufacturing benchmark because validation is grouped by held-out tool IDs
 
 ### Katulu Uniwear Dataset
 
@@ -24,7 +19,6 @@ Dataset cards record source URL, license or usage note, sample count, label defi
 - status: `implemented`
 - runner: `scripts/run_external_uniwear.py`
 - report: `reports/external_uniwear_tool_wear_report.md`
-- note: force/vibration wear-stage modelling benchmark with window-level signal features
 
 ### Concrete Compressive Strength
 
@@ -33,7 +27,6 @@ Dataset cards record source URL, license or usage note, sample count, label defi
 - status: `implemented`
 - runner: `scripts/run_external_concrete.py`
 - report: `reports/external_concrete_strength_report.md`
-- note: compact materials-property regression benchmark for materials-informatics work
 
 ## Large Optional Targets
 

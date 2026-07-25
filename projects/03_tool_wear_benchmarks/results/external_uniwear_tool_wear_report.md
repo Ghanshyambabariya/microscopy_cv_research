@@ -18,4 +18,4 @@
 
 ## Why This Matters
 
-This benchmark adds a second real online materials-process dataset with vibration and force signals. It tests whether the platform can ingest a different schema, window the time series, extract features, split by experiment, train models, and return quantitative results.
+This benchmark adds a second real online materials-process dataset with vibration and force signals. It tests schema ingestion, time-series windowing, feature extraction, experiment-level splitting, model training, and quantitative reporting.

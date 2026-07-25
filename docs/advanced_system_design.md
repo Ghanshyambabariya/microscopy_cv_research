@@ -1,6 +1,6 @@
 # System Design
 
-MicroForge AI is structured as a research-engineering system, not only a collection of experiments. The goal is to make each dataset runnable while keeping the architecture extensible for stronger encoders, active learning, and multimodal materials modeling.
+The repository is structured as a research-engineering system with four independent projects that share reusable implementation code. The goal is to keep each dataset runnable while preserving separate project documentation and results.
 
 ![System architecture](../assets/system_architecture.svg)
 
@@ -23,13 +23,13 @@ This workflow is especially important for microscopy because labels are expensiv
 
 ## Project Map
 
-![Project evidence map](../assets/portfolio_evidence_map.svg)
+![Project evidence map](../assets/project_evidence_map.svg)
 
 ## Design Notes
 
 - It separates data configs, reusable source code, runner scripts, generated reports, and short project folders.
 - It can accept new SEM/TEM/EBSD datasets through registries instead of rewriting the whole pipeline.
-- It supports a realistic path from baseline models to pretrained microscopy encoders and transformer backbones.
+- It supports a realistic path from baseline models to pretrained microscopy encoders and transformer backbones inside the microscopy project.
 - It keeps current limitations visible instead of hiding baseline results.
 
 ## Experiment Tracking Design

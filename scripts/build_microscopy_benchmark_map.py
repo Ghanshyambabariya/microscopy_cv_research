@@ -15,9 +15,9 @@ def main() -> None:
     encoder_refs = config["encoder_references"]
 
     markdown_lines = [
-        "# Real Microscopy Benchmark Notes",
+        "# Real Microscopy Benchmark Map",
         "",
-        "This report separates the current synthetic starter benchmark from the real microscopy targets the project should support next.",
+        "This report separates implemented microscopy benchmark evidence from documented public benchmark references.",
         "",
         "## Encoder References",
         "",
@@ -35,14 +35,14 @@ def main() -> None:
             "",
             "## Real Benchmark Targets",
             "",
-            "| Modality | Task | Dataset | Status | Project goal | Source |",
+            "| Modality | Task | Dataset | Status | Methodological purpose | Source |",
             "|---|---|---|---|---|---|",
         ]
     )
 
     for item in benchmark_tracks:
         markdown_lines.append(
-            f"| {item['modality']} | {item['task']} | {item['dataset']} | {item['current_status']} | {item['portfolio_goal']} | {item['source_url']} |"
+            f"| {item['modality']} | {item['task']} | {item['dataset']} | {item['current_status']} | {item['method_purpose']} | {item['source_url']} |"
         )
 
     markdown_lines.extend(
@@ -50,15 +50,15 @@ def main() -> None:
             "",
             "## Interpretation",
             "",
-            "- The current repo is a valid framework demonstration, but it is not yet comparable to NASA-style microscopy transfer-learning benchmarks.",
-            "- The next scientific step is to ingest at least one real SEM task, one TEM task, and one EBSD task and report task-appropriate metrics.",
-            "- Real evidence should include actual test images, predicted outputs, metric tables, and failure-case visualizations.",
+            "- Current integrated evidence is SEM segmentation with generated masks, metric tables, and qualitative figures.",
+            "- TEM and EBSD entries are documented as public benchmark references, not reported results.",
+            "- The table separates implemented status from reference status for each modality.",
             "",
         ]
     )
 
-    markdown_path = report_dir / "real_benchmark_portfolio.md"
-    json_path = report_dir / "real_benchmark_portfolio.json"
+    markdown_path = report_dir / "real_microscopy_benchmark_map.md"
+    json_path = report_dir / "real_microscopy_benchmark_map.json"
     markdown_path.write_text("\n".join(markdown_lines), encoding="utf-8")
     json_path.write_text(json.dumps(config, indent=2), encoding="utf-8")
 

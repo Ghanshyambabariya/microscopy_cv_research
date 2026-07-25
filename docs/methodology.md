@@ -1,6 +1,6 @@
 # Methodology
 
-This document describes the experimental method used across the MicroForge AI workspace.
+This document describes the experimental method used across the four independent materials-ML projects.
 
 ## Why These Methods Are Used
 

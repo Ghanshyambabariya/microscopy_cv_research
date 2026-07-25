@@ -1,14 +1,14 @@
-# Tool-Wear Prediction Benchmark
+# 03. Tool-Wear Prediction Benchmark
 
 [Back to project index](../README.md) | [Back to main README](../../README.md)
 
-This project tests tool-wear prediction on real public machining datasets. The main point is to avoid a simple random-row split and evaluate on held-out tools or held-out experiment groups where possible.
+Independent project for tool-wear regression and wear-stage classification on public machining datasets.
 
-## Why This Project Matters
+## Why Used
 
 Tool wear is a practical condition-monitoring problem. The benchmark estimates wear or wear stage from measured process data and evaluates generalization on tools or experiments not seen during training.
 
-## Methods
+## How Used
 
 - downloaded and cleaned real public machining datasets
 - checked numeric columns and target labels
@@ -18,7 +18,7 @@ Tool wear is a practical condition-monitoring problem. The benchmark estimates w
 - reported regression and classification metrics
 - saved plots and Markdown reports
 
-## Best Result
+## Final Results
 
 | Dataset | Task | Split | Result |
 |---|---|---|---|
@@ -26,9 +26,9 @@ Tool wear is a practical condition-monitoring problem. The benchmark estimates w
 | Vicomtech tool wear | wear-stage classification | held-out tool IDs | macro F1 `0.6472` |
 | Katulu Uniwear | wear-stage classification | held-out experiment tags | macro F1 `0.5205` |
 
-## Relevance
+## Research Alignment
 
-Predictive maintenance, condition monitoring, production AI, process monitoring, and remaining-useful-life modelling.
+The implementation uses grouped validation to reduce leakage and reports both regression and classification metrics for practical tool-wear analysis.
 
 ## Results
 

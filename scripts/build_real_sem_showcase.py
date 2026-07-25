@@ -46,7 +46,7 @@ def collect_summary(root: Path) -> list[dict]:
     return records
 
 
-def save_portfolio_figure(root: Path, output_path: Path) -> None:
+def save_sample_figure(root: Path, output_path: Path) -> None:
     sample_specs = [
         ("EBC1", "test"),
         ("Super1", "test"),
@@ -134,7 +134,7 @@ def main() -> None:
     reports_dir = project_root / "reports"
     reports_dir.mkdir(parents=True, exist_ok=True)
     figure_path = project_root / "reports" / "figures" / "real_sem_benchmark.png"
-    save_portfolio_figure(root, figure_path)
+    save_sample_figure(root, figure_path)
 
     summary_json = reports_dir / "real_sem_benchmark_summary.json"
     summary_md = reports_dir / "real_sem_benchmark_showcase.md"

@@ -23,7 +23,7 @@
   <rect width="1400" height="760" fill="url(#bg)"/>
   <circle cx="1190" cy="96" r="105" stroke="#6CE5D5" stroke-opacity=".16" stroke-width="2"/>
   <circle cx="1278" cy="190" r="68" stroke="#F4C95D" stroke-opacity=".18" stroke-width="2"/>
-  <text x="74" y="82" class="title">MicroForge AI Research Architecture</text>
+  <text x="74" y="82" class="title">Materials ML Research Architecture</text>
   <text x="76" y="122" class="subtitle">Data, preprocessing, models, and reports kept as separate reproducible layers.</text>
 
   <rect x="78" y="190" width="270" height="180" class="card" fill="#10243A" stroke="#3F83C6"/>
@@ -63,21 +63,27 @@
   <path d="M867 404 V454" class="muted"/>
   <path d="M1194 404 V454" class="muted"/>
 
-  <rect x="78" y="470" width="360" height="150" class="card" fill="#0D1F32" stroke="#385C8C"/>
-  <text x="108" y="510" class="section">Microscopy CV</text>
-  <text x="108" y="548" class="body">segmentation, prediction panels,</text>
-  <text x="108" y="576" class="body">active learning, SEM benchmarks</text>
-  <text x="108" y="608" class="small">project: 01_microscopy_cv</text>
+  <rect x="62" y="470" width="290" height="150" class="card" fill="#0D1F32" stroke="#385C8C"/>
+  <text x="88" y="510" class="section">Microscopy CV</text>
+  <text x="88" y="548" class="body">segmentation masks</text>
+  <text x="88" y="576" class="body">active learning</text>
+  <text x="88" y="608" class="small">project: 01_microscopy_cv</text>
 
-  <rect x="520" y="470" width="360" height="150" class="card" fill="#102D2D" stroke="#2B8C99"/>
-  <text x="550" y="510" class="section">Signal + Tool Wear</text>
-  <text x="550" y="548" class="body">high-frequency features, grouped</text>
-  <text x="550" y="576" class="body">validation, condition indicators</text>
-  <text x="550" y="608" class="small">projects: 02 and 03</text>
+  <rect x="386" y="470" width="290" height="150" class="card" fill="#102D2D" stroke="#2B8C99"/>
+  <text x="412" y="510" class="section">Process Signals</text>
+  <text x="412" y="548" class="body">20 kHz force windows</text>
+  <text x="412" y="576" class="body">spectral features</text>
+  <text x="412" y="608" class="small">project: 02_process_signal_ml</text>
 
-  <rect x="962" y="470" width="360" height="150" class="card" fill="#2C2818" stroke="#BE9440"/>
-  <text x="992" y="510" class="section">Materials Property ML</text>
-  <text x="992" y="548" class="body">tabular regression, feature</text>
-  <text x="992" y="576" class="body">importance, benchmark reports</text>
-  <text x="992" y="608" class="small">project: 04_materials_property_ml</text>
+  <rect x="710" y="470" width="290" height="150" class="card" fill="#302815" stroke="#BE9440"/>
+  <text x="736" y="510" class="section">Tool Wear</text>
+  <text x="736" y="548" class="body">public machining data</text>
+  <text x="736" y="576" class="body">grouped validation</text>
+  <text x="736" y="608" class="small">project: 03_tool_wear_benchmarks</text>
+
+  <rect x="1034" y="470" width="290" height="150" class="card" fill="#172E20" stroke="#66B879"/>
+  <text x="1060" y="510" class="section">Property ML</text>
+  <text x="1060" y="548" class="body">tabular regression</text>
+  <text x="1060" y="576" class="body">feature importance</text>
+  <text x="1060" y="608" class="small">project: 04_materials_property_ml</text>
 </svg>

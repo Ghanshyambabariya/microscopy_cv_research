@@ -1,14 +1,14 @@
-# Microscopy CV
+# 01. Microscopy CV
 
 [Back to project index](../README.md) | [Back to main README](../../README.md)
 
-This project contains the microscopy image-analysis part of the workspace. It includes semantic segmentation, active-learning logic, and result panels for SEM-style material images.
+Independent project for SEM-style microscopy segmentation, active learning, and visual inspection of predicted masks.
 
-## Why This Project Matters
+## Why Used
 
 Microscopy datasets are often small, expensive to label, and sensitive to imaging conditions. The workflow combines segmentation, visual prediction panels, and active learning for low-label image analysis.
 
-## Methods
+## How Used
 
 - loaded SEM-style image/mask data from dataset registries
 - resized and normalized images for model training
@@ -17,16 +17,16 @@ Microscopy datasets are often small, expensive to label, and sensitive to imagin
 - added an entropy-based active-learning loop
 - saved qualitative prediction panels
 
-## Best Result
+## Final Results
 
 | Dataset | Task | Model | Result |
 |---|---|---|---|
 | NASA EBC SEM suite | semantic segmentation smoke test | UNetSmall | foreground IoU `0.1174` |
 | NASA EBC SEM baseline | semantic segmentation | UNetSmall | pixel accuracy `0.9480` from previous trained run |
 
-## Relevance
+## Research Alignment
 
-Microscopy image analysis, segmentation, active learning, small-data modelling, and visual model inspection.
+The implementation follows current microscopy-CV practice by reporting pixel-level metrics, saving qualitative masks, and using uncertainty sampling for low-label segmentation.
 
 ## Results
 
