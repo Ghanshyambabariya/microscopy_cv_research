@@ -6,7 +6,6 @@ from typing import Any
 import matplotlib.pyplot as plt
 import pandas as pd
 from sklearn.ensemble import RandomForestClassifier, RandomForestRegressor
-from sklearn.metrics import ConfusionMatrixDisplay
 from sklearn.model_selection import GroupShuffleSplit
 from sklearn.pipeline import make_pipeline
 from sklearn.preprocessing import LabelEncoder, StandardScaler
@@ -16,6 +15,7 @@ from microscopy_cv_research.evaluation.metrics import classification_metrics, re
 from microscopy_cv_research.signals.features import extract_signal_features
 from microscopy_cv_research.signals.simulation import simulate_grinding_signals
 from microscopy_cv_research.training.engine import save_json
+from microscopy_cv_research.viz.style import apply_lab_style, annotate_metrics, plot_confusion_panel, save_figure
 
 
 def load_specimen_table(labels_csv: str | Path) -> pd.DataFrame:
@@ -74,21 +74,30 @@ def split_by_specimen(table: pd.DataFrame, seed: int) -> tuple[pd.DataFrame, pd.
 def make_signal_summary_figure(table: pd.DataFrame, report: dict[str, Any], output_path: str | Path) -> None:
     output_path = Path(output_path)
     output_path.parent.mkdir(parents=True, exist_ok=True)
-    fig, axes = plt.subplots(1, 2, figsize=(11, 4))
+    apply_lab_style()
+    fig, axes = plt.subplots(1, 3, figsize=(15, 4.8))
     for quality, group in table.groupby("process_quality"):
-        axes[0].scatter(group["F_resultant_rms"], group["F_resultant_bandpower_high"], label=quality, alpha=0.75)
+        axes[0].scatter(group["F_resultant_rms"], group["F_resultant_bandpower_high"], label=quality, alpha=0.75, edgecolor="#FFFFFF", linewidth=0.3)
     axes[0].set_xlabel("Resultant force RMS")
     axes[0].set_ylabel("High-frequency bandpower")
     axes[0].set_title("Grinding signal feature space")
     axes[0].legend()
+    annotate_metrics(
+        axes[0],
+        {
+            "accuracy": f"{report['quality_metrics']['accuracy']:.3f}",
+            "R2": f"{report['property_metrics']['r2']:.3f}",
+            "features": report["num_features"],
+        },
+    )
 
     labels = report["quality_label_mapping"]
-    display = ConfusionMatrixDisplay(confusion_matrix=pd.DataFrame(report["quality_confusion_matrix"]).values, display_labels=[labels[str(i)] for i in range(len(labels))])
-    display.plot(ax=axes[1], colorbar=False)
-    axes[1].set_title("Process quality classifier")
+    confusion = pd.DataFrame(report["quality_confusion_matrix"]).values
+    display_labels = [labels[str(i)] for i in range(len(labels))]
+    plot_confusion_panel(axes[1], confusion, display_labels, "Process quality counts", normalize=False)
+    plot_confusion_panel(axes[2], confusion, display_labels, "Process quality normalized", normalize=True)
     fig.tight_layout()
-    fig.savefig(output_path, dpi=180, bbox_inches="tight")
-    plt.close(fig)
+    save_figure(fig, output_path)
 
 
 def run_materials_signal_experiment(config_path: str | Path) -> dict[str, Any]:

@@ -4,6 +4,7 @@ version = "0.1.0"
 description = "Separate materials-ML research projects for microscopy CV, process-signal ML, tool wear, and property prediction"
 readme = "README.md"
 requires-python = ">=3.10"
+license = { file = "LICENSE" }
 authors = [
   { name = "Ghanshyambabariya", email = "Ghanshyambabariya1111@gmail.com" }
 ]

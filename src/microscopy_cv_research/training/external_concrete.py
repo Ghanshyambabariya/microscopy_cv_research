@@ -14,6 +14,7 @@ from sklearn.preprocessing import StandardScaler
 from microscopy_cv_research.config import load_config
 from microscopy_cv_research.evaluation.metrics import regression_metrics
 from microscopy_cv_research.training.engine import save_json
+from microscopy_cv_research.viz.style import apply_lab_style, plot_feature_importance_panel, plot_regression_panel, save_figure
 
 
 def download_concrete(config: dict[str, Any]) -> Path:
@@ -45,20 +46,40 @@ def clean_concrete_table(raw_path: str | Path, config: dict[str, Any]) -> tuple[
     return table, audit
 
 
-def make_figure(y_true, y_pred, config: dict[str, Any]) -> None:
+def make_figure(y_true, y_pred, report: dict[str, Any], config: dict[str, Any]) -> None:
     figure_path = Path(config["figure_path"])
     figure_path.parent.mkdir(parents=True, exist_ok=True)
-    fig, ax = plt.subplots(figsize=(5.5, 5))
-    ax.scatter(y_true, y_pred, alpha=0.7)
-    lo = min(min(y_true), min(y_pred))
-    hi = max(max(y_true), max(y_pred))
-    ax.plot([lo, hi], [lo, hi], color="black", linewidth=1)
-    ax.set_xlabel("Measured compressive strength")
-    ax.set_ylabel("Predicted compressive strength")
-    ax.set_title("Concrete strength regression")
+    apply_lab_style()
+    fig, axes = plt.subplots(1, 2, figsize=(12, 5))
+    plot_regression_panel(
+        axes[0],
+        y_true,
+        y_pred,
+        report["regression_metrics"],
+        xlabel="Measured compressive strength (MPa)",
+        ylabel="Predicted compressive strength (MPa)",
+        title="Concrete compressive strength - held-out fit",
+    )
+    label_map = {
+        "cement": "Cement",
+        "slag": "Blast-furnace slag",
+        "ash": "Fly ash",
+        "water": "Water",
+        "superplastic": "Superplasticizer",
+        "coarseagg": "Coarse aggregate",
+        "fineagg": "Fine aggregate",
+        "age": "Curing age",
+    }
+    plot_feature_importance_panel(axes[1], report["top_features"], title="What drives the prediction", max_features=8, label_map=label_map)
+    fig.text(
+        0.01,
+        0.01,
+        "Data: UCI Concrete Compressive Strength | Model: RandomForestRegressor(n_estimators=300) | Held-out split uses seed 42",
+        fontsize=8,
+        color="#5B6B7A",
+    )
     fig.tight_layout()
-    fig.savefig(figure_path, dpi=180, bbox_inches="tight")
-    plt.close(fig)
+    save_figure(fig, figure_path)
 
 
 def write_markdown_report(report: dict[str, Any], config: dict[str, Any]) -> None:
@@ -80,7 +101,7 @@ def write_markdown_report(report: dict[str, Any], config: dict[str, Any]) -> Non
         "",
         "## Why This Matters",
         "",
-        "This benchmark strengthens the materials-informatics side of the platform with a compact real property-prediction dataset: ingredient/process variables to mechanical strength.",
+        "This benchmark tests a compact real property-prediction dataset: ingredient/process variables to mechanical strength.",
     ]
     Path(config["markdown_report_path"]).write_text("\n".join(lines) + "\n", encoding="utf-8")
 
@@ -112,7 +133,6 @@ def run_external_concrete_experiment(config_path: str | Path) -> dict[str, Any]:
         "top_features": sorted(zip(feature_cols, model.named_steps["randomforestregressor"].feature_importances_), key=lambda x: x[1], reverse=True),
     }
     save_json(report, config["report_path"])
-    make_figure(test_df[target].to_numpy(), pred, config)
+    make_figure(test_df[target].to_numpy(), pred, report, config)
     write_markdown_report(report, config)
     return report
-

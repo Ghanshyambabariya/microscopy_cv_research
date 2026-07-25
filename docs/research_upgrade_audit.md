@@ -48,3 +48,4 @@ Research upgrade applied: the structure-property document was renamed from roadm
 - Old shared-layer wording was removed from the visible project list.
 - Guidance, CV, role, application, reviewer, and recommendation phrasing was scanned out of public Markdown.
 - Markdown links and visual assets are covered by tests.
+- Project figures use a shared visualization style with annotated metrics, residual-aware regression plots, normalized confusion matrices, and direct segmentation error-rate labels.

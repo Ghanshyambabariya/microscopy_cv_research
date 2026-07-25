@@ -6,6 +6,7 @@
   <img alt="Python" src="https://img.shields.io/badge/Python-3.10%2B-3776AB">
   <img alt="ML" src="https://img.shields.io/badge/ML-CV%20%7C%20Signals%20%7C%20Materials-2E8B57">
   <img alt="Status" src="https://img.shields.io/badge/status-active%20research%20workspace-1F6FEB">
+  <img alt="CI" src="https://github.com/Ghanshyambabariya/materials-ml-research-projects/actions/workflows/ci.yml/badge.svg">
 </p>
 
 # Materials ML Research Projects
@@ -35,6 +36,7 @@ Shared code is kept in `src/`, experiment runners are in `scripts/`, configurati
 | Vicomtech tool wear | wear-stage classification | held-out tool IDs | macro F1 `0.6472` |
 | Katulu Uniwear | wear-stage classification | held-out experiment tags | macro F1 `0.5205` |
 | Concrete strength | compressive-strength regression | random train/test split | R2 `0.8990` |
+| NASA EBC SEM trained path | semantic segmentation | held-out images | foreground IoU `0.4016` |
 | NASA EBC SEM suite | segmentation smoke test | held-out images | foreground IoU `0.1174` |
 
 Full leaderboard: [reports/materials_ai_leaderboard.md](reports/materials_ai_leaderboard.md)
@@ -49,6 +51,7 @@ configs/                   Dataset and benchmark configuration files
 reports/                   Generated metrics, figures, leaderboards, and summaries
 docs/                      Dataset notes, methodology, project summary, and research notes
 tests/                     Smoke tests for data, models, reports, links, and visuals
+LICENSE                    MIT license for reuse and extension
 ```
 
 ## Quick Start

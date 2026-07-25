@@ -15,4 +15,4 @@
 
 ## Why This Matters
 
-This benchmark strengthens the materials-informatics side of the platform with a compact real property-prediction dataset: ingredient/process variables to mechanical strength.
+This benchmark tests a compact real property-prediction dataset: ingredient/process variables to mechanical strength.

@@ -16,6 +16,7 @@ from microscopy_cv_research.config import load_config
 from microscopy_cv_research.evaluation.metrics import classification_metrics, regression_metrics
 from microscopy_cv_research.signals.features import channel_features
 from microscopy_cv_research.training.engine import save_json
+from microscopy_cv_research.viz.style import COLORS, apply_lab_style, annotate_metrics, plot_feature_importance_panel, save_figure
 
 
 SENSOR_COLUMNS = ("force_z", "vibration_x", "vibration_y")
@@ -92,22 +93,31 @@ def split_by_group(table: pd.DataFrame, config: dict[str, Any]) -> tuple[pd.Data
 def make_figure(feature_table: pd.DataFrame, report: dict[str, Any], config: dict[str, Any]) -> None:
     figure_path = Path(config["figure_path"])
     figure_path.parent.mkdir(parents=True, exist_ok=True)
-    fig, axes = plt.subplots(1, 2, figsize=(12, 4))
+    apply_lab_style()
+    fig, axes = plt.subplots(1, 3, figsize=(15, 4.8))
     for dataset_tag, group in feature_table.groupby("dataset_tag"):
-        axes[0].scatter(group["force_z_rms"], group["vibration_x_rms"], s=10, alpha=0.6, label=dataset_tag)
+        axes[0].scatter(group["force_z_rms"], group["vibration_x_rms"], s=18, alpha=0.68, label=dataset_tag, edgecolor="#FFFFFF", linewidth=0.25)
     axes[0].set_title("Uniwear window feature space")
     axes[0].set_xlabel("force_z RMS")
     axes[0].set_ylabel("vibration_x RMS")
     axes[0].legend()
+    annotate_metrics(
+        axes[0],
+        {
+            "R2": f"{report['tool_wear_regression']['r2']:.3f}",
+            "macro F1": f"{report['wear_stage_classification']['macro_f1']:.3f}",
+            "groups": report["data_audit"]["groups"],
+        },
+    )
 
     stage_counts = pd.Series(report["data_audit"]["wear_stage_counts"])
-    axes[1].bar(stage_counts.index, stage_counts.values)
+    axes[1].bar(stage_counts.index, stage_counts.values, color=COLORS["gold"], alpha=0.86)
     axes[1].set_title("Wear-stage distribution")
     axes[1].set_ylabel("rows")
     axes[1].tick_params(axis="x", rotation=20)
+    plot_feature_importance_panel(axes[2], report["top_features"], title="Top signal-window drivers", max_features=8)
     fig.tight_layout()
-    fig.savefig(figure_path, dpi=180, bbox_inches="tight")
-    plt.close(fig)
+    save_figure(fig, figure_path)
 
 
 def write_markdown_report(report: dict[str, Any], config: dict[str, Any]) -> None:
@@ -132,7 +142,7 @@ def write_markdown_report(report: dict[str, Any], config: dict[str, Any]) -> Non
         "",
         "## Why This Matters",
         "",
-        "This benchmark adds a second real online materials-process dataset with vibration and force signals. It tests whether the platform can ingest a different schema, window the time series, extract features, split by experiment, train models, and return quantitative results.",
+        "This benchmark adds a second real online materials-process dataset with vibration and force signals. It tests schema ingestion, time-series windowing, feature extraction, experiment-level splitting, model training, and quantitative reporting.",
     ]
     Path(config["markdown_report_path"]).write_text("\n".join(lines) + "\n", encoding="utf-8")
 

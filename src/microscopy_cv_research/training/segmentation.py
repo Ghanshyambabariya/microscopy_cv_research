@@ -13,6 +13,7 @@ from torch.utils.data import DataLoader
 from microscopy_cv_research.evaluation.metrics import segmentation_metrics
 from microscopy_cv_research.training.engine import get_device, save_checkpoint, save_json
 from microscopy_cv_research.models.segmentation import create_segmentation_model
+from microscopy_cv_research.viz.style import COLORS, apply_lab_style, save_figure
 
 
 def run_segmentation_epoch(
@@ -75,6 +76,7 @@ def create_prediction_figure(
         predictions = model(images).argmax(dim=1).cpu().numpy()
 
     examples = min(num_examples, images.size(0))
+    apply_lab_style()
     fig, axes = plt.subplots(examples, 5, figsize=(15, 3 * examples))
     if examples == 1:
         axes = np.expand_dims(axes, axis=0)
@@ -92,30 +94,33 @@ def create_prediction_figure(
 
         axes[row, 0].imshow(image)
         axes[row, 0].set_title("Input")
-        axes[row, 1].imshow(masks[row], cmap="viridis", vmin=0, vmax=vmax)
+        gt_artist = axes[row, 1].imshow(masks[row], cmap="viridis", vmin=0, vmax=vmax)
         axes[row, 1].set_title("Ground Truth")
-        axes[row, 2].imshow(predictions[row], cmap="viridis", vmin=0, vmax=vmax)
+        pred_artist = axes[row, 2].imshow(predictions[row], cmap="viridis", vmin=0, vmax=vmax)
         axes[row, 2].set_title("Prediction")
         axes[row, 3].imshow(overlay)
         axes[row, 3].set_title("Prediction Overlay")
-        axes[row, 4].imshow(error_map, cmap="magma", vmin=0, vmax=1)
-        axes[row, 4].set_title("Error Map")
+        error_rate = float(error_map.sum() / max(valid.sum(), 1))
+        error_artist = axes[row, 4].imshow(error_map, cmap="magma", vmin=0, vmax=1)
+        axes[row, 4].set_title(f"Error Map | {error_rate:.1%}")
         for col in range(5):
             axes[row, col].axis("off")
+        fig.colorbar(gt_artist, ax=axes[row, 1], fraction=0.046, pad=0.02)
+        fig.colorbar(pred_artist, ax=axes[row, 2], fraction=0.046, pad=0.02)
+        fig.colorbar(error_artist, ax=axes[row, 4], fraction=0.046, pad=0.02)
 
         metadata.append({
             "image_path": image_paths[row],
             "true_labels": sorted(np.unique(masks[row]).tolist()),
             "pred_labels": sorted(np.unique(predictions[row]).tolist()),
-            "error_rate": float(error_map.sum() / max(valid.sum(), 1)),
+            "error_rate": error_rate,
         })
 
     fig.suptitle(title, fontsize=14)
     fig.tight_layout()
     output_path = Path(output_path)
     output_path.parent.mkdir(parents=True, exist_ok=True)
-    fig.savefig(output_path, dpi=180, bbox_inches="tight")
-    plt.close(fig)
+    save_figure(fig, output_path)
     return metadata
 
 

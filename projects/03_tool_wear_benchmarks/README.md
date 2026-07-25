@@ -26,6 +26,8 @@ Tool wear is a practical condition-monitoring problem. The benchmark estimates w
 | Vicomtech tool wear | wear-stage classification | held-out tool IDs | macro F1 `0.6472` |
 | Katulu Uniwear | wear-stage classification | held-out experiment tags | macro F1 `0.5205` |
 
+The Katulu Uniwear score is reported as a cross-experiment baseline. Its lower value reflects domain shift between experiment tags and is useful for evaluating feature robustness rather than only in-distribution accuracy.
+
 ## Research Alignment
 
 The implementation uses grouped validation to reduce leakage and reports both regression and classification metrics for practical tool-wear analysis.

@@ -21,8 +21,10 @@ Microscopy datasets are often small, expensive to label, and sensitive to imagin
 
 | Dataset | Task | Model | Result |
 |---|---|---|---|
+| NASA EBC SEM trained path | semantic segmentation | UNetSmall | foreground IoU `0.4016`, pixel accuracy `0.9283` |
 | NASA EBC SEM suite | semantic segmentation smoke test | UNetSmall | foreground IoU `0.1174` |
-| NASA EBC SEM baseline | semantic segmentation | UNetSmall | pixel accuracy `0.9480` from previous trained run |
+
+The lower smoke-test value comes from the compact multi-dataset suite, which limits samples for fast reproducible CI-style runs. The trained EBC path uses the dedicated EBC configuration and is the stronger project-specific segmentation result.
 
 ## Research Alignment
 

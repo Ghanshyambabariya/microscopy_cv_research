@@ -4,12 +4,10 @@ from pathlib import Path
 from typing import Any
 from urllib.request import urlretrieve
 
-import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 from sklearn.ensemble import RandomForestClassifier, RandomForestRegressor
 from sklearn.impute import SimpleImputer
-from sklearn.metrics import ConfusionMatrixDisplay
 from sklearn.model_selection import GroupShuffleSplit
 from sklearn.pipeline import make_pipeline
 from sklearn.preprocessing import LabelEncoder, StandardScaler
@@ -17,6 +15,8 @@ from sklearn.preprocessing import LabelEncoder, StandardScaler
 from microscopy_cv_research.config import load_config
 from microscopy_cv_research.evaluation.metrics import classification_metrics, regression_metrics
 from microscopy_cv_research.training.engine import save_json
+from microscopy_cv_research.viz.style import COLORS, apply_lab_style, annotate_metrics, plot_confusion_panel, save_figure
+import matplotlib.pyplot as plt
 
 
 def download_source(config: dict[str, Any]) -> Path:
@@ -76,22 +76,40 @@ def split_by_group(table: pd.DataFrame, config: dict[str, Any]) -> tuple[pd.Data
 def make_figure(table: pd.DataFrame, report: dict[str, Any], config: dict[str, Any]) -> None:
     figure_path = Path(config["figure_path"])
     figure_path.parent.mkdir(parents=True, exist_ok=True)
-    fig, axes = plt.subplots(1, 2, figsize=(12, 4))
+    apply_lab_style()
+    fig, axes = plt.subplots(1, 3, figsize=(15, 4.8))
 
     for tool, group in table.groupby(config["group_column"]):
-        axes[0].plot(group.index, group[config["target_column"]], marker=".", linewidth=0.8, label=f"tool {tool}")
+        axes[0].plot(group.index, group[config["target_column"]], marker=".", linewidth=0.85, alpha=0.82, label=f"tool {tool}")
     axes[0].set_title("Flank wear by segment")
     axes[0].set_xlabel("cleaned row index")
     axes[0].set_ylabel("Vb flank wear")
+    axes[0].legend(ncol=2, fontsize=7)
+    annotate_metrics(
+        axes[0],
+        {
+            "R2": f"{report['flank_wear_regression']['r2']:.3f}",
+            "MAE": f"{report['flank_wear_regression']['mae']:.1f}",
+            "held-out tools": len(report["splits"]["test_groups"]),
+        },
+        loc="upper right",
+    )
 
     labels = report["wear_stage_label_mapping"]
     confusion = np.asarray(report["wear_stage_confusion_matrix"])
-    display = ConfusionMatrixDisplay(confusion_matrix=confusion, display_labels=[labels[str(i)] for i in range(len(labels))])
-    display.plot(ax=axes[1], colorbar=False)
-    axes[1].set_title("Wear-stage classifier")
+    display_labels = [labels[str(i)] for i in range(len(labels))]
+    plot_confusion_panel(axes[1], confusion, display_labels, "Wear-stage counts", normalize=False)
+    plot_confusion_panel(axes[2], confusion, display_labels, "Wear-stage normalized", normalize=True)
+    annotate_metrics(
+        axes[2],
+        {
+            "accuracy": f"{report['wear_stage_classification']['accuracy']:.3f}",
+            "macro F1": f"{report['wear_stage_classification']['macro_f1']:.3f}",
+        },
+        loc="lower right",
+    )
     fig.tight_layout()
-    fig.savefig(figure_path, dpi=180, bbox_inches="tight")
-    plt.close(fig)
+    save_figure(fig, figure_path)
 
 
 def write_markdown_report(report: dict[str, Any], config: dict[str, Any]) -> None:
@@ -165,4 +183,3 @@ def run_external_tool_wear_experiment(config_path: str | Path) -> dict[str, Any]
     make_figure(clean_table, report, config)
     write_markdown_report(report, config)
     return report
-
