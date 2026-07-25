@@ -19,7 +19,7 @@ The repository is split into small projects so that each part can be read and te
 | Property ML | concrete compressive-strength regression from tabular variables |
 | Automation | config-driven benchmark scripts, generated reports, and tests |
 
-## Short CV Description
+## Short Description
 
 Built a materials ML research workspace combining SEM image segmentation, active learning, process-signal feature extraction, real tool-wear benchmarks, and materials-property regression with reproducible Python scripts and generated reports.
 
