@@ -13,170 +13,203 @@ def write_svg(path: Path, body: str) -> None:
 
 
 def system_architecture_svg() -> str:
-    return """<svg width="1200" height="620" viewBox="0 0 1200 620" fill="none" xmlns="http://www.w3.org/2000/svg">
+    return """<svg width="1400" height="760" viewBox="0 0 1400 760" fill="none" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="620" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#08111F"/>
-      <stop offset="0.55" stop-color="#102A35"/>
-      <stop offset="1" stop-color="#172416"/>
+    <linearGradient id="bg" x1="0" y1="0" x2="1400" y2="760" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#07111D"/>
+      <stop offset="0.55" stop-color="#0C2430"/>
+      <stop offset="1" stop-color="#102418"/>
     </linearGradient>
-    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
-      <feDropShadow dx="0" dy="12" stdDeviation="12" flood-color="#000000" flood-opacity="0.35"/>
+    <filter id="shadow" x="-15%" y="-15%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="10" stdDeviation="10" flood-color="#000000" flood-opacity="0.28"/>
     </filter>
     <style>
-      .title{font:700 38px Segoe UI,Arial,sans-serif;fill:#F8FAFC}
-      .subtitle{font:500 18px Segoe UI,Arial,sans-serif;fill:#C9D6E2}
-      .h{font:700 20px Segoe UI,Arial,sans-serif;fill:#F8FAFC}
-      .t{font:500 15px Segoe UI,Arial,sans-serif;fill:#D7E2EA}
-      .tiny{font:600 13px Segoe UI,Arial,sans-serif;fill:#9ED0FF}
-      .box{rx:22;filter:url(#shadow)}
-      .arrow{stroke:#8BD7CE;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+      .title{font:700 42px Segoe UI,Arial,sans-serif;fill:#F8FAFC}
+      .subtitle{font:500 20px Segoe UI,Arial,sans-serif;fill:#C7D2DE}
+      .section{font:700 24px Segoe UI,Arial,sans-serif;fill:#F8FAFC}
+      .body{font:500 17px Segoe UI,Arial,sans-serif;fill:#D9E4EC}
+      .tag{font:700 13px Segoe UI,Arial,sans-serif;letter-spacing:.08em;fill:#88D8CF}
+      .small{font:600 14px Segoe UI,Arial,sans-serif;fill:#A9B8C6}
+      .card{rx:24;filter:url(#shadow)}
+      .line{stroke:#7AD9CF;stroke-width:3;stroke-linecap:round}
+      .muted{stroke:#91A3B5;stroke-width:2;stroke-opacity:.45;stroke-dasharray:8 10}
     </style>
   </defs>
-  <rect width="1200" height="620" fill="url(#bg)"/>
-  <circle cx="1040" cy="90" r="96" stroke="#6CE5D5" stroke-opacity="0.18" stroke-width="2"/>
-  <circle cx="1120" cy="185" r="64" stroke="#F7C948" stroke-opacity="0.20" stroke-width="2"/>
-  <text x="62" y="70" class="title">MicroForge AI Research Architecture</text>
-  <text x="64" y="106" class="subtitle">A multimodal materials-intelligence stack for microscopy, process signals, tool wear, and property prediction.</text>
+  <rect width="1400" height="760" fill="url(#bg)"/>
+  <circle cx="1190" cy="96" r="105" stroke="#6CE5D5" stroke-opacity=".16" stroke-width="2"/>
+  <circle cx="1278" cy="190" r="68" stroke="#F4C95D" stroke-opacity=".18" stroke-width="2"/>
+  <text x="74" y="82" class="title">MicroForge AI Research Architecture</text>
+  <text x="76" y="122" class="subtitle">Data, preprocessing, models, and reports kept as separate reproducible layers.</text>
 
-  <rect x="58" y="165" width="205" height="138" class="box" fill="#10233A" stroke="#3F83C6"/>
-  <text x="84" y="204" class="h">Data Layer</text>
-  <text x="84" y="235" class="t">SEM image registries</text>
-  <text x="84" y="260" class="t">20 kHz force signals</text>
-  <text x="84" y="285" class="t">Tool-wear tables</text>
+  <rect x="78" y="190" width="270" height="180" class="card" fill="#10243A" stroke="#3F83C6"/>
+  <text x="106" y="228" class="tag">01 INPUTS</text>
+  <text x="106" y="268" class="section">Data Layer</text>
+  <text x="106" y="304" class="body">image registries</text>
+  <text x="106" y="332" class="body">sensor tables</text>
+  <text x="106" y="360" class="body">property datasets</text>
 
-  <rect x="345" y="165" width="220" height="138" class="box" fill="#112B31" stroke="#2B8C99"/>
-  <text x="372" y="204" class="h">Preprocessing</text>
-  <text x="372" y="235" class="t">schema checks</text>
-  <text x="372" y="260" class="t">grouped splits</text>
-  <text x="372" y="285" class="t">feature extraction</text>
+  <rect x="405" y="190" width="270" height="180" class="card" fill="#102B31" stroke="#2B8C99"/>
+  <text x="433" y="228" class="tag">02 CLEANING</text>
+  <text x="433" y="268" class="section">Preprocessing</text>
+  <text x="433" y="304" class="body">schema checks</text>
+  <text x="433" y="332" class="body">feature extraction</text>
+  <text x="433" y="360" class="body">grouped splits</text>
 
-  <rect x="650" y="165" width="220" height="138" class="box" fill="#2B2718" stroke="#B9902E"/>
-  <text x="677" y="204" class="h">Model Zoo</text>
-  <text x="677" y="235" class="t">UNet / DeepLab</text>
-  <text x="677" y="260" class="t">MicroNet / Swin ready</text>
-  <text x="677" y="285" class="t">RF / multitask heads</text>
+  <rect x="732" y="190" width="270" height="180" class="card" fill="#302815" stroke="#BE9440"/>
+  <text x="760" y="228" class="tag">03 MODELS</text>
+  <text x="760" y="268" class="section">Model Layer</text>
+  <text x="760" y="304" class="body">UNet / DeepLab</text>
+  <text x="760" y="332" class="body">Random Forest</text>
+  <text x="760" y="360" class="body">encoder registry</text>
 
-  <rect x="955" y="165" width="185" height="138" class="box" fill="#202843" stroke="#6F8FE8"/>
-  <text x="982" y="204" class="h">Evaluation</text>
-  <text x="982" y="235" class="t">IoU / F1 / R2</text>
-  <text x="982" y="260" class="t">leaderboards</text>
-  <text x="982" y="285" class="t">visual reports</text>
+  <rect x="1059" y="190" width="270" height="180" class="card" fill="#202944" stroke="#728FE4"/>
+  <text x="1087" y="228" class="tag">04 OUTPUTS</text>
+  <text x="1087" y="268" class="section">Evaluation</text>
+  <text x="1087" y="304" class="body">IoU / F1 / R2</text>
+  <text x="1087" y="332" class="body">figures</text>
+  <text x="1087" y="360" class="body">Markdown reports</text>
 
-  <path d="M266 234 H337" class="arrow"/>
-  <path d="M568 234 H642" class="arrow"/>
-  <path d="M873 234 H947" class="arrow"/>
-  <path d="M327 400 C430 342 530 342 632 400" class="arrow" stroke-dasharray="8 8"/>
-  <path d="M632 400 C745 462 845 462 958 400" class="arrow" stroke-dasharray="8 8"/>
+  <path d="M356 280 H397" class="line"/>
+  <path d="M683 280 H724" class="line"/>
+  <path d="M1010 280 H1051" class="line"/>
 
-  <rect x="130" y="395" width="235" height="110" class="box" fill="#0F1E31" stroke="#385C8C"/>
-  <text x="158" y="433" class="h">Microscopy CV</text>
-  <text x="158" y="463" class="t">segmentation, overlays, error maps</text>
-  <text x="158" y="488" class="tiny">NASA EBC + SEM suite</text>
+  <path d="M213 404 V454" class="muted"/>
+  <path d="M540 404 V454" class="muted"/>
+  <path d="M867 404 V454" class="muted"/>
+  <path d="M1194 404 V454" class="muted"/>
 
-  <rect x="482" y="395" width="235" height="110" class="box" fill="#102D2D" stroke="#2B8C99"/>
-  <text x="510" y="433" class="h">Active Learning</text>
-  <text x="510" y="463" class="t">MC-dropout entropy acquisition</text>
-  <text x="510" y="488" class="tiny">low-label microscopy loop</text>
+  <rect x="78" y="470" width="360" height="150" class="card" fill="#0D1F32" stroke="#385C8C"/>
+  <text x="108" y="510" class="section">Microscopy CV</text>
+  <text x="108" y="548" class="body">segmentation, prediction panels,</text>
+  <text x="108" y="576" class="body">active learning, SEM benchmarks</text>
+  <text x="108" y="608" class="small">project: 01_microscopy_cv</text>
 
-  <rect x="835" y="395" width="235" height="110" class="box" fill="#30291A" stroke="#B9902E"/>
-  <text x="863" y="433" class="h">Materials ML</text>
-  <text x="863" y="463" class="t">signals, wear, properties</text>
-  <text x="863" y="488" class="tiny">process-structure-property</text>
+  <rect x="520" y="470" width="360" height="150" class="card" fill="#102D2D" stroke="#2B8C99"/>
+  <text x="550" y="510" class="section">Signal + Tool Wear</text>
+  <text x="550" y="548" class="body">high-frequency features, grouped</text>
+  <text x="550" y="576" class="body">validation, condition indicators</text>
+  <text x="550" y="608" class="small">projects: 02 and 03</text>
+
+  <rect x="962" y="470" width="360" height="150" class="card" fill="#2C2818" stroke="#BE9440"/>
+  <text x="992" y="510" class="section">Materials Property ML</text>
+  <text x="992" y="548" class="body">tabular regression, feature</text>
+  <text x="992" y="576" class="body">importance, benchmark reports</text>
+  <text x="992" y="608" class="small">project: 04_materials_property_ml</text>
 </svg>"""
 
 
 def active_learning_svg() -> str:
-    return """<svg width="1200" height="420" viewBox="0 0 1200 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+    return """<svg width="1400" height="460" viewBox="0 0 1400 460" fill="none" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <linearGradient id="bg2" x1="0" y1="0" x2="1200" y2="420" gradientUnits="userSpaceOnUse">
+    <linearGradient id="bg2" x1="0" y1="0" x2="1400" y2="460" gradientUnits="userSpaceOnUse">
       <stop stop-color="#0B1220"/>
       <stop offset="1" stop-color="#16302C"/>
     </linearGradient>
     <style>
-      .title{font:700 34px Segoe UI,Arial,sans-serif;fill:#F8FAFC}
-      .label{font:700 20px Segoe UI,Arial,sans-serif;fill:#F8FAFC}
-      .text{font:500 15px Segoe UI,Arial,sans-serif;fill:#D7E2EA}
-      .step{filter:drop-shadow(0 12px 18px rgba(0,0,0,.35))}
-      .arrow{stroke:#6CE5D5;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}
+      .title{font:700 38px Segoe UI,Arial,sans-serif;fill:#F8FAFC}
+      .label{font:700 22px Segoe UI,Arial,sans-serif;fill:#F8FAFC}
+      .text{font:500 16px Segoe UI,Arial,sans-serif;fill:#D7E2EA}
+      .num{font:700 13px Segoe UI,Arial,sans-serif;letter-spacing:.08em;fill:#75D8D0}
+      .step{filter:drop-shadow(0 10px 14px rgba(0,0,0,.28))}
+      .arrow{stroke:#6CE5D5;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+      .loop{stroke:#8FA6B8;stroke-width:2;stroke-dasharray:8 10;stroke-opacity:.55}
     </style>
   </defs>
-  <rect width="1200" height="420" rx="28" fill="url(#bg2)"/>
-  <text x="54" y="65" class="title">Low-Label SEM Active Learning Loop</text>
+  <rect width="1400" height="460" rx="30" fill="url(#bg2)"/>
+  <text x="64" y="72" class="title">Low-Label SEM Active Learning Loop</text>
   <g class="step">
-    <rect x="62" y="145" width="180" height="120" rx="22" fill="#13243B" stroke="#4D89C8"/>
-    <text x="91" y="188" class="label">Seed Labels</text>
-    <text x="91" y="220" class="text">small expert set</text>
+    <rect x="64" y="150" width="210" height="130" rx="22" fill="#13243B" stroke="#4D89C8"/>
+    <text x="94" y="188" class="num">STEP 01</text>
+    <text x="94" y="224" class="label">Seed Labels</text>
+    <text x="94" y="254" class="text">small labeled subset</text>
   </g>
   <g class="step">
-    <rect x="305" y="145" width="180" height="120" rx="22" fill="#122D35" stroke="#2B8C99"/>
-    <text x="333" y="188" class="label">Train UNet</text>
-    <text x="333" y="220" class="text">class-weighted loss</text>
+    <rect x="344" y="150" width="210" height="130" rx="22" fill="#122D35" stroke="#2B8C99"/>
+    <text x="374" y="188" class="num">STEP 02</text>
+    <text x="374" y="224" class="label">Train Model</text>
+    <text x="374" y="254" class="text">segmentation baseline</text>
   </g>
   <g class="step">
-    <rect x="548" y="145" width="205" height="120" rx="22" fill="#302B1A" stroke="#B9902E"/>
-    <text x="578" y="188" class="label">Predict Pool</text>
-    <text x="578" y="220" class="text">MC dropout entropy</text>
+    <rect x="624" y="150" width="230" height="130" rx="22" fill="#302B1A" stroke="#B9902E"/>
+    <text x="654" y="188" class="num">STEP 03</text>
+    <text x="654" y="224" class="label">Score Pool</text>
+    <text x="654" y="254" class="text">uncertainty ranking</text>
   </g>
   <g class="step">
-    <rect x="817" y="145" width="170" height="120" rx="22" fill="#202843" stroke="#6F8FE8"/>
-    <text x="847" y="188" class="label">Acquire</text>
-    <text x="847" y="220" class="text">most uncertain</text>
+    <rect x="924" y="150" width="210" height="130" rx="22" fill="#202843" stroke="#6F8FE8"/>
+    <text x="954" y="188" class="num">STEP 04</text>
+    <text x="954" y="224" class="label">Select</text>
+    <text x="954" y="254" class="text">highest uncertainty</text>
   </g>
   <g class="step">
-    <rect x="1045" y="145" width="105" height="120" rx="22" fill="#172E20" stroke="#66B879"/>
-    <text x="1072" y="188" class="label">Report</text>
-    <text x="1071" y="220" class="text">IoU/F1</text>
+    <rect x="1204" y="150" width="132" height="130" rx="22" fill="#172E20" stroke="#66B879"/>
+    <text x="1231" y="188" class="num">STEP 05</text>
+    <text x="1231" y="224" class="label">Report</text>
+    <text x="1231" y="254" class="text">IoU / F1</text>
   </g>
-  <path d="M245 205 H298" class="arrow"/>
-  <path d="M488 205 H541" class="arrow"/>
-  <path d="M756 205 H810" class="arrow"/>
-  <path d="M990 205 H1038" class="arrow"/>
-  <path d="M902 286 C780 360 472 360 392 286" class="arrow" stroke-dasharray="9 9"/>
-  <text x="502" y="357" class="text">new labels are added, then the model is retrained and benchmarked again</text>
+  <path d="M282 215 H336" class="arrow"/>
+  <path d="M562 215 H616" class="arrow"/>
+  <path d="M862 215 H916" class="arrow"/>
+  <path d="M1142 215 H1196" class="arrow"/>
+  <path d="M1030 314 C860 395 520 395 450 314" class="loop"/>
+  <text x="520" y="382" class="text">selected samples are added to the labeled set, then the model is trained again</text>
 </svg>"""
 
 
 def multimodal_cards_svg() -> str:
-    return """<svg width="1200" height="470" viewBox="0 0 1200 470" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect width="1200" height="470" rx="30" fill="#F6F8F2"/>
+    return """<svg width="1400" height="560" viewBox="0 0 1400 560" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1400" height="560" rx="30" fill="#F6F8F2"/>
   <style>
-    .title{font:800 34px Segoe UI,Arial,sans-serif;fill:#132019}
-    .h{font:800 22px Segoe UI,Arial,sans-serif;fill:#132019}
-    .t{font:500 15px Segoe UI,Arial,sans-serif;fill:#34443A}
-    .m{font:800 24px Segoe UI,Arial,sans-serif;fill:#0F5E5C}
+    .title{font:800 38px Segoe UI,Arial,sans-serif;fill:#132019}
+    .subtitle{font:500 18px Segoe UI,Arial,sans-serif;fill:#506056}
+    .h{font:800 23px Segoe UI,Arial,sans-serif;fill:#132019}
+    .t{font:500 16px Segoe UI,Arial,sans-serif;fill:#34443A}
+    .m{font:800 25px Segoe UI,Arial,sans-serif;fill:#0F5E5C}
+    .k{font:700 12px Segoe UI,Arial,sans-serif;letter-spacing:.08em;fill:#607167}
+    .card{filter:drop-shadow(0 8px 14px rgba(37,45,35,.12))}
   </style>
-  <text x="54" y="62" class="title">Project Evidence Map</text>
-  <rect x="54" y="105" width="206" height="260" rx="24" fill="#E7F1F1" stroke="#5FA9A5"/>
-  <text x="82" y="150" class="h">Microscopy CV</text>
-  <text x="82" y="184" class="t">SEM segmentation</text>
-  <text x="82" y="210" class="t">active learning</text>
-  <text x="82" y="236" class="t">synthetic data</text>
-  <text x="82" y="306" class="m">IoU 0.1174</text>
-  <rect x="286" y="105" width="206" height="260" rx="24" fill="#EDF0FA" stroke="#859DE5"/>
-  <text x="314" y="150" class="h">Signal ML</text>
-  <text x="314" y="184" class="t">20 kHz force data</text>
-  <text x="314" y="210" class="t">spectral features</text>
-  <text x="314" y="236" class="t">quality regression</text>
-  <text x="314" y="306" class="m">R2 0.9998</text>
-  <rect x="518" y="105" width="206" height="260" rx="24" fill="#FFF4D8" stroke="#D3AA46"/>
-  <text x="546" y="150" class="h">Tool Wear</text>
-  <text x="546" y="184" class="t">real datasets</text>
-  <text x="546" y="210" class="t">grouped splits</text>
-  <text x="546" y="236" class="t">wear stages</text>
-  <text x="546" y="306" class="m">R2 0.8680</text>
-  <rect x="750" y="105" width="206" height="260" rx="24" fill="#EAF6E7" stroke="#7EBD6E"/>
-  <text x="778" y="150" class="h">Property ML</text>
-  <text x="778" y="184" class="t">composition table</text>
-  <text x="778" y="210" class="t">feature importance</text>
-  <text x="778" y="236" class="t">strength prediction</text>
-  <text x="778" y="306" class="m">R2 0.8990</text>
-  <rect x="982" y="105" width="164" height="260" rx="24" fill="#EFE9F6" stroke="#A98BD0"/>
-  <text x="1010" y="150" class="h">Platform</text>
-  <text x="1010" y="184" class="t">configs</text>
-  <text x="1010" y="210" class="t">reports</text>
-  <text x="1010" y="236" class="t">tests</text>
-  <text x="1010" y="306" class="m">11 tests</text>
+  <text x="64" y="70" class="title">Project Evidence Map</text>
+  <text x="66" y="104" class="subtitle">Four focused project pages plus one combined benchmark layer.</text>
+
+  <rect x="64" y="150" width="240" height="270" rx="24" class="card" fill="#E7F1F1" stroke="#5FA9A5"/>
+  <text x="94" y="190" class="k">PROJECT 01</text>
+  <text x="94" y="228" class="h">Microscopy CV</text>
+  <text x="94" y="264" class="t">SEM segmentation</text>
+  <text x="94" y="292" class="t">active learning</text>
+  <text x="94" y="320" class="t">prediction panels</text>
+  <text x="94" y="376" class="m">IoU 0.1174</text>
+
+  <rect x="338" y="150" width="240" height="270" rx="24" class="card" fill="#EDF0FA" stroke="#859DE5"/>
+  <text x="368" y="190" class="k">PROJECT 02</text>
+  <text x="368" y="228" class="h">Signal ML</text>
+  <text x="368" y="264" class="t">20 kHz windows</text>
+  <text x="368" y="292" class="t">spectral features</text>
+  <text x="368" y="320" class="t">process metrics</text>
+  <text x="368" y="376" class="m">R2 0.9998</text>
+
+  <rect x="612" y="150" width="240" height="270" rx="24" class="card" fill="#FFF4D8" stroke="#D3AA46"/>
+  <text x="642" y="190" class="k">PROJECT 03</text>
+  <text x="642" y="228" class="h">Tool Wear</text>
+  <text x="642" y="264" class="t">real datasets</text>
+  <text x="642" y="292" class="t">grouped splits</text>
+  <text x="642" y="320" class="t">wear prediction</text>
+  <text x="642" y="376" class="m">R2 0.8680</text>
+
+  <rect x="886" y="150" width="240" height="270" rx="24" class="card" fill="#EAF6E7" stroke="#7EBD6E"/>
+  <text x="916" y="190" class="k">PROJECT 04</text>
+  <text x="916" y="228" class="h">Property ML</text>
+  <text x="916" y="264" class="t">tabular features</text>
+  <text x="916" y="292" class="t">feature ranking</text>
+  <text x="916" y="320" class="t">strength model</text>
+  <text x="916" y="376" class="m">R2 0.8990</text>
+
+  <rect x="1160" y="150" width="176" height="270" rx="24" class="card" fill="#EFE9F6" stroke="#A98BD0"/>
+  <text x="1186" y="190" class="k">PROJECT 05</text>
+  <text x="1186" y="228" class="h">Platform</text>
+  <text x="1186" y="264" class="t">configs</text>
+  <text x="1186" y="292" class="t">reports</text>
+  <text x="1186" y="320" class="t">tests</text>
+  <text x="1186" y="376" class="m">13 tests</text>
 </svg>"""
 
 

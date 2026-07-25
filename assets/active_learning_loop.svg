@@ -1,48 +1,55 @@
-<svg width="1200" height="420" viewBox="0 0 1200 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg width="1400" height="460" viewBox="0 0 1400 460" fill="none" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <linearGradient id="bg2" x1="0" y1="0" x2="1200" y2="420" gradientUnits="userSpaceOnUse">
+    <linearGradient id="bg2" x1="0" y1="0" x2="1400" y2="460" gradientUnits="userSpaceOnUse">
       <stop stop-color="#0B1220"/>
       <stop offset="1" stop-color="#16302C"/>
     </linearGradient>
     <style>
-      .title{font:700 34px Segoe UI,Arial,sans-serif;fill:#F8FAFC}
-      .label{font:700 20px Segoe UI,Arial,sans-serif;fill:#F8FAFC}
-      .text{font:500 15px Segoe UI,Arial,sans-serif;fill:#D7E2EA}
-      .step{filter:drop-shadow(0 12px 18px rgba(0,0,0,.35))}
-      .arrow{stroke:#6CE5D5;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}
+      .title{font:700 38px Segoe UI,Arial,sans-serif;fill:#F8FAFC}
+      .label{font:700 22px Segoe UI,Arial,sans-serif;fill:#F8FAFC}
+      .text{font:500 16px Segoe UI,Arial,sans-serif;fill:#D7E2EA}
+      .num{font:700 13px Segoe UI,Arial,sans-serif;letter-spacing:.08em;fill:#75D8D0}
+      .step{filter:drop-shadow(0 10px 14px rgba(0,0,0,.28))}
+      .arrow{stroke:#6CE5D5;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+      .loop{stroke:#8FA6B8;stroke-width:2;stroke-dasharray:8 10;stroke-opacity:.55}
     </style>
   </defs>
-  <rect width="1200" height="420" rx="28" fill="url(#bg2)"/>
-  <text x="54" y="65" class="title">Low-Label SEM Active Learning Loop</text>
+  <rect width="1400" height="460" rx="30" fill="url(#bg2)"/>
+  <text x="64" y="72" class="title">Low-Label SEM Active Learning Loop</text>
   <g class="step">
-    <rect x="62" y="145" width="180" height="120" rx="22" fill="#13243B" stroke="#4D89C8"/>
-    <text x="91" y="188" class="label">Seed Labels</text>
-    <text x="91" y="220" class="text">small expert set</text>
+    <rect x="64" y="150" width="210" height="130" rx="22" fill="#13243B" stroke="#4D89C8"/>
+    <text x="94" y="188" class="num">STEP 01</text>
+    <text x="94" y="224" class="label">Seed Labels</text>
+    <text x="94" y="254" class="text">small labeled subset</text>
   </g>
   <g class="step">
-    <rect x="305" y="145" width="180" height="120" rx="22" fill="#122D35" stroke="#2B8C99"/>
-    <text x="333" y="188" class="label">Train UNet</text>
-    <text x="333" y="220" class="text">class-weighted loss</text>
+    <rect x="344" y="150" width="210" height="130" rx="22" fill="#122D35" stroke="#2B8C99"/>
+    <text x="374" y="188" class="num">STEP 02</text>
+    <text x="374" y="224" class="label">Train Model</text>
+    <text x="374" y="254" class="text">segmentation baseline</text>
   </g>
   <g class="step">
-    <rect x="548" y="145" width="205" height="120" rx="22" fill="#302B1A" stroke="#B9902E"/>
-    <text x="578" y="188" class="label">Predict Pool</text>
-    <text x="578" y="220" class="text">MC dropout entropy</text>
+    <rect x="624" y="150" width="230" height="130" rx="22" fill="#302B1A" stroke="#B9902E"/>
+    <text x="654" y="188" class="num">STEP 03</text>
+    <text x="654" y="224" class="label">Score Pool</text>
+    <text x="654" y="254" class="text">uncertainty ranking</text>
   </g>
   <g class="step">
-    <rect x="817" y="145" width="170" height="120" rx="22" fill="#202843" stroke="#6F8FE8"/>
-    <text x="847" y="188" class="label">Acquire</text>
-    <text x="847" y="220" class="text">most uncertain</text>
+    <rect x="924" y="150" width="210" height="130" rx="22" fill="#202843" stroke="#6F8FE8"/>
+    <text x="954" y="188" class="num">STEP 04</text>
+    <text x="954" y="224" class="label">Select</text>
+    <text x="954" y="254" class="text">highest uncertainty</text>
   </g>
   <g class="step">
-    <rect x="1045" y="145" width="105" height="120" rx="22" fill="#172E20" stroke="#66B879"/>
-    <text x="1072" y="188" class="label">Report</text>
-    <text x="1071" y="220" class="text">IoU/F1</text>
+    <rect x="1204" y="150" width="132" height="130" rx="22" fill="#172E20" stroke="#66B879"/>
+    <text x="1231" y="188" class="num">STEP 05</text>
+    <text x="1231" y="224" class="label">Report</text>
+    <text x="1231" y="254" class="text">IoU / F1</text>
   </g>
-  <path d="M245 205 H298" class="arrow"/>
-  <path d="M488 205 H541" class="arrow"/>
-  <path d="M756 205 H810" class="arrow"/>
-  <path d="M990 205 H1038" class="arrow"/>
-  <path d="M902 286 C780 360 472 360 392 286" class="arrow" stroke-dasharray="9 9"/>
-  <text x="502" y="357" class="text">new labels are added, then the model is retrained and benchmarked again</text>
+  <path d="M282 215 H336" class="arrow"/>
+  <path d="M562 215 H616" class="arrow"/>
+  <path d="M862 215 H916" class="arrow"/>
+  <path d="M1142 215 H1196" class="arrow"/>
+  <path d="M1030 314 C860 395 520 395 450 314" class="loop"/>
+  <text x="520" y="382" class="text">selected samples are added to the labeled set, then the model is trained again</text>
 </svg>
