@@ -1,45 +1,36 @@
-# Methodology Notes
+# Methodology
 
-These notes define the standard MicroForge AI should follow as it grows into publishable materials-AI research.
+This document describes the experimental method used across the MicroForge AI workspace.
 
-## Recommended Experimental Order
+## Why These Methods Are Used
 
-1. Data audit and label QA
-2. Supervised classification benchmark
-3. Supervised regression benchmark for structure-property prediction
-4. Synthetic generation quality study
-5. Synthetic-to-real downstream utility study
-6. Hybrid multitask or consistency-based learning
+Materials datasets often combine small image sets, high-frequency process signals, tabular properties, and experiment-level grouping. The methodology therefore emphasizes leakage control, reproducible preprocessing, baseline comparison, and clear separation between real benchmark data and development scaffolds.
 
-## Research Standards To Preserve
+## How They Are Applied
 
-- Split by specimen, patient, wafer, batch, or acquisition session
-- Report mean and standard deviation across multiple seeds
-- Separate model selection, ablation, and final blind test evaluation
-- Record acquisition metadata: microscope, magnification, stain, illumination, batch
-- Treat synthetic data as a controlled intervention, not as a free accuracy booster
-- Report dataset provenance, license, number of samples, label source, and known bias
-- Include failure cases, not only best examples
-- Compare simple baselines against deep models before claiming improvement
-- Keep train, validation, and test transforms explicit and version controlled
+- Data audit and label QA are run before model training.
+- Train/test splits use specimen, tool, batch, or experiment groups where metadata allows it.
+- Classification, regression, and segmentation tasks are evaluated with task-specific metrics.
+- Synthetic data is treated as controlled augmentation or pipeline scaffolding, not as real benchmark evidence.
+- Dataset provenance, license notes, sample counts, label definitions, split strategy, preprocessing, and limitations are recorded in dataset cards.
+- Figures and reports are generated from scripts rather than hand-written result summaries.
 
-## Professor Review Checklist
+## Method Blocks
 
-| Standard | Expected Evidence |
+| Method block | Purpose | Output |
 |---|---|
-| Dataset validity | source link, label description, sample count, license note |
-| Leakage control | split by physical unit, tool ID, experiment, batch, or acquisition session |
-| Reproducibility | config file, script command, random seed, saved report |
-| Baseline strength | simple model, stronger model, and ablation comparison |
-| Scientific interpretation | error analysis tied back to microstructure/process/property meaning |
+| Data ingestion | load public datasets or generated development data | cleaned tables, manifests, sample previews |
+| Preprocessing | standardize images, signals, and tabular variables | normalized arrays and feature matrices |
+| Feature extraction | convert raw signals and metadata into ML inputs | RMS, spectral, energy, force, and property descriptors |
+| Model training | fit baseline ML and segmentation models | saved metrics and qualitative outputs |
+| Evaluation | report held-out performance using suitable metrics | Markdown reports, JSON metrics, figures |
 
-## Minimum Paper-Style Sections
+## Current Results
 
-- Problem statement
-- Data acquisition and labeling
-- Preprocessing and split strategy
-- Encoder comparison
-- Synthetic generation method
-- Hybrid learning method
-- Downstream evaluation
-- Error analysis and failure cases
+| Benchmark | Task | Result |
+|---|---|---|
+| Vicomtech tool wear | held-out tool-ID regression | R2 `0.8680` |
+| Vicomtech tool wear | held-out tool-ID wear-stage classification | macro F1 `0.6472` |
+| Katulu Uniwear | held-out experiment wear-stage classification | macro F1 `0.5205` |
+| Concrete strength | tabular property regression | R2 `0.8990` |
+| NASA EBC SEM suite | segmentation smoke test | foreground IoU `0.1174` |

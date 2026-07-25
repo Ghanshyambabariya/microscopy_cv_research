@@ -24,13 +24,13 @@ Context: benchmark automation, multimodal materials data, and generated reports.
 
 Reports: [leaderboard](results/materials_ai_leaderboard.md) | [platform report](results/materials_ai_platform_report.md)
 
-## What To Inspect
+## Methodology
 
-- `scripts/run_all_benchmarks.py` for the unified benchmark runner.
-- `scripts/build_materials_ai_leaderboard.py` for collecting metrics into one table.
-- `docs/project_summary.md` for a short project overview.
-- `docs/datasets.md` for dataset cards and limitations.
+The platform uses shared configuration files, dataset cards, benchmark runners, and generated reports to keep microscopy, signal, tool-wear, and property-regression experiments reproducible from one codebase.
 
-## Research Upgrade Path
+## Implementation
 
-Build a lightweight dashboard or GitHub Pages site, add model cards, and track dataset-by-dataset performance changes after active-learning retraining.
+- `scripts/run_all_benchmarks.py`: unified benchmark runner
+- `scripts/build_materials_ai_leaderboard.py`: metric collection and leaderboard generation
+- `docs/project_summary.md`: project-level summary
+- `docs/datasets.md`: dataset cards and limitations

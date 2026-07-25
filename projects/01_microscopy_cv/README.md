@@ -6,7 +6,7 @@ This project contains the microscopy image-analysis part of the workspace. It in
 
 ## Why This Project Matters
 
-Microscopy datasets are often small, expensive to label, and sensitive to imaging conditions. A useful workflow should handle segmentation, show predictions visually, and keep the path open for low-label training.
+Microscopy datasets are often small, expensive to label, and sensitive to imaging conditions. The workflow combines segmentation, visual prediction panels, and active learning for low-label image analysis.
 
 ## Methods
 

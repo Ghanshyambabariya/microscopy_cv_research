@@ -1,14 +1,14 @@
-# Materials AI Platform Direction
+# Materials AI Platform
 
-MicroForge AI is evolving from a microscopy-only computer-vision repository into a broader materials-AI workspace.
+MicroForge AI combines microscopy computer vision, high-frequency process-signal analysis, tool-wear benchmarks, and materials-property regression in one reproducible Python workspace.
 
-## Core Research Question
+## Research Objective
 
-Can microscopy images and high-frequency process signals be fused to predict material quality, microstructure class, and structure-property behavior?
+The platform evaluates whether microscopy images and high-frequency process signals can be fused to predict material quality, microstructure class, and structure-property behavior.
 
 ## Modules
 
-| Module | Data | Task | Job/research signal |
+| Module | Data | Task | Scientific purpose |
 |---|---|---|---|
 | Microscopy CV | SEM/TEM/EBSD-style images | segmentation, classification, regression | computer vision for characterization |
 | Process Signal ML | `Fx`, `Fy`, `Fz`, `Mz` force/torque signals | quality classification, property regression | manufacturing analytics and time-series ML |
@@ -64,6 +64,6 @@ python scripts/build_materials_ai_leaderboard.py
 python scripts/run_all_benchmarks.py
 ```
 
-## Next Research Upgrade
+## Current Scope
 
-Replace simulated signals with measured grinding, milling, acoustic-emission, vibration, spindle-current, or temperature CSV files. The feature extraction layer already expects channels named `Fx`, `Fy`, `Fz`, and `Mz`, so real data can be inserted without changing the ML report structure.
+The signal module currently uses physics-inspired generated force and moment channels with the same column format expected for measured data: `Fx`, `Fy`, `Fz`, and `Mz`. The benchmark structure keeps preprocessing, feature extraction, model training, and reporting consistent across generated and public datasets.

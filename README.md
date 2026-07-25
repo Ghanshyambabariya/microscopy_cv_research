@@ -20,13 +20,13 @@ The project is split into smaller folders so each part can be checked independen
 
 ![Project evidence map](assets/portfolio_evidence_map.svg)
 
-| Project | Main Question | Current Output |
+| Project | Method Focus | Current Output |
 |---|---|---|
-| [01 Microscopy CV](projects/01_microscopy_cv) | Can a segmentation workflow be built for SEM-style material images? | SEM prediction panels, active-learning log, segmentation metrics |
-| [02 Process Signal ML](projects/02_process_signal_ml) | Can high-frequency force/torque signals be converted into useful process features? | 20 kHz `Fx`, `Fy`, `Fz`, `Mz` feature table and model results |
-| [03 Tool-Wear Benchmarks](projects/03_tool_wear_benchmarks) | How well do models predict wear on real machining datasets? | Vicomtech and Uniwear grouped-validation reports |
-| [04 Materials Property ML](projects/04_materials_property_ml) | Can tabular composition/process variables predict material properties? | concrete compressive-strength regression report |
-| [05 Multimodal Platform](projects/05_multimodal_platform) | Can these experiments be run and summarized from one project structure? | combined leaderboard, reports, and benchmark overview |
+| [01 Microscopy CV](projects/01_microscopy_cv) | SEM-style segmentation, active learning, and prediction panels | segmentation metrics and qualitative outputs |
+| [02 Process Signal ML](projects/02_process_signal_ml) | 20 kHz force/moment feature extraction and ML modelling | `Fx`, `Fy`, `Fz`, `Mz` feature table and model results |
+| [03 Tool-Wear Benchmarks](projects/03_tool_wear_benchmarks) | grouped-validation wear regression and classification | Vicomtech and Uniwear benchmark reports |
+| [04 Materials Property ML](projects/04_materials_property_ml) | tabular preprocessing, property regression, and feature importance | concrete compressive-strength regression report |
+| [05 Multimodal Platform](projects/05_multimodal_platform) | shared benchmark automation and report generation | combined leaderboard, reports, and benchmark overview |
 
 ## Current Results
 
@@ -72,4 +72,4 @@ python -m pytest -q
 
 ## Current Status
 
-This is an active research workspace. Some parts use real online datasets, and some parts are scaffolds for future experimental data. The microscopy results are baseline results, not final claims.
+This is an active research workspace. Some parts use real online datasets, and some parts use clearly marked development scaffolds. The microscopy results are baseline measurements, not final performance claims.

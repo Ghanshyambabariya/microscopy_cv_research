@@ -6,7 +6,7 @@ This project tests tool-wear prediction on real public machining datasets. The m
 
 ## Why This Project Matters
 
-Tool wear is a practical condition-monitoring problem. A useful model should estimate wear or wear stage from measured process data and still work on tools or experiments not seen during training.
+Tool wear is a practical condition-monitoring problem. The benchmark estimates wear or wear stage from measured process data and evaluates generalization on tools or experiments not seen during training.
 
 ## Methods
 

@@ -40,7 +40,7 @@ Report: [results/external_concrete_strength_report.md](results/external_concrete
 - `scripts/run_external_concrete.py`
 - `configs/external_concrete_strength.json`
 - `src/microscopy_cv_research/training/external_concrete.py`
-- `docs/structure_property_roadmap.md`
+- `docs/structure_property_modelling.md`
 
 ## Run
 

@@ -1,6 +1,12 @@
-# Encoder Recommendations
+# Encoder Benchmark Design
 
-## Strong Starting Points
+This document records encoder families used as references for microscopy representation learning.
+
+## Why Encoder Choice Matters
+
+Microscopy images differ from natural images in texture, scale, noise, contrast, and annotation density. Comparing microscopy-specific, biomedical, and generic encoders helps separate the effect of domain pretraining from the effect of model size.
+
+## Encoder Families
 
 ### Microscopy-specialized
 
@@ -20,7 +26,7 @@
 
 - TITAN
   - repo: https://github.com/mahmoodlab/TITAN
-  - useful if later your project becomes multimodal with reports or text metadata
+  - useful for multimodal experiments with reports or text metadata
 
 ### Strong generic backbones to benchmark anyway
 
@@ -28,11 +34,6 @@
 - ConvNeXtV2
 - ViT / DeiT family
 
-## Practical Recommendation
+## How They Are Used
 
-Benchmark three encoder families:
-- microscopy-specialized encoder
-- pathology/biomedical foundation encoder
-- strong generic self-supervised encoder
-
-This makes your paper stronger because you can show whether domain pretraining really matters for your microscopic image type.
+The benchmark design compares three encoder groups: microscopy-specialized encoders, biomedical foundation encoders, and generic self-supervised vision encoders. Each encoder group is evaluated with the same dataset split, preprocessing path, downstream head, and metric table.

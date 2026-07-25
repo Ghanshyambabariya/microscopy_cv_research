@@ -23,6 +23,6 @@ The repository is split into small projects so that each part can be read and te
 
 Built a materials ML research workspace combining SEM image segmentation, active learning, process-signal feature extraction, real tool-wear benchmarks, and materials-property regression with reproducible Python scripts and generated reports.
 
-## Notes
+## Current Scope
 
-The current SEM work should be treated as a baseline rather than a final research result. The next important step is to add stronger microscopy datasets and compare pretrained encoders against the lightweight models already included.
+The current SEM work is reported as a baseline measurement rather than a final research result. The implemented comparison uses lightweight segmentation models and public benchmark data where available.

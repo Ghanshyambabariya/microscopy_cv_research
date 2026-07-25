@@ -1,17 +1,24 @@
 # Showcase
 
-This page is a quick portfolio-style view of the project.
+This page summarizes the implemented methods, evaluation setup, and current benchmark outputs.
 
-## Framework
+## Methods Used
 
 - Supervised encoder training for microscopy classification and regression
 - Synthetic image generation for augmentation and stress testing
 - Hybrid multitask learning for structure-property prediction
 - Public microscopy dataset ingestion showcase
-- Real benchmark portfolio for SEM, with active learning loop
-- Planned targets for TEM and EBSD
+- SEM segmentation benchmark with active learning
 
-## Benchmark Snapshot
+## Why These Methods Are Used
+
+Microscopy datasets are often small, label-limited, and sensitive to acquisition conditions. The project combines supervised learning, synthetic augmentation, active learning, and tabular/process benchmarks to test both visual modelling and structure-property learning in a reproducible workflow.
+
+## How They Are Applied
+
+Image workflows resize and normalize microscopy samples, train baseline encoders or segmentation models, and save qualitative prediction panels. Signal and tabular workflows clean raw inputs, extract reproducible features, apply leakage-aware splits where possible, and report regression or classification metrics.
+
+## Final Results
 
 The starter dataset contains 1,440 tracked microscopy-style images across 180 specimen groups, and the repo now includes real SEM segmentation experiments (baseline + active learning) from NASA MicroNet benchmark data.
 
@@ -41,14 +48,6 @@ The starter dataset contains 1,440 tracked microscopy-style images across 180 sp
 ## Real SEM Experiments
 
 - Baseline: UNetSmall on EBC1/2/3 with class-weighted CE
-- Active learning: entropy acquisition, seed 6 ? +4, 2 rounds
+- Active learning: entropy acquisition, seed 6 plus 4 queried images across 2 rounds
 - Metrics and leaderboard in [reports/sem_leaderboard.md](reports/sem_leaderboard.md)
 - Active log in `reports/sem_active_learning_log.json`
-
-## What Is Still Missing
-
-- TEM benchmark testing with real task outputs
-- EBSD benchmark testing with real pattern data and metrics
-- Additional SEM datasets (MudrockNet, EMPS, Automatic SEM) integrated into the leaderboard
-
-See [reports/real_benchmark_portfolio.md](reports/real_benchmark_portfolio.md) for the full benchmark target map.

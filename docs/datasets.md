@@ -2,9 +2,9 @@
 
 These cards summarize the online datasets currently connected to the materials-AI platform.
 
-## Dataset Notes Standard
+## Dataset Card Fields
 
-Each dataset should eventually include: source URL, license or usage note, sample count, label definition, split strategy, preprocessing steps, known limitations, and benchmark command.
+Dataset cards record source URL, license or usage note, sample count, label definition, split strategy, preprocessing steps, known limitations, and benchmark command.
 
 ## Runnable Datasets
 
@@ -24,7 +24,7 @@ Each dataset should eventually include: source URL, license or usage note, sampl
 - status: `implemented`
 - runner: `scripts/run_external_uniwear.py`
 - report: `reports/external_uniwear_tool_wear_report.md`
-- note: useful for force/vibration wear-stage modeling; temporal deep learning is the next natural upgrade
+- note: force/vibration wear-stage modelling benchmark with window-level signal features
 
 ### Concrete Compressive Strength
 

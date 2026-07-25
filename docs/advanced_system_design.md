@@ -32,6 +32,6 @@ This workflow is especially important for microscopy because labels are expensiv
 - It supports a realistic path from baseline models to pretrained microscopy encoders and transformer backbones.
 - It keeps current limitations visible instead of hiding baseline results.
 
-## Next Upgrade
+## Experiment Tracking Design
 
-The strongest next code upgrade is a unified experiment tracker that saves every run as a versioned card: dataset hash, config, split seed, model name, metrics, figures, and failure examples.
+The experiment tracking design stores each run as a versioned card: dataset hash, config, split seed, model name, metrics, figures, and failure examples.

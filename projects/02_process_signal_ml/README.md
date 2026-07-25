@@ -6,7 +6,7 @@ This project turns high-frequency force and moment channels into machine-learnin
 
 ## Why This Project Matters
 
-Raw high-frequency signals are usually too large to use directly in simple ML workflows. Windowing and feature extraction make the signal easier to inspect, compare, and model.
+Raw high-frequency signals are usually too large to use directly in simple ML workflows. Windowing and feature extraction convert the signal into interpretable time-domain, frequency-domain, and process-energy descriptors.
 
 ## Methods
 
