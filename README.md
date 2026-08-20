@@ -9,13 +9,26 @@
   <img alt="CI" src="https://github.com/Ghanshyambabariya/materials-ml-research-projects/actions/workflows/ci.yml/badge.svg">
 </p>
 
-# Materials ML Research Projects
+# Scientific Machine Learning for Materials & Engineering Data
 
-This repository contains four independent materials-machine-learning projects that share a reproducible Python codebase. Each project has its own research question, data path, methods, outputs, and result page.
+This repository contains independent scientific-machine-learning projects for materials images, process signals, machining datasets, and tabular materials properties. Each project has its own data path, methods, outputs, and result page while sharing one tested Python codebase.
 
 Shared code is kept in `src/`, experiment runners are in `scripts/`, configuration files are in `configs/`, and generated outputs are in `reports/`.
 
 ![Materials ML research architecture](assets/system_architecture.svg)
+
+## Technical Scope
+
+| Area | Demonstrated |
+|---|---|
+| Computer vision | U-Net microscopy segmentation |
+| Tabular ML | Ridge, Random Forest, XGBoost |
+| Explainable AI | SHAP and image attribution |
+| Benchmarking | R2, RMSE, MAE, F1, IoU, Dice |
+| Scientific Python | NumPy, Pandas, scikit-learn, PyTorch |
+| Reproducibility | configs, scripts, CI, fixed seeds |
+| Process data | force/moment feature engineering |
+| Materials ML | structure/property prediction |
 
 ## Project Areas
 
@@ -23,10 +36,10 @@ Shared code is kept in `src/`, experiment runners are in `scripts/`, configurati
 
 | Project | Method Focus | Current Output |
 |---|---|---|
-| [01 Microscopy CV](projects/01_microscopy_cv) | SEM-style segmentation, active learning, and prediction panels | segmentation metrics and qualitative outputs |
+| [01 Microscopy CV](projects/01_microscopy_cv) | SEM segmentation, architecture comparison, active learning, and image attribution | IoU/Dice/precision/recall with qualitative outputs |
 | [02 Process Signal ML](projects/02_process_signal_ml) | 20 kHz force/moment feature extraction and ML modelling | `Fx`, `Fy`, `Fz`, `Mz` feature table and model results |
 | [03 Tool-Wear Benchmarks](projects/03_tool_wear_benchmarks) | grouped-validation wear regression and classification | Vicomtech and Uniwear benchmark reports |
-| [04 Materials Property ML](projects/04_materials_property_ml) | tabular preprocessing, property regression, and feature importance | concrete compressive-strength regression report |
+| [04 Materials Property ML](projects/04_materials_property_ml) | tabular preprocessing, Ridge/RF/XGBoost regression, and SHAP | concrete compressive-strength benchmark and explainability report |
 
 ## Current Results
 
@@ -35,8 +48,8 @@ Shared code is kept in `src/`, experiment runners are in `scripts/`, configurati
 | Vicomtech tool wear | flank-wear regression | held-out tool IDs | R2 `0.8680` |
 | Vicomtech tool wear | wear-stage classification | held-out tool IDs | macro F1 `0.6472` |
 | Katulu Uniwear | wear-stage classification | held-out experiment tags | macro F1 `0.5205` |
-| Concrete strength | compressive-strength regression | random train/test split | R2 `0.8990` |
-| NASA EBC SEM trained path | semantic segmentation | held-out images | foreground IoU `0.4016` |
+| Concrete strength | compressive-strength regression | random train/test split | XGBoost R2 `0.9173` |
+| NASA EBC SEM trained path | semantic segmentation | held-out images | U-Net foreground IoU `0.4388` |
 | NASA EBC SEM suite | segmentation smoke test | held-out images | foreground IoU `0.1174` |
 
 Full leaderboard: [reports/materials_ai_leaderboard.md](reports/materials_ai_leaderboard.md)

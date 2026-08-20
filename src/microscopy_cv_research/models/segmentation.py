@@ -77,6 +77,30 @@ class UNetSmall(nn.Module):
         return self.head(x)
 
 
+class FCNSmall(nn.Module):
+    def __init__(self, in_channels: int = 3, num_classes: int = 3, base_channels: int = 32, dropout: float = 0.1) -> None:
+        super().__init__()
+        self.encoder = nn.Sequential(
+            ConvBlock(in_channels, base_channels, dropout),
+            nn.MaxPool2d(2),
+            ConvBlock(base_channels, base_channels * 2, dropout),
+            nn.MaxPool2d(2),
+            ConvBlock(base_channels * 2, base_channels * 4, dropout),
+        )
+        self.decoder = nn.Sequential(
+            nn.ConvTranspose2d(base_channels * 4, base_channels * 2, kernel_size=2, stride=2),
+            nn.BatchNorm2d(base_channels * 2),
+            nn.ReLU(inplace=True),
+            nn.ConvTranspose2d(base_channels * 2, base_channels, kernel_size=2, stride=2),
+            nn.BatchNorm2d(base_channels),
+            nn.ReLU(inplace=True),
+            nn.Conv2d(base_channels, num_classes, kernel_size=1),
+        )
+
+    def forward(self, x: torch.Tensor) -> torch.Tensor:
+        return self.decoder(self.encoder(x))
+
+
 class TorchvisionSegWrapper(nn.Module):
     def __init__(self, model: nn.Module, num_classes: int) -> None:
         super().__init__()
@@ -122,6 +146,8 @@ def _micronet_backbone() -> nn.Module:
 def create_segmentation_model(name: str = "unet_small", *, num_classes: int = 3, base_channels: int = 32, dropout: float = 0.1) -> nn.Module:
     if name == "unet_small":
         return UNetSmall(num_classes=num_classes, base_channels=base_channels, dropout=dropout)
+    if name == "fcn_small":
+        return FCNSmall(num_classes=num_classes, base_channels=base_channels, dropout=dropout)
     if name == "deeplab_resnet50":
         weights = tv_models.segmentation.DeepLabV3_ResNet50_Weights.DEFAULT
         model = tv_models.segmentation.deeplabv3_resnet50(weights=weights)

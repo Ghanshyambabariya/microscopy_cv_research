@@ -31,6 +31,8 @@ def segmentation_metrics(y_true: np.ndarray, y_pred: np.ndarray, *, num_classes:
 
     ious: list[float] = []
     dices: list[float] = []
+    precisions: list[float] = []
+    recalls: list[float] = []
     per_class: dict[str, dict[str, float]] = {}
 
     for class_index in range(num_classes):
@@ -39,17 +41,25 @@ def segmentation_metrics(y_true: np.ndarray, y_pred: np.ndarray, *, num_classes:
         intersection = float(np.logical_and(true_mask, pred_mask).sum())
         union = float(np.logical_or(true_mask, pred_mask).sum())
         denom = float(true_mask.sum() + pred_mask.sum())
+        predicted_count = float(pred_mask.sum())
+        true_count = float(true_mask.sum())
         iou = intersection / union if union > 0 else 1.0
         dice = (2.0 * intersection) / denom if denom > 0 else 1.0
-        per_class[str(class_index)] = {"iou": iou, "dice": dice}
+        precision = intersection / predicted_count if predicted_count > 0 else 0.0
+        recall = intersection / true_count if true_count > 0 else 0.0
+        per_class[str(class_index)] = {"iou": iou, "dice": dice, "precision": precision, "recall": recall}
         if class_index != 0:
             ious.append(iou)
             dices.append(dice)
+            precisions.append(precision)
+            recalls.append(recall)
 
     pixel_accuracy = float((y_true == y_pred).mean())
     return {
         "pixel_accuracy": pixel_accuracy,
         "mean_iou_fg": float(np.mean(ious)) if ious else 0.0,
         "mean_dice_fg": float(np.mean(dices)) if dices else 0.0,
+        "mean_precision_fg": float(np.mean(precisions)) if precisions else 0.0,
+        "mean_recall_fg": float(np.mean(recalls)) if recalls else 0.0,
         "per_class": per_class,
     }

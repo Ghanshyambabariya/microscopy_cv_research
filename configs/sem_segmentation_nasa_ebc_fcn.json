@@ -1,0 +1,15 @@
+{
+  "benchmark_root": "data/external/nasa_microscopy_models/benchmark_segmentation_data",
+  "datasets": ["EBC1", "EBC2", "EBC3"],
+  "num_classes": 3,
+  "image_size": 256,
+  "batch_size": 4,
+  "epochs": 10,
+  "learning_rate": 0.001,
+  "base_channels": 32,
+  "dropout": 0.1,
+  "model_name": "fcn_small",
+  "checkpoint_path": "models/checkpoints/sem_ebc_fcn.pt",
+  "results_path": "reports/sem_ebc_fcn_segmentation_metrics.json",
+  "prediction_figure_path": "reports/figures/sem_ebc_fcn_predictions.png"
+}

@@ -4,6 +4,10 @@
 
 Independent project for converting high-frequency force and moment channels into modelling features.
 
+## Data Note
+
+The signal files used here are synthetically generated force/moment signals designed to reproduce a high-frequency process-monitoring workflow. They do not contain proprietary experimental data from previous employment or industrial work.
+
 ## Why Used
 
 Raw high-frequency signals are usually too large to use directly in simple ML workflows. Windowing and feature extraction convert the signal into interpretable time-domain, frequency-domain, and process-energy descriptors.

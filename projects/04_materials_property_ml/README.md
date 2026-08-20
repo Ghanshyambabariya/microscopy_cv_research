@@ -6,32 +6,40 @@ Independent project for material-property regression from tabular composition an
 
 ## Why Used
 
-Many materials problems are tabular before they become deep-learning problems. A clean baseline with sensible preprocessing, feature importance, and a clear metric is often the first useful step.
+Many materials problems are tabular before they become image- or sequence-modelling problems. This benchmark uses transparent preprocessing, multiple regression baselines, cross-validation, and SHAP explanations before making stronger model claims.
 
 ## How Used
 
-- downloaded a public tabular property dataset
-- cleaned numeric features and target values
-- split the data into train/test sets
-- trained a Random Forest regression baseline
-- reported MAE, RMSE, R2, and feature importance
-- saved a result plot and Markdown report
+- downloaded the public concrete compressive-strength table
+- removed duplicate rows and checked missing values
+- split cleaned data into train/test sets with a fixed seed
+- compared Ridge regression, Random Forest, and XGBoost
+- reported MAE, RMSE, R2, and five-fold cross-validation mean +/- standard deviation
+- generated SHAP global importance, beeswarm, and individual prediction explanations for the XGBoost model
 
 ## Final Results
 
-| Dataset | Task | Model | Result |
-|---|---|---|---|
-| concrete compressive strength | property regression | Random Forest | R2 `0.8990` |
+| Model | Hold-out MAE | Hold-out RMSE | Hold-out R2 | CV R2 mean +/- std |
+|---|---:|---:|---:|---:|
+| Ridge | `8.9406` | `11.2337` | `0.5644` | `0.5979 +/- 0.0664` |
+| Random Forest | `3.6956` | `5.4103` | `0.8990` | `0.8816 +/- 0.0139` |
+| XGBoost | `3.5377` | `4.8951` | `0.9173` | `0.8994 +/- 0.0149` |
 
-Top drivers in the current model include curing age, cement, water, superplasticizer, and slag.
+XGBoost gives the strongest held-out result in the current run. SHAP ranks curing age, cement, water, slag, and superplasticizer as the dominant contributors.
 
-## Research Alignment
+## Explainability
 
-The implementation follows materials-informatics baseline practice by using explicit preprocessing, interpretable feature importance, and regression metrics before introducing larger models.
+SHAP is used to inspect both global feature behavior and a single held-out prediction. The goal is to check whether the model follows physically reasonable composition/process trends instead of relying only on opaque feature importance scores.
 
 ## Results
 
 ![Concrete strength](results/external_concrete_strength.png)
+
+![SHAP global feature ranking](results/shap_concrete/concrete_shap_global.png)
+
+![SHAP beeswarm](results/shap_concrete/concrete_shap_beeswarm.png)
+
+![SHAP individual prediction](results/shap_concrete/concrete_shap_individual.png)
 
 Report: [results/external_concrete_strength_report.md](results/external_concrete_strength_report.md)
 

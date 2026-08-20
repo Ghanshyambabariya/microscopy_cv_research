@@ -32,5 +32,6 @@ Materials datasets often combine small image sets, high-frequency process signal
 | Vicomtech tool wear | held-out tool-ID regression | R2 `0.8680` |
 | Vicomtech tool wear | held-out tool-ID wear-stage classification | macro F1 `0.6472` |
 | Katulu Uniwear | held-out experiment wear-stage classification | macro F1 `0.5205` |
-| Concrete strength | tabular property regression | R2 `0.8990` |
+| Concrete strength | tabular property regression | XGBoost R2 `0.9173` |
+| NASA EBC SEM trained path | held-out image segmentation | U-Net foreground IoU `0.4388` |
 | NASA EBC SEM suite | segmentation smoke test | foreground IoU `0.1174` |

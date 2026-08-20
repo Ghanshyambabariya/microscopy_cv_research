@@ -77,7 +77,7 @@ def create_prediction_figure(
 
     examples = min(num_examples, images.size(0))
     apply_lab_style()
-    fig, axes = plt.subplots(examples, 5, figsize=(15, 3 * examples))
+    fig, axes = plt.subplots(examples, 6, figsize=(18, 3 * examples))
     if examples == 1:
         axes = np.expand_dims(axes, axis=0)
 
@@ -85,6 +85,13 @@ def create_prediction_figure(
     for row in range(examples):
         image = images[row].cpu().permute(1, 2, 0).numpy()
         image = np.clip(image * np.array([0.229, 0.224, 0.225]) + np.array([0.485, 0.456, 0.406]), 0.0, 1.0)
+        image_for_grad = images[row : row + 1].detach().clone().requires_grad_(True)
+        logits_for_grad = model(image_for_grad)
+        score = logits_for_grad[:, 1:, :, :].mean() if logits_for_grad.shape[1] > 1 else logits_for_grad.mean()
+        model.zero_grad(set_to_none=True)
+        score.backward()
+        saliency = image_for_grad.grad.detach().abs().max(dim=1).values[0].cpu().numpy()
+        saliency = saliency / max(float(saliency.max()), 1e-8)
         vmax = int(max(masks[row].max(), predictions[row].max()))
         valid = masks[row] != ignore_index if ignore_index is not None else np.ones_like(masks[row], dtype=bool)
         foreground = predictions[row] > 0
@@ -103,17 +110,21 @@ def create_prediction_figure(
         error_rate = float(error_map.sum() / max(valid.sum(), 1))
         error_artist = axes[row, 4].imshow(error_map, cmap="magma", vmin=0, vmax=1)
         axes[row, 4].set_title(f"Error Map | {error_rate:.1%}")
-        for col in range(5):
+        saliency_artist = axes[row, 5].imshow(saliency, cmap="inferno", vmin=0, vmax=1)
+        axes[row, 5].set_title("Input Saliency")
+        for col in range(6):
             axes[row, col].axis("off")
         fig.colorbar(gt_artist, ax=axes[row, 1], fraction=0.046, pad=0.02)
         fig.colorbar(pred_artist, ax=axes[row, 2], fraction=0.046, pad=0.02)
         fig.colorbar(error_artist, ax=axes[row, 4], fraction=0.046, pad=0.02)
+        fig.colorbar(saliency_artist, ax=axes[row, 5], fraction=0.046, pad=0.02)
 
         metadata.append({
             "image_path": image_paths[row],
             "true_labels": sorted(np.unique(masks[row]).tolist()),
             "pred_labels": sorted(np.unique(predictions[row]).tolist()),
             "error_rate": error_rate,
+            "attribution_method": "input_gradient_saliency",
         })
 
     fig.suptitle(title, fontsize=14)

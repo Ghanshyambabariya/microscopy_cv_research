@@ -6,11 +6,11 @@ This audit records the current research alignment for each independent project a
 
 Why used: microscopy segmentation is a core materials-characterization task because pixel-level masks support phase, defect, porosity, and microstructure quantification.
 
-How used: the project loads SEM-style image/mask datasets, normalizes images, trains a UNetSmall segmentation baseline, evaluates pixel accuracy, foreground IoU, and Dice, and saves prediction panels.
+How used: the project loads public NASA EBC SEM image/mask data, normalizes images, trains U-Net and FCN baselines, evaluates pixel accuracy, foreground IoU, Dice, precision, and recall, and saves prediction panels with attribution.
 
-Current result: NASA EBC SEM smoke test foreground IoU `0.1174`; Automatic-SEM foreground IoU `0.4963` in the SEM suite table.
+Current result: NASA EBC SEM trained U-Net foreground IoU `0.4388`; FCN foreground IoU `0.3168`; Automatic-SEM foreground IoU `0.4963` in the compact SEM suite table.
 
-Research upgrade applied: the project page now separates starter synthetic tasks from public SEM segmentation results and states the active-learning method directly.
+Research upgrade applied: the project page now states the NASA public-data source, compares two segmentation architectures, reports precision/recall with IoU and Dice, and includes input-gradient saliency in the qualitative panel.
 
 ## 02 Process-Signal ML
 
@@ -36,11 +36,11 @@ Research upgrade applied: the project page now emphasizes grouped validation, le
 
 Why used: tabular property prediction is a standard materials-informatics baseline before larger deep-learning models are justified.
 
-How used: the project downloads a public concrete-strength dataset, cleans composition/process variables, trains a Random Forest regressor, reports MAE, RMSE, R2, and plots feature importance.
+How used: the project downloads a public concrete-strength dataset, cleans composition/process variables, compares Ridge, Random Forest, and XGBoost regressors, reports MAE, RMSE, R2, and five-fold cross-validation, and uses SHAP for explainability.
 
-Current result: concrete compressive-strength regression R2 `0.8990`.
+Current result: XGBoost concrete compressive-strength regression R2 `0.9173`; Random Forest R2 `0.8990`.
 
-Research upgrade applied: the structure-property document was renamed from roadmap wording to methodology wording and linked from the project page.
+Research upgrade applied: the project page now includes a model-comparison table, SHAP global ranking, SHAP beeswarm, and individual prediction explanation.
 
 ## Repository-Level Checks
 
